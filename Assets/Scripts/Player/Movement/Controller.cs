@@ -37,6 +37,7 @@ public class Controller : MonoBehaviour
 
     private Rigidbody rb;
 
+    [SerializeField] private Animator animator;
 
     [SerializeField] CapsuleCollider mainCollider;
 
@@ -54,6 +55,8 @@ public class Controller : MonoBehaviour
         crouchCenter = new Vector3(mainCollider.center.x, mainCollider.center.y - ((basicHeight - crouchHeight) / 2), mainCollider.center.z);
 
         ColPoint2Center = Vector3.up * (basicHeight / 2 - mainCollider.radius);
+
+        if(!animator) { animator = GetComponentInChildren<Animator>(); }
     }
 
     private void FixedUpdate()
@@ -62,6 +65,8 @@ public class Controller : MonoBehaviour
         if (crouching && !crouchOrder && !Physics.CheckCapsule(transform.position + basicCenter + ColPoint2Center, transform.position + basicCenter - ColPoint2Center, mainCollider.radius, ceilLayer))
         {
             crouching = false;
+
+            animator.SetBool("Crouching", crouching);
 
             mainCollider.height = basicHeight;
             mainCollider.center = basicCenter;
@@ -112,6 +117,8 @@ public class Controller : MonoBehaviour
             crouchOrder = true;
 
             crouching = true;
+
+            animator.SetBool("Crouching", crouching);
 
             mainCollider.height = crouchHeight;
             mainCollider.center = crouchCenter;

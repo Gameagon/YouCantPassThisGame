@@ -641,6 +641,7 @@ GameObject:
   - component: {fileID: 1190376802}
   - component: {fileID: 1190376796}
   - component: {fileID: 1190376800}
+  - component: {fileID: 1190376805}
   - component: {fileID: 1190376803}
   - component: {fileID: 1190376804}
   m_Layer: 3
@@ -757,6 +758,7 @@ MonoBehaviour:
     m_Bits: 65
   airFriction: 0.1
   crouchHeight: 1
+  animator: {fileID: 0}
   mainCollider: {fileID: 1190376796}
   running: 0
   crouchOrder: 0
@@ -874,6 +876,25 @@ MonoBehaviour:
   m_DefaultActionMap: Movment
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 595296910}
+--- !u!114 &1190376805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190376795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0162241e8a5f8142a3ee4e759d84732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  UEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - {m_Target: {fileID: 1190376805}, m_TargetAssemblyTypeName: , m_MethodName: , m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: , m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
+    m_CallsDirty: 1
+  parameters: []
 --- !u!1 &1391222142
 GameObject:
   m_ObjectHideFlags: 0
