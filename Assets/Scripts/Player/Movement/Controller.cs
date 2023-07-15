@@ -63,7 +63,7 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (crouching && !crouchOrder && !Physics.CheckCapsule(transform.position + basicCenter + ColPoint2Center, transform.position + basicCenter - ColPoint2Center, mainCollider.radius, ceilLayer))
+        if (crouching && !crouchOrder && !Physics.CheckCapsule(transform.position + basicCenter + ColPoint2Center, transform.position + basicCenter - ColPoint2Center, mainCollider.radius * groundDetectorSize, ceilLayer))
         {
             crouching = false;
 
