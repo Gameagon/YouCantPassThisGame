@@ -22,7 +22,6 @@ public class FirstPersonCameraController : MonoBehaviour
 
     public void Look(InputAction.CallbackContext context)
     {
-        Debug.Log(lookDelta);
         if(context.control.device is Mouse)
         {
             lookDelta = context.ReadValue<Vector2>() * sensitivity;
