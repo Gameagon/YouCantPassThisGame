@@ -21,6 +21,7 @@ public class Controller : MonoBehaviour
 
     [Header("Groundcheck")]
     public Vector3 groundDetectorOffset;
+    public float groundDetectorSize = 0.9f;
     public LayerMask groundLayer;
     public LayerMask ceilLayer;
     private bool hasGround{get { return ground; } }
@@ -85,7 +86,7 @@ public class Controller : MonoBehaviour
 
     private void GroundCheck()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + groundDetectorOffset, mainCollider.radius, groundLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position + groundDetectorOffset, mainCollider.radius * groundDetectorSize, groundLayer);
 
         if(colliders.Length == 0)
         {
