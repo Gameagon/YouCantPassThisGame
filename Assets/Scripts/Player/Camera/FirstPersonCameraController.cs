@@ -8,10 +8,12 @@ using UnityEngine.InputSystem.XInput;
 public class FirstPersonCameraController : MonoBehaviour
 {
     [SerializeField] Vector2 lookAngle;
+    Vector2 lookDelta = Vector2.zero;
     [SerializeField] Transform head;
     [SerializeField] private float sensivilitygamepad = 30; 
 
     [SerializeField] float sensitivity = 2.0f;
+
     // Start is called before the first frame update.0
     void Start()
     {
@@ -20,19 +22,21 @@ public class FirstPersonCameraController : MonoBehaviour
 
     public void Look(InputAction.CallbackContext context)
     {
-        Debug.Log(context.control.device);
+        Debug.Log(lookDelta);
         if(context.control.device is Mouse)
         {
-            lookAngle += context.ReadValue<Vector2>() * sensitivity;
-
+            lookDelta = context.ReadValue<Vector2>() * sensitivity;
         }
         else
         {
-            lookAngle += context.ReadValue<Vector2>() * sensitivity * sensivilitygamepad;
-
-
-
+            lookDelta = context.ReadValue<Vector2>() * sensitivity * sensivilitygamepad;
         }
+    }
+
+    private void Update()
+    {
+        lookAngle += lookDelta * Time.deltaTime;
+
         lookAngle.y = Mathf.Clamp(lookAngle.y, -90, 90);
         lookAngle.x = lookAngle.x % 360;
     }
