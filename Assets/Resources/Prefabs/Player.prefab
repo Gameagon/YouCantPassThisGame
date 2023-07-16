@@ -84,8 +84,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.43
+  m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2020125568864133173
@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 4676146114951619486}
   - component: {fileID: 8244725742980164921}
   - component: {fileID: 1460570724078269200}
+  - component: {fileID: 3621014321101539744}
   m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
@@ -325,6 +326,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3621014321101539744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907085419776776556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301b4e20443772a4fbdf577a258da707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageComponent: {fileID: 1460570724078269200}
+  setNativeSize: 1
 --- !u!1 &8133996891771314388
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +368,7 @@ Transform:
   m_GameObject: {fileID: 8133996891771314388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6260339738316247510}
@@ -546,6 +561,7 @@ GameObject:
   - component: {fileID: 6475305610841029146}
   - component: {fileID: 2923347064969084638}
   - component: {fileID: 4843679840386313405}
+  - component: {fileID: 929490015880813280}
   m_Layer: 3
   m_Name: Camera
   m_TagString: MainCamera
@@ -649,9 +665,9 @@ MonoBehaviour:
   OnSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1460570724078269200}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
+      - m_Target: {fileID: 3621014321101539744}
+        m_TargetAssemblyTypeName: UIImageChanger, Assembly-CSharp
+        m_MethodName: ChangeSprite
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 21300000, guid: 1da5f0f7ae6444345bdae1eebb68e9ec, type: 3}
@@ -664,9 +680,9 @@ MonoBehaviour:
   OnRelease:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1460570724078269200}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
+      - m_Target: {fileID: 3621014321101539744}
+        m_TargetAssemblyTypeName: UIImageChanger, Assembly-CSharp
+        m_MethodName: ChangeSprite
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 21300000, guid: adcfac8e0f250f14f974e752ebb6721a, type: 3}
@@ -680,3 +696,47 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &929490015880813280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145008394739530279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
