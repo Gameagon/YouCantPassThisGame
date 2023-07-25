@@ -102,7 +102,7 @@ out float Diffuse, out float Specular, out float3 Color)
 	Color += BakedGI * AmbientOcclusion; //indirectDiffuse + indirectSpecular;
 }*/
 
-void GetGlobalIllumination_float(float Smoothness, float3 Albedo, float3 BakedGI, float AmbientOcclusion, float3 WorldNormal, float3 WorldView, out float3 Color)
+void GetGlobalIllumination_float(float Smoothness, float Specular, float3 Albedo, float3 BakedGI, float AmbientOcclusion, float3 WorldNormal, float3 WorldView, out float3 Color)
 {
 #ifndef SHADERGRAPH_PREVIEW
 	float3 indirectDiffuse = Albedo * BakedGI * AmbientOcclusion;
@@ -115,7 +115,7 @@ void GetGlobalIllumination_float(float Smoothness, float3 Albedo, float3 BakedGI
 	// It is located in URP/ShaderLibrary/Lighting.hlsl
 	float3 indirectSpecular = GlossyEnvironmentReflection(reflectVector,
 		sqrt(1 - Smoothness),
-		AmbientOcclusion) * fresnel;
+		AmbientOcclusion) * fresnel * Specular;
 
 	Color = indirectDiffuse + indirectSpecular;
 #else

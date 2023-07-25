@@ -3,7 +3,12 @@ guid: e09d3f97eee690249989435dce3d532e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bakes
+    second: {fileID: 2100000, guid: 9da639269026c3943a43743b2156034d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
