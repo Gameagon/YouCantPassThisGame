@@ -149,14 +149,14 @@ public class Controller : MonoBehaviour
         if(crouching)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position + basicCenter + ColPoint2Center, mainCollider.radius);
-            Gizmos.DrawWireSphere(transform.position + basicCenter - ColPoint2Center, mainCollider.radius);
+            Gizmos.DrawWireSphere(transform.position + basicCenter + ColPoint2Center, mainCollider.radius * groundDetectorSize);
+            Gizmos.DrawWireSphere(transform.position + basicCenter - ColPoint2Center, mainCollider.radius * groundDetectorSize);
         }
 
         if(mainCollider)
         {
             Gizmos.color = hasGround ? Color.green : Color.red;
-            Gizmos.DrawWireSphere(transform.position + groundDetectorOffset, mainCollider.radius);
+            Gizmos.DrawWireSphere(transform.position + groundDetectorOffset, mainCollider.radius * groundDetectorSize);
         }
     }
 #endif
