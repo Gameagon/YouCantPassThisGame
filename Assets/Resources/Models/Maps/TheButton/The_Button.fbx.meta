@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 601fcb9ed7da27643b6ced8e7fd3e9e4
+guid: 2efb6736697f3bd4f9af209deb9234c1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: paredes
+    second: {fileID: 2100000, guid: c114be3b62a14554b8a08a3e7025049e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: suelo_
+    second: {fileID: 2100000, guid: e18de9c57cd1d2a429e918f589f594c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: techo
+    second: {fileID: 2100000, guid: 9eccbb9c0a78f8d4d98ebceeb495f9ac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -90,7 +105,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
