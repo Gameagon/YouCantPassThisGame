@@ -150,6 +150,86 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1843689209865246678, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
+--- !u!4 &5257288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
+  m_PrefabInstance: {fileID: 1397378687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5257289 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
+  m_PrefabInstance: {fileID: 1397378687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &449641050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449641051}
+  - component: {fileID: 449641052}
+  - component: {fileID: 449641053}
+  m_Layer: 6
+  m_Name: colliderendlesscorridor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &449641051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449641050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5257288}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &449641052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449641050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.018167956, y: 0.08434352, z: 0.022184098}
+  m_Center: {x: -0.0006349912, y: 0.08554539, z: -0.0021260823}
+--- !u!114 &449641053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449641050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 1000
+  mesh: {fileID: 5257289}
+  materialoffset: {fileID: 2100000, guid: 82b9a16a9684bc340a49f8ff46c86879, type: 2}
+  scroll: {x: 0, y: 0}
 --- !u!1001 &504621846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,7 +446,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 82b9a16a9684bc340a49f8ff46c86879, type: 2}
+      objectReference: {fileID: 2100000, guid: d49c56a4c9189e14392970ae3922237f, type: 2}
     - target: {fileID: 919132149155446097, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
       propertyPath: m_Name
       value: The_Button
@@ -377,7 +457,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 449641051}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2efb6736697f3bd4f9af209deb9234c1, type: 3}
       insertIndex: -1

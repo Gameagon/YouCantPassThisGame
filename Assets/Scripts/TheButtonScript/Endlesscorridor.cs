@@ -1,25 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 public class Endlesscorridor : MonoBehaviour
 {
-    public float scrollSpeed = 1000;
-    [SerializeField]private Texture2D mesh;
-    // Start is called before the first frame update
-    private void OnCollisionStay(Collision collision)
+    public float scrollSpeed = 0.1f;
+    [SerializeField]private MeshRenderer mesh;
+    public Material materialoffset;
+    public Vector2 scroll;
+
+    private void Start()
     {
-        if (collision.gameObject.layer == 3)
-        {
-            if (transform.position.x <= -20)
-            {
-                collision.gameObject.transform.position = new Vector3(60, collision.gameObject.transform.position.y, collision.gameObject.transform.position.z);
-            }
-            Debug.Log(mesh.width);
-          //  mesh.material.of = new Vector2(0, Time.realtimeSinceStartup * scrollSpeed);
-            
-        }
+        materialoffset.SetVector("Offset", scroll);
     }
+    // Start is called before the first frame update
+    private void OnTriggerStay(Collider other)
+    {
+        scrollSpeed = scrollSpeed + scrollSpeed;
+
+        scroll = new Vector2(0, scrollSpeed);
+       // materialoffset.mainTextureOffset = scroll;
+        float dot = Vector3.Dot(other.gameObject.transform.forward, Vector3.forward);
+        if (other.gameObject.layer == 3)
+        {
+            if (dot > 0.9)
+            {
+
+
+            }
+
+            //  mesh.material.of = new Vector2(0, Time.realtimeSinceStartup * scrollSpeed);
+
+        }
+        materialoffset.SetVector("Offset", scroll);
+    }
+
+    public void Update()
+    {
+        scrollSpeed = scrollSpeed + scrollSpeed;
+
+        scroll = new Vector2(0, scrollSpeed);
+
+        float offset = Time.time * scrollSpeed;
+        Debug.Log(offset);
+        materialoffset.SetVector("Offset", scroll);
+
+        
+    }
+
+
+
 
 
 
