@@ -169,8 +169,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 449641051}
-  - component: {fileID: 449641052}
   - component: {fileID: 449641053}
+  - component: {fileID: 449641054}
   m_Layer: 6
   m_Name: colliderendlesscorridor
   m_TagString: Untagged
@@ -193,7 +193,23 @@ Transform:
   m_Father: {fileID: 5257288}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &449641052
+--- !u!114 &449641053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449641050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: -5
+  mesh: {fileID: 5257289}
+  materialoffset: {fileID: 2100000, guid: 82b9a16a9684bc340a49f8ff46c86879, type: 2}
+  scroll: {x: 0, y: 0}
+--- !u!65 &449641054
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -212,24 +228,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.018167956, y: 0.08434352, z: 0.022184098}
-  m_Center: {x: -0.0006349912, y: 0.08554539, z: -0.0021260823}
---- !u!114 &449641053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449641050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollSpeed: 1000
-  mesh: {fileID: 5257289}
-  materialoffset: {fileID: 2100000, guid: 82b9a16a9684bc340a49f8ff46c86879, type: 2}
-  scroll: {x: 0, y: 0}
+  m_Size: {x: 0.022108717, y: 0.055300307, z: 0.031376723}
+  m_Center: {x: 0.0028263438, y: 0.09640515, z: 0.0028640104}
 --- !u!1001 &504621846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462249875763565506, guid: 09859bee8d23e424a9ee7de74aa0015c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.97
+      value: -13.041
       objectReference: {fileID: 0}
     - target: {fileID: 462249875763565506, guid: 09859bee8d23e424a9ee7de74aa0015c, type: 3}
       propertyPath: m_LocalRotation.w

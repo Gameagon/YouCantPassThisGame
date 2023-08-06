@@ -17,14 +17,15 @@ public class Controller : MonoBehaviour
     [SerializeField] float jumpForce = 0.0f;
     [SerializeField] float acceleration = 0.0f;
     float actualMoveSpeed;
-    public Vector2 movement { get; private set; }
+    public bool canmove = false;
+    public  Vector2 movement { get; private set; }
 
     [Header("Groundcheck")]
     public Vector3 groundDetectorOffset;
     public float groundDetectorSize = 0.9f;
     public LayerMask groundLayer;
     public LayerMask ceilLayer;
-    private bool hasGround{get { return ground; } }
+    private bool hasGround{get { return ground; } } 
     private float friction { get { return ground ? ground.material.dynamicFriction : airFriction; } }
     public float airFriction = 0.1f;
     Collider ground;
@@ -45,10 +46,16 @@ public class Controller : MonoBehaviour
     public bool running;
     public bool crouchOrder;
     public bool crouching { get; private set;}
-
+    public static Controller current;
+    private void Awake()
+    {
+        current = this;
+    }
     public void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+
+
 
         if(!mainCollider) mainCollider = gameObject.GetComponent<CapsuleCollider>();
         basicHeight = mainCollider.height;
@@ -78,10 +85,18 @@ public class Controller : MonoBehaviour
         if (crouching) { actualMoveSpeed = crouchSpeed; }
         else if(running) { actualMoveSpeed = runSpeed; }
         else { actualMoveSpeed = walkSpeed; }
+        Debug.Log(movement);
+        if (canmove)
+        {
+            Vector2 finalDir = SkullAGMaths.RotateVector(movement, new Vector2(transform.forward.x, transform.forward.z).normalized);
+            Vector2 tempvector = SkullAGMaths.CalculateVelocity(new Vector2(rb.velocity.x, rb.velocity.z), finalDir, acceleration, actualMoveSpeed, friction);
+            rb.velocity = new Vector3(tempvector.x, rb.velocity.y, tempvector.y);
+        }
+        else
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
 
-        Vector2 finalDir = SkullAGMaths.RotateVector(movement, new Vector2(transform.forward.x, transform.forward.z).normalized);
-        Vector2 tempvector = SkullAGMaths.CalculateVelocity(new Vector2(rb.velocity.x, rb.velocity.z), finalDir, acceleration, actualMoveSpeed, friction);
-        rb.velocity = new Vector3(tempvector.x, rb.velocity.y, tempvector.y);
     }
 
     private void GroundCheck()
