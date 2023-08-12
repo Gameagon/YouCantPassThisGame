@@ -85,7 +85,7 @@ public class Controller : MonoBehaviour
         if (crouching) { actualMoveSpeed = crouchSpeed; }
         else if(running) { actualMoveSpeed = runSpeed; }
         else { actualMoveSpeed = walkSpeed; }
-        Debug.Log(movement);
+        //Debug.Log(movement);
         if (canmove)
         {
             Vector2 finalDir = SkullAGMaths.RotateVector(movement, new Vector2(transform.forward.x, transform.forward.z).normalized);

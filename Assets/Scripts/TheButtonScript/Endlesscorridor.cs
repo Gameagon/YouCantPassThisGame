@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class Endlesscorridor : MonoBehaviour
 {
     public float scrollSpeed = 1f;
+    float scrollwall = 0;
     [SerializeField]private MeshRenderer mesh;
     public Material materialoffset;
     public Vector2 scroll;
     private bool on = false;
     private void Start()
     {
+        scrollwall = scrollSpeed / 4;
         //materialoffset.SetVector("Offset", scroll);
     }
     private void OnTriggerEnter(Collider other)
@@ -41,12 +43,17 @@ public class Endlesscorridor : MonoBehaviour
     {
 
             float dot = Vector3.Dot(Controller.current.gameObject.transform.forward, Vector3.forward);
-        //Debug.Log(dot);
-            if (dot > 0.9 && Controller.current.movement.y == 1  && on || dot > 0.9 && Controller.current.movement == new Vector2(0.71f,0.71f) && on || dot > -0.9 && dot < 0.9 && Controller.current.movement.x == 1 && on || dot > -0.9 && dot < 0.9 && Controller.current.movement == new Vector2(1,1) && on || dot > -0.9 && dot < 0.9 && Controller.current.movement == new Vector2(-1, -1) && on || dot > -1 && Controller.current.movement.y == -1 && on || dot > -1 && Controller.current.movement == new Vector2(-1, -1) && on)
+           Debug.Log(dot);
+            if (dot > 0.10 && Controller.current.movement.y >= 0.1  && on || dot < -0.7 && Controller.current.movement.y < -0.50 && on)
             {
-                scrolltexture();
+               
+                scrolltexture(scrollSpeed);
 
             }
+            else if (dot >= -0.3 && dot < 0.9 && Controller.current.movement.x < 0 && Controller.current.gameObject.transform.forward.x > 0.01 && on || dot >= -0.9 && dot < 0.9 && Controller.current.movement.x > 0.70 && Controller.current.gameObject.transform.forward.x < 0.01 && on)
+            {
+                 scrolltexture(scrollwall);
+             }
             else
             {
                 Controller.current.canmove = true;
@@ -61,10 +68,10 @@ public class Endlesscorridor : MonoBehaviour
 
 
     }
-    public void scrolltexture()
+    public void scrolltexture(float scrollmult)
     {
         Controller.current.canmove = false;
-        scroll = new Vector2(1.25f, Time.realtimeSinceStartup * scrollSpeed);
+        scroll = new Vector2(1.25f, Time.realtimeSinceStartup * scrollmult);
         //  Debug.Log(Controller.current.movement);
     }
 
