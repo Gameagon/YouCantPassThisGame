@@ -13,7 +13,7 @@ public class Endlesscorridor : MonoBehaviour
     private bool on = false;
     private void Start()
     {
-        scrollwall = scrollSpeed / 4;
+        scrollwall = scrollSpeed / 10;
         //materialoffset.SetVector("Offset", scroll);
     }
     private void OnTriggerEnter(Collider other)
@@ -43,8 +43,8 @@ public class Endlesscorridor : MonoBehaviour
     {
 
             float dot = Vector3.Dot(Controller.current.gameObject.transform.forward, Vector3.forward);
-           Debug.Log(dot);
-            if (dot > 0.10 && Controller.current.movement.y >= 0.1  && on || dot < -0.7 && Controller.current.movement.y < -0.50 && on)
+        Debug.Log(dot);
+           if (dot > 0.01 && Controller.current.movement.y >= 0.1  && on || dot < -0.7 && Controller.current.movement.y < -0.50 && on)
             {
                
                 scrolltexture(scrollSpeed);
@@ -52,7 +52,7 @@ public class Endlesscorridor : MonoBehaviour
             }
             else if (dot >= -0.3 && dot < 0.9 && Controller.current.movement.x < 0 && Controller.current.gameObject.transform.forward.x > 0.01 && on || dot >= -0.9 && dot < 0.9 && Controller.current.movement.x > 0.70 && Controller.current.gameObject.transform.forward.x < 0.01 && on)
             {
-                 scrolltexture(scrollwall);
+                scrolltexture(scrollwall);
              }
             else
             {
