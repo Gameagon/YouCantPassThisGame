@@ -8,9 +8,11 @@ public class Endlesscorridor : MonoBehaviour
     public float scrollSpeed = 1f;
     float scrollwall = 0;
     [SerializeField]private MeshRenderer mesh;
+    [SerializeField] private GameObject bone;
     public Material materialoffset;
     public Vector2 scroll;
     private bool on = false;
+
     private void Start()
     {
         scrollwall = scrollSpeed / 4;
@@ -43,7 +45,7 @@ public class Endlesscorridor : MonoBehaviour
     {
 
             float dot = Vector3.Dot(Controller.current.gameObject.transform.forward, Vector3.forward);
-           Debug.Log(dot);
+          // Debug.Log(dot);
             if (dot > 0.10 && Controller.current.movement.y >= 0.1  && on || dot < -0.7 && Controller.current.movement.y < -0.50 && on)
             {
                
@@ -57,11 +59,11 @@ public class Endlesscorridor : MonoBehaviour
             else
             {
                 Controller.current.canmove = true;
-                scroll = new Vector2(1.25f, 1.75f);
+               // scroll = new Vector2(1.25f, 1.75f);
 
               //  Debug.Log(materialoffset.GetVector("_Offset"));
             }
-            materialoffset.SetVector("_Offset", scroll);
+           // materialoffset.SetVector("_Offset", scroll);
         
       
 
@@ -70,9 +72,8 @@ public class Endlesscorridor : MonoBehaviour
     }
     public void scrolltexture(float scrollmult)
     {
-        Controller.current.canmove = false;
-        scroll = new Vector2(1.25f, Time.realtimeSinceStartup * scrollmult);
-        //  Debug.Log(Controller.current.movement);
+       bone.transform.position += new Vector3(0, 0.1f, 0); 
+       Debug.Log(Controller.current.movement);
     }
 
 
