@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: suelo
-  m_Shader: {fileID: -6465566751694194690, guid: 6030340e3311e4244aab5f3dc6c28cde, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: fcc525374dcaeec41a7d23a93f885fc4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -139,9 +139,9 @@ Material:
     - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Offset: {r: 1.25, g: 1.25, b: 0, a: 0}
+    - _Offset: {r: 1, g: 1.5, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _Tilling: {r: 20, g: 20, b: 0, a: 0}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8055113362767737352

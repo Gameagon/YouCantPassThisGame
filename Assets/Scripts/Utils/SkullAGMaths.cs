@@ -193,8 +193,57 @@ public static class SkullAGMaths
 	{
 		return Vector3.Lerp(Vector3.Lerp(init, pole, factor), Vector3.Lerp(pole, end, factor), factor);
 	}
+	public static float GetBezierArcLength(Vector3 init, Vector3 end, Vector3 pole, int precision = 4)
+    {
+        float ret = 0;
+        float mult = 1f / precision;
 
-	public static Vector3 twoPoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, float factor)
+        Vector3 lastPoint = init;
+        Vector3 actualPoint = Vector3.zero;
+
+        for (int i = 1; i < precision; i++)
+        {
+            actualPoint = onePoleBezierLerp(init, end, pole, mult * i);
+
+            ret += Vector3.Distance(actualPoint, lastPoint);
+
+            lastPoint = actualPoint;
+        }
+
+        ret += Vector3.Distance(end, lastPoint);
+
+        return ret;
+    }
+
+    public static float GetBezierArcLength(Vector3 init, Vector3 end, Vector3 pole, out List<KeyValuePair<float, float>> samples, int precision = 4)
+    {
+        samples = new List<KeyValuePair<float, float>>();
+
+        float ret = 0;
+        float mult = 1f / precision;
+
+        Vector3 lastPoint = init;
+        Vector3 actualPoint = Vector3.zero;
+
+        for (int i = 1; i < precision; i++)
+        {
+            actualPoint = onePoleBezierLerp(init, end, pole, mult * i);
+
+            ret += Vector3.Distance(actualPoint, lastPoint);
+
+			samples.Add(new KeyValuePair<float, float>(ret, mult * i));
+
+            lastPoint = actualPoint;
+        }
+
+        ret += Vector3.Distance(end, lastPoint);
+
+        samples.Add(new KeyValuePair<float, float>(ret, 1));
+
+        return ret;
+    }
+
+    public static Vector3 twoPoleBezierLerp(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, float factor)
 	{
 		Vector3 L1 = Vector3.Lerp(init, pole1, factor);
 		Vector3 L2 = Vector3.Lerp(pole1, pole2, factor);
@@ -203,7 +252,73 @@ public static class SkullAGMaths
 		return onePoleBezierLerp(L1, L3, L2, factor);
 	}
 
-	public static T GetCopyOf<T>(this T comp, T other) where T : Component
+    public static float GetBezierArcLength(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, int precision = 6)
+    {
+        float ret = 0;
+        float mult = 1f / precision;
+
+        Vector3 lastPoint = init;
+        Vector3 actualPoint = Vector3.zero;
+
+        for (int i = 1; i < precision; i++)
+        {
+            actualPoint = twoPoleBezierLerp(init, end, pole1, pole2, mult * i);
+
+            ret += Vector3.Distance(actualPoint, lastPoint);
+
+            lastPoint = actualPoint;
+        }
+
+        ret += Vector3.Distance(end, lastPoint);
+
+        return ret;
+    }
+
+    public static float GetBezierArcLength(Vector3 init, Vector3 end, Vector3 pole1, Vector3 pole2, out List<Vector2> samples, int precision = 6)
+    {
+        samples = new List<Vector2>();
+
+        float ret = 0;
+        float mult = 1f / precision;
+
+        Vector3 lastPoint = init;
+        Vector3 actualPoint = Vector3.zero;
+
+        samples.Add(new Vector2(0, 0));
+
+        for (int i = 1; i < precision; i++)
+        {
+            actualPoint = twoPoleBezierLerp(init, end, pole1, pole2, mult * i);
+
+            ret += Vector3.Distance(actualPoint, lastPoint);
+
+            samples.Add(new Vector2(ret, mult * i));
+
+            lastPoint = actualPoint;
+        }
+
+        ret += Vector3.Distance(end, lastPoint);
+
+        samples.Add(new Vector2(ret, 1));
+
+        return ret;
+    }
+
+    public static Quaternion QuaternionBezier(Quaternion init, Quaternion end, Quaternion pole, float factor)
+	{
+        return Quaternion.Lerp(Quaternion.Lerp(init, pole, factor), Quaternion.Lerp(pole, end, factor), factor);
+    }
+
+    public static Quaternion QuaternionBezier(Quaternion init, Quaternion end, Quaternion pole1, Quaternion pole2, float factor)
+    {
+        Quaternion L1 = Quaternion.Lerp(init, pole1, factor);
+        Quaternion L2 = Quaternion.Lerp(pole1, pole2, factor);
+        Quaternion L3 = Quaternion.Lerp(pole2, end, factor);
+
+        return QuaternionBezier(L1, L3, L2, factor);
+    }
+
+    public static T GetCopyOf<T>(this T comp, T other) where T : Component
 	{
 		Type type = comp.GetType();
 		Type otherType = other.GetType();
