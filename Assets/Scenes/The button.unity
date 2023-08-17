@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 462249875763565506, guid: 09859bee8d23e424a9ee7de74aa0015c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.725
+      value: -16.47
       objectReference: {fileID: 0}
     - target: {fileID: 462249875763565506, guid: 09859bee8d23e424a9ee7de74aa0015c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -442,6 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652344789396}
+  - component: {fileID: 919132148404286255}
   m_Layer: 6
   m_Name: The_Button
   m_TagString: Untagged
@@ -449,6 +450,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148404286255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148404286254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 1
+  mesh: {fileID: 0}
+  bone: {fileID: 3346744339415886359}
+  materialoffset: {fileID: 0}
+  scroll: {x: 0, y: 0}
 --- !u!1 &934147381719385768
 GameObject:
   m_ObjectHideFlags: 0
