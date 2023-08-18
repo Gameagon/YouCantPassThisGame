@@ -70,7 +70,7 @@ public class Controller : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (crouching && !crouchOrder && !Physics.CheckCapsule(transform.position + basicCenter + ColPoint2Center, transform.position + basicCenter - ColPoint2Center, mainCollider.radius * groundDetectorSize, ceilLayer))
+        if (crouching && !crouchOrder && !Physics.CheckCapsule(transform.position + basicCenter + ColPoint2Center, transform.position + basicCenter - ColPoint2Center, mainCollider.radius * groundDetectorSize, ceilLayer, QueryTriggerInteraction.Ignore))
         {
             crouching = false;
 
@@ -101,7 +101,7 @@ public class Controller : MonoBehaviour
 
     private void GroundCheck()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + groundDetectorOffset, mainCollider.radius * groundDetectorSize, groundLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position + groundDetectorOffset, mainCollider.radius * groundDetectorSize, groundLayer, QueryTriggerInteraction.Ignore);
 
         if(colliders.Length == 0)
         {

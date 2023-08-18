@@ -36,7 +36,7 @@ Transform:
   - {fileID: 2292040802449696851}
   - {fileID: 7173306757931580213}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &9217449881119076487
 Rigidbody:
@@ -84,7 +84,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.43
+  m_Radius: 0.3
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 4676146114951619486}
   - component: {fileID: 8244725742980164921}
   - component: {fileID: 1460570724078269200}
-  - component: {fileID: 3621014321101539744}
   m_Layer: 3
   m_Name: Image
   m_TagString: Untagged
@@ -287,7 +286,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8244725742980164921
 CanvasRenderer:
@@ -327,20 +326,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3621014321101539744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7907085419776776556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301b4e20443772a4fbdf577a258da707, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageComponent: {fileID: 1460570724078269200}
-  setNativeSize: 1
 --- !u!1 &8133996891771314388
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +354,7 @@ Transform:
   m_GameObject: {fileID: 8133996891771314388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_LocalScale: {x: 0.6, y: 0.85, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6260339738316247510}
@@ -666,9 +651,9 @@ MonoBehaviour:
   OnSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3621014321101539744}
-        m_TargetAssemblyTypeName: UIImageChanger, Assembly-CSharp
-        m_MethodName: ChangeSprite
+      - m_Target: {fileID: 1460570724078269200}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 21300000, guid: 1da5f0f7ae6444345bdae1eebb68e9ec, type: 3}
@@ -681,9 +666,9 @@ MonoBehaviour:
   OnRelease:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3621014321101539744}
-        m_TargetAssemblyTypeName: UIImageChanger, Assembly-CSharp
-        m_MethodName: ChangeSprite
+      - m_Target: {fileID: 1460570724078269200}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 21300000, guid: adcfac8e0f250f14f974e752ebb6721a, type: 3}
