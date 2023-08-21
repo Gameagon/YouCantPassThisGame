@@ -12,8 +12,8 @@ public class Interactor : MonoBehaviour
 {
 	protected InteractionTarget currentTarget { get { return _currentTarget; } set 
 		{
-			Stopwatch stopWatch = new Stopwatch();
-			stopWatch.Start();
+			/*Stopwatch stopWatch = new Stopwatch();
+			stopWatch.Start();*/
 			//if(value)Debug.Log(_currentTarget == value);
 			if ((LockSelectionOnInteraction && interacting) || value == null || _currentTarget == value || !selectionFilter.HasFlag(value.group)) return;
 
@@ -27,8 +27,8 @@ public class Interactor : MonoBehaviour
 
 			_currentTarget.Selected(this);
 
-			stopWatch.Stop();
-			UnityEngine.Debug.Log(stopWatch.Elapsed);
+			/*stopWatch.Stop();
+			UnityEngine.Debug.Log(stopWatch.Elapsed);*/
 		} }
 	protected InteractionTarget _currentTarget = null;
 
@@ -59,7 +59,12 @@ public class Interactor : MonoBehaviour
 
 	public void Interact(InteractionTarget target = null)
 	{
-		if (target == null) currentTarget.Interact(this);
+		if (!target)
+		{
+			if (!currentTarget) return;
+
+			currentTarget.Interact(this);
+		}
 		else target.Interact(this);
 
 		interacting = true;
