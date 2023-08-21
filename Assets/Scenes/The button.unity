@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &453358357 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 462249875763565506, guid: 09859bee8d23e424a9ee7de74aa0015c, type: 3}
+  m_PrefabInstance: {fileID: 504621846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &504621846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,11 +467,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 1
-  mesh: {fileID: 0}
-  bone: {fileID: 3346744339415886359}
-  materialoffset: {fileID: 0}
-  scroll: {x: 0, y: 0}
+  Target: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  maxPosition: {x: 0, y: 0, z: 0}
+  minPosition: {x: 0, y: 0, z: 0}
+  x: 0
+  y: 0
+  z: 0
 --- !u!1 &934147381719385768
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +577,7 @@ GameObject:
   - component: {fileID: 5950205191172919924}
   - component: {fileID: 209925531276701483}
   - component: {fileID: 7507474521586742485}
+  - component: {fileID: 7507474521586742491}
   - component: {fileID: 7507474521586742490}
   - component: {fileID: 7507474521586742489}
   - component: {fileID: 7507474521586742488}
@@ -1189,6 +1197,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 1, z: 7}
   m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &7507474521586742491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3346744339415886359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed4bea30eb7e56479c0aff3f3dc0d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 453358357}
+  offset: {x: 0, y: 0, z: 7}
+  maxPosition: {x: 0, y: 0, z: 40000}
+  minPosition: {x: 0, y: 0, z: 0}
+  x: 0
+  y: 0
+  z: 1
 --- !u!1 &8016103994400383296
 GameObject:
   m_ObjectHideFlags: 0
