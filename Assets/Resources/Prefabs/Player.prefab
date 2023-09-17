@@ -36,7 +36,7 @@ Transform:
   - {fileID: 2292040802449696851}
   - {fileID: 7173306757931580213}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &9217449881119076487
 Rigidbody:
@@ -245,6 +245,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ddaa1495-c37c-4d47-ab10-b31cfde93069
     m_ActionName: Interaction/Interact[/XInputControllerWindows/buttonWest,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3cce0a63-0714-4355-8776-9f986916ee3d
+    m_ActionName: Movment/Interact[/Keyboard/e,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movment
@@ -705,7 +709,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
