@@ -5,8 +5,8 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class RotateOverTime : MonoBehaviour
 {
-    float speed = 15;
-    Vector3 axis = Vector3.up;
+    public float speed = 15;
+    public Vector3 axis = Vector3.up;
 
 
     // Update is called once per frame

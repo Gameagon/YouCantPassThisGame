@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CookingMinigame.unity
+    guid: e93d0672c5f9cb140beac4d3246ff1a4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 95f065216d0f02044a731478a8269edc, type: 2}

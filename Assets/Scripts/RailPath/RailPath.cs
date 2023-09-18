@@ -1,4 +1,3 @@
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -66,12 +65,6 @@ public class RailPath : MonoBehaviour
 	[NonReorderable]
 	public List<RailNode> nodes = new List<RailNode>();
 
-	[MenuItem("GameObject/Effects/RailPath")]
-	static public void CreateNewRailPathObject()
-	{
-		new GameObject("RailPath").AddComponent<RailPath>().transform.SetParent(Selection.activeTransform);
-	}
-
 	public void RecalculateSegment(int index)
 	{
 		if(index >= nodes.Count || index == nodes.Count - 1 && !closed) return;
@@ -127,7 +120,14 @@ public class RailPath : MonoBehaviour
 	public float SimulationSpeed = 0.5f;
 	public float SimDist = 0;
 
-	private void OnValidate()
+#if UNITY_EDITOR
+    [MenuItem("GameObject/Effects/RailPath")]
+    static public void CreateNewRailPathObject()
+    {
+        new GameObject("RailPath").AddComponent<RailPath>().transform.SetParent(Selection.activeTransform);
+    }
+
+    private void OnValidate()
 	{
 		if(RealTimeUpdate)
 			for (int i = 0; i < nodes.Count; i++)
@@ -213,4 +213,5 @@ public class RailPath : MonoBehaviour
 			Gizmos.DrawLine(Vector3.zero, Vector3.up);
 		}*/
 	}
+#endif
 }

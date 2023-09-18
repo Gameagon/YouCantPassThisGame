@@ -30,7 +30,7 @@ public class SingleEnumFlagSelectAttribute : PropertyAttribute
 
     public bool IsValid { get; private set; }
 }
-
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(SingleEnumFlagSelectAttribute))]
 public class SingleEnumFlagSelectAttributeEditor : PropertyDrawer
 {
@@ -56,3 +56,4 @@ public class SingleEnumFlagSelectAttributeEditor : PropertyDrawer
             displayTexts.ToArray(), enumValues.ToArray());
     }
 }
+#endif

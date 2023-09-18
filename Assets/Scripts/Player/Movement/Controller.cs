@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using Unity.VisualScripting;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 using UnityEngine.Events;
 
 public class Controller : MonoBehaviour

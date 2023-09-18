@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Dirt
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 6030340e3311e4244aab5f3dc6c28cde, type: 3}
   m_Parent: {fileID: 2100000, guid: 27aea8d628fff8a448c65858c8b1d214, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -46,6 +46,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5471698, g: 0.29041186, b: 0, a: 1}
     - _Color: {r: 0.5471698, g: 0.29041186, b: 0, a: 1}
+    - _Tint: {r: 0.4811321, g: 0.22845186, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &520538747966542097
 MonoBehaviour:
