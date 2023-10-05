@@ -1,6 +1,0 @@
-#ifndef RAY_CAST_PRIMITIVES
-#define RAY_CAST_PRIMITIVES
-
-
-
-#endif

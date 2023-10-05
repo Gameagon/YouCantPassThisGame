@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bf44tejcvwkx8"]
+
+[ext_resource type="PackedScene" uid="uid://cbwhn7q81rq8k" path="res://3D/Props/Food/Tomato/Tomato.glb" id="2_cqoc0"]
+[ext_resource type="PackedScene" uid="uid://lrifrie6vqe" path="res://3D/Props/Food/Banana/Banana.glb" id="2_qyn8g"]
+[ext_resource type="Script" path="res://Scripts/Test Do Not Use/ComponentSystem.cs" id="3_l75el"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
+sky_top_color = Color(0, 0.682353, 0.952941, 1)
+sky_horizon_color = Color(0.682353, 0.878431, 0.898039, 1)
+sky_curve = 0.2
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_s1y0o"]
+sky_material = SubResource("ProceduralSkyMaterial_sw65n")
+
+[sub_resource type="Environment" id="Environment_be8nn"]
+background_mode = 2
+sky = SubResource("Sky_s1y0o")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_be8nn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24432, 6.53066)
+
+[node name="Banana" parent="." instance=ExtResource("2_qyn8g")]
+transform = Transform3D(-0.866575, 0, -0.499047, 0, 1, 0, 0.499047, 0, -0.866575, -0.790897, 0, 0.0311851)
+
+[node name="Tomato" parent="." instance=ExtResource("2_cqoc0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23714, 0, -0.519497)
+script = ExtResource("3_l75el")
