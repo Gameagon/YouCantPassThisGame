@@ -43,7 +43,7 @@ shape = SubResource("ConcavePolygonShape3D_oaema")
 [node name="Button" parent="." instance=ExtResource("4_80y5e")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.9, 0, 0, 0, 0.75, 0, 1, -16.47)
+transform = Transform3D(0.701502, 0, 0, 0, 0.901931, 0, 0, 0, 0.751609, 0, 1, -16.47)
 mesh = SubResource("CapsuleMesh_u8orv")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
