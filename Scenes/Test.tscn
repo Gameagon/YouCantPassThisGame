@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=7 format=3 uid="uid://d0mtlhfn3b3w4"]
 
 [ext_resource type="PackedScene" uid="uid://cbwhn7q81rq8k" path="res://3D/Props/Food/Tomato/Tomato.glb" id="2_cqoc0"]
 [ext_resource type="PackedScene" uid="uid://lrifrie6vqe" path="res://3D/Props/Food/Banana/Banana.glb" id="2_qyn8g"]

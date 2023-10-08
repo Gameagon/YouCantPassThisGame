@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=3 uid="uid://cu8a5ovyh6nbt"]
+
+[ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
+[ext_resource type="Texture2D" uid="uid://cjjyhn03cwmxm" path="res://3D/Textures/Thebutton/TheButtonDifuse.png" id="2_q6bso"]
+[ext_resource type="PackedScene" uid="uid://dvj5nwico6q3u" path="res://3D/Maps/TheButton/standarte.glb" id="2_s17yv"]
+[ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayio1"]
+albedo_texture = ExtResource("2_q6bso")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojss7"]
+albedo_texture = ExtResource("2_q6bso")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbn47"]
+albedo_texture = ExtResource("2_q6bso")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oaema"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8orv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8i867"]
+
+[node name="TheButton" type="Node3D"]
+
+[node name="TheButton" parent="." instance=ExtResource("1_016xd")]
+
+[node name="Sala" parent="TheButton" index="0"]
+material_override = SubResource("StandardMaterial3D_ayio1")
+
+[node name="Pasillo_estirable" parent="TheButton" index="2"]
+material_override = SubResource("StandardMaterial3D_ojss7")
+
+[node name="Entrada" parent="TheButton" index="3"]
+material_override = SubResource("StandardMaterial3D_xbn47")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TheButton"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheButton/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_oaema")
+
+[node name="standarte" parent="." instance=ExtResource("2_s17yv")]
+
+[node name="Button" parent="." instance=ExtResource("4_80y5e")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.9, 0, 0, 0, 0.75, 0, 1, -16.47)
+mesh = SubResource("CapsuleMesh_u8orv")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
+transform = Transform3D(0.998379, 0, 0, 0, 0.998379, 0, 0, 0, 0.998379, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8i867")
+
+[editable path="TheButton"]
