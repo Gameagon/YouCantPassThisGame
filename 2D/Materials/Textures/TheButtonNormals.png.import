@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dseeierekbw14"
-path="res://.godot/imported/sueloNormal.png-f6ab45f805cae0053013917cb998a102.ctex"
+uid="uid://c281v2eese2mu"
+path="res://.godot/imported/TheButtonNormals.png-56b3cb440419554543a1ca03e23e5f5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://3D/Textures/Thebutton/sueloNormal.png"
-dest_files=["res://.godot/imported/sueloNormal.png-f6ab45f805cae0053013917cb998a102.ctex"]
+source_file="res://2D/Materials/Textures/TheButtonNormals.png"
+dest_files=["res://.godot/imported/TheButtonNormals.png-56b3cb440419554543a1ca03e23e5f5e.ctex"]
 
 [params]
 
