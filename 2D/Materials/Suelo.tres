@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bv3ytkonewxvt"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bv3ytkonewxvt"]
 
 [ext_resource type="Shader" uid="uid://c50a1uqebawhq" path="res://2D/Materials/Basic_Lighting.tres" id="1_tfffk"]
 [ext_resource type="Texture2D" uid="uid://dr36dto31eoum" path="res://2D/Materials/Textures/texturetile.png" id="2_pnwdj"]
+[ext_resource type="Texture2D" uid="uid://dseeierekbw14" path="res://2D/Materials/Textures/sueloNormal.png" id="3_tttej"]
 
 [resource]
 render_priority = 0
@@ -11,3 +12,4 @@ shader_parameter/tilling = Vector2(20.12, 15)
 shader_parameter/Offset = Vector2(-0.69, 0)
 shader_parameter/Smoothness = 0.0
 shader_parameter/tex_frg_17 = ExtResource("2_pnwdj")
+shader_parameter/tex_frg_26 = ExtResource("3_tttej")

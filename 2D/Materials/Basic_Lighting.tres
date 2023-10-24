@@ -69,6 +69,7 @@ uniform vec2 Offset = vec2(0.000000, 0.000000);
 uniform sampler2D tex_frg_17;
 uniform float Smoothness = 0.60000002384186;
 uniform sampler2D tex_frg_23;
+uniform sampler2D tex_frg_26;
 
 
 
@@ -124,15 +125,20 @@ void fragment() {
 	vec4 n_out23p0 = textureLod(tex_frg_23, n_out18p0, n_out25p0);
 
 
+// Texture2D:26
+	vec4 n_out26p0 = texture(tex_frg_26, n_out18p0);
+
+
 // Output:0
 	ALBEDO = vec3(n_out4p0.xyz);
 	ALPHA = n_out21p3;
 	SPECULAR = n_out23p0.x;
+	NORMAL = vec3(n_out26p0.xyz);
 
 
 }
 "
-graph_offset = Vector2(-1164.88, 575.185)
+graph_offset = Vector2(-616.712, 144.62)
 nodes/fragment/0/position = Vector2(-800, 840)
 nodes/fragment/3/node = SubResource("VisualShaderNodeInput_8rnju")
 nodes/fragment/3/position = Vector2(-1900, 2060)
@@ -166,4 +172,4 @@ nodes/fragment/25/node = SubResource("VisualShaderNodeSmoothStep_wgced")
 nodes/fragment/25/position = Vector2(-2580, 1640)
 nodes/fragment/26/node = SubResource("VisualShaderNodeTexture_xto2o")
 nodes/fragment/26/position = Vector2(-2220, 1740)
-nodes/fragment/connections = PackedInt32Array(10, 0, 13, 0, 14, 0, 15, 1, 16, 0, 18, 2, 15, 0, 18, 0, 19, 0, 4, 0, 18, 0, 17, 0, 17, 0, 4, 1, 4, 0, 21, 0, 4, 0, 22, 0, 4, 0, 0, 0, 21, 3, 0, 1, 23, 0, 0, 4, 18, 0, 23, 0, 24, 0, 25, 0, 25, 0, 23, 1, 18, 0, 26, 0)
+nodes/fragment/connections = PackedInt32Array(10, 0, 13, 0, 14, 0, 15, 1, 16, 0, 18, 2, 15, 0, 18, 0, 19, 0, 4, 0, 18, 0, 17, 0, 17, 0, 4, 1, 4, 0, 21, 0, 4, 0, 22, 0, 4, 0, 0, 0, 21, 3, 0, 1, 23, 0, 0, 4, 18, 0, 23, 0, 24, 0, 25, 0, 25, 0, 23, 1, 18, 0, 26, 0, 26, 0, 0, 8)
