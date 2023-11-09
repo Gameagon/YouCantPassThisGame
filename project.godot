@@ -52,10 +52,3 @@ toggle_console={
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
-
-[shader_globals]
-
-Offset={
-"type": "bvec2",
-"value": 0
-}
