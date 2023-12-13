@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://rgcyxko04pj7"]
+
+[ext_resource type="PackedScene" uid="uid://brla8rq2wgmrl" path="res://3D/Characters/Dummy/Dummy.glb" id="1_xdr1o"]
+[ext_resource type="Material" uid="uid://bt7mc1gml8xnv" path="res://3D/Characters/Dummy/M_Dummy.tres" id="2_mojsj"]
+
+[node name="Dummy" instance=ExtResource("1_xdr1o")]
+
+[node name="hips_low" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_mojsj")
