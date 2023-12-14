@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cojjojrd3xm8m"]
+
+[ext_resource type="Shader" uid="uid://c50a1uqebawhq" path="res://2D/Materials/Basic_Lighting.tres" id="1_sxvb4"]
+[ext_resource type="Texture2D" uid="uid://dr36dto31eoum" path="res://2D/Materials/Textures/texturetile.png" id="2_e1k7x"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sxvb4")
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(15, 20)
+shader_parameter/tex_frg_17 = ExtResource("2_e1k7x")

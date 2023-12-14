@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=6 format=3 uid="uid://d0mtlhfn3b3w4"]
 
 [ext_resource type="PackedScene" uid="uid://cbwhn7q81rq8k" path="res://3D/Props/Food/Tomato/Tomato.glb" id="2_cqoc0"]
 [ext_resource type="PackedScene" uid="uid://lrifrie6vqe" path="res://3D/Props/Food/Banana/Banana.glb" id="2_qyn8g"]
-[ext_resource type="Script" path="res://Scripts/Test Do Not Use/ComponentSystem.cs" id="3_l75el"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
 sky_top_color = Color(0, 0.682353, 0.952941, 1)
@@ -36,4 +35,3 @@ transform = Transform3D(-0.866575, 0, -0.499047, 0, 1, 0, 0.499047, 0, -0.866575
 
 [node name="Tomato" parent="." instance=ExtResource("2_cqoc0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23714, 0, -0.519497)
-script = ExtResource("3_l75el")
