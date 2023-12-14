@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu8a5ovyh6nbt"]
+[gd_scene load_steps=14 format=3 uid="uid://cryvrred8jtcp"]
 
 [ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
 [ext_resource type="Material" uid="uid://bv3ytkonewxvt" path="res://2D/Materials/Suelo.tres" id="2_e6tjk"]
 [ext_resource type="Texture2D" uid="uid://blvk2cm1b1xpr" path="res://2D/Materials/Textures/TheButtonDifuse.png" id="2_s2hdd"]
 [ext_resource type="PackedScene" uid="uid://dvj5nwico6q3u" path="res://3D/Maps/TheButton/standarte.glb" id="2_s17yv"]
 [ext_resource type="Material" uid="uid://sphgjnapgekw" path="res://2D/Materials/Techo.tres" id="3_qyv0o"]
-[ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
+[ext_resource type="PackedScene" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
+[ext_resource type="PackedScene" uid="uid://rgcyxko04pj7" path="res://3D/Characters/Dummy/Dummy.tscn" id="7_2hcmq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8sfh"]
 
@@ -87,10 +88,6 @@ albedo_texture = ExtResource("2_s2hdd")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oaema"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8orv"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8i867"]
-
 [node name="TheButton" type="Node3D"]
 
 [node name="TheButton" parent="." instance=ExtResource("1_016xd")]
@@ -114,17 +111,10 @@ shape = SubResource("ConcavePolygonShape3D_oaema")
 
 [node name="Button" parent="." instance=ExtResource("4_80y5e")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.701502, 0, 0, 0, 0.901931, 0, 0, 0, 0.751609, 0, 1, -16.47)
-mesh = SubResource("CapsuleMesh_u8orv")
-
-[node name="RigidBody3D" type="RigidBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/RigidBody3D"]
-transform = Transform3D(0.998379, 0, 0, 0, 0.998379, 0, 0, 0, 0.998379, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_8i867")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718119, 2.83425)
+
+[node name="Dummy" parent="." instance=ExtResource("7_2hcmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0947736, -0.00835353, -15.4177)
 
 [editable path="TheButton"]
