@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cojjojrd3xm8m"]
 
-[ext_resource type="Shader" uid="uid://c50a1uqebawhq" path="res://2D/Materials/Basic_Lighting.tres" id="1_sxvb4"]
+[ext_resource type="Shader" uid="uid://c50a1uqebawhq" path="res://2D/Materials/Shaders/Basic_Lighting.tres" id="1_sxvb4"]
 [ext_resource type="Texture2D" uid="uid://dr36dto31eoum" path="res://2D/Materials/Textures/texturetile.png" id="2_e1k7x"]
 
 [resource]
