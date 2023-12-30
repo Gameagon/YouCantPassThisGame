@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs5eswfxmhc8"]
+
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSelection/SKInputSelectionList.cs" id="2_ecb7s"]
+
+[sub_resource type="Theme" id="Theme_jm0s2"]
+
+[node name="SKInputSelectionPanel" type="Window" node_paths=PackedStringArray("textEdit", "tree", "confirmButton")]
+title = "Input Selection"
+initial_position = 1
+size = Vector2i(500, 500)
+transient = true
+exclusive = true
+unresizable = true
+theme = SubResource("Theme_jm0s2")
+script = ExtResource("2_ecb7s")
+textEdit = NodePath("PanelContainer/VBoxContainer/TextEdit")
+tree = NodePath("PanelContainer/VBoxContainer/Tree")
+confirmButton = NodePath("PanelContainer/VBoxContainer/Button")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113725, 0.133333, 0.160784, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Listening for input..."
+editable = false
+wrap_mode = 1
+autowrap_mode = 2
+scroll_fit_content_height = true
+
+[node name="Tree" type="Tree" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+size_flags_vertical = 3
+hide_root = true
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Confirm"

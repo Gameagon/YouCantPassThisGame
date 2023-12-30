@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ButtonInputAction" load_steps=2 format=3 uid="uid://cu1srxjne8cxk"]
+
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/ButtonInputAction.cs" id="1_qqq5l"]
+
+[resource]
+resource_name = "Crouch"
+script = ExtResource("1_qqq5l")
+Events = ["Key Ctrl", "JoyButton LeftStick"]
+Name = "Crouch"
+DeadZone = 0.05

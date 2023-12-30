@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using Godot;
+using static InputSystem.InputActionState;
+
+namespace InputSystem
+{
+    [GlobalClass, Tool]
+    public partial class InputAction : Resource
+    {
+        [Export]
+        public string Name { get { return ResourceName; } set { ResourceName = value; } }
+
+        [Export]
+        public float DeadZone = 0.05f;
+
+        [Export]
+        public bool Sleeping
+        {
+            get
+            {
+                return _Sleeping;
+            }
+            set
+            {
+                if (value)
+                {
+                    Sleep();
+                }
+                else
+                {
+                    _Sleeping = false;
+                }
+            }
+        }
+        public bool _Sleeping = false;
+
+        protected ulong TimeSinceLastPress;
+
+        public virtual void Sleep()
+        {
+			throw new NotImplementedException();
+        }
+
+        public virtual InputActionState UpdateAndGetState(InputEvent @event, int subActionIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual List<List<Enum>> GetEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected PressState BiggerState(PressState a, PressState b)
+        {
+            return a > b ? a : b;
+        }
+
+        public virtual List<string> GetEventNames()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
