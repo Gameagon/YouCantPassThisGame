@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://blvk2cm1b1xpr" path="res://2D/Materials/Textures/TheButtonDifuse.png" id="2_s2hdd"]
 [ext_resource type="PackedScene" uid="uid://dvj5nwico6q3u" path="res://3D/Maps/TheButton/standarte.glb" id="2_s17yv"]
 [ext_resource type="Material" uid="uid://sphgjnapgekw" path="res://2D/Materials/Techo.tres" id="3_qyv0o"]
-[ext_resource type="PackedScene" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
+[ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
 [ext_resource type="PackedScene" uid="uid://rgcyxko04pj7" path="res://3D/Characters/Dummy/Dummy.tscn" id="7_2hcmq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8sfh"]
