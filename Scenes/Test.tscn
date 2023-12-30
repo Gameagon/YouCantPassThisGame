@@ -187,6 +187,7 @@ size = Vector3(0.1, 0.1, 0.3)
 
 [node name="Camera3D" type="Camera3D" parent="WormHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+current = true
 
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="WormHead" method="Shout"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="WormHead" method="Shout"]
