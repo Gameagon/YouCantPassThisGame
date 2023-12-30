@@ -1,1 +1,25 @@
-<svg height="128" width="128" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="124" height="124" rx="14" fill="#363d52" stroke="#212532" stroke-width="4"/><g transform="scale(.101) translate(122 122)"><g fill="#fff"><path d="M105 673v33q407 354 814 0v-33z"/><path fill="#478cbf" d="m105 673 152 14q12 1 15 14l4 67 132 10 8-61q2-11 15-15h162q13 4 15 15l8 61 132-10 4-67q3-13 15-14l152-14V427q30-39 56-81-35-59-83-108-43 20-82 47-40-37-88-64 7-51 8-102-59-28-123-42-26 43-46 89-49-7-98 0-20-46-46-89-64 14-123 42 1 51 8 102-48 27-88 64-39-27-82-47-48 49-83 108 26 42 56 81zm0 33v39c0 276 813 276 813 0v-39l-134 12-5 69q-2 10-14 13l-162 11q-12 0-16-11l-10-65H447l-10 65q-4 11-16 11l-162-11q-12-3-14-13l-5-69z"/><path d="M483 600c3 34 55 34 58 0v-86c-3-34-55-34-58 0z"/><circle cx="725" cy="526" r="90"/><circle cx="299" cy="526" r="90"/></g><g fill="#414042"><circle cx="307" cy="532" r="60"/><circle cx="717" cy="532" r="60"/></g></g></svg>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="92.16pt"
+    height="92.16pt"
+    viewBox="0 0 92.16 92.16">
+<defs/>
+<rect id="shape0" transform="matrix(0.72 0 0 0.72 1.44 1.44)" fill="#363d52" stroke="#212532" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" width="124" height="124" rx="14" ry="14"/><g id="group0" transform="matrix(0.07272 0 0 0.07272 8.87184 8.87184)" fill="none">
+  <g id="group1" fill="none">
+   <path id="shape1" transform="translate(105, 673)" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M0 0L0 33C271.333 269 542.667 269 814 33L814 0Z" sodipodi:nodetypes="ccccc"/>
+   <path id="shape2" transform="translate(49, 77)" fill="#478cbf" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M56 596L208 610C216 610.667 221 615.333 223 624L227 691L359 701L367 640C368.333 632.667 373.333 627.667 382 625L544 625C552.667 627.667 557.667 632.667 559 640L567 701L699 691L703 624C705 615.333 710 610.667 718 610L870 596L870 350C890 324 908.667 297 926 269C902.667 229.667 875 193.667 843 161C814.333 174.333 787 190 761 208C734.333 183.333 705 162 673 144C677.667 110 680.333 76 681 42C641.667 23.3333 600.667 9.33333 558 0C540.667 28.6667 525.333 58.3333 512 89C479.333 84.3333 446.667 84.3333 414 89C400.667 58.3333 385.333 28.6667 368 0C325.333 9.33333 284.333 23.3333 245 42C245.667 76 248.333 110 253 144C221 162 191.667 183.333 165 208C139 190 111.667 174.333 83 161C51 193.667 23.3333 229.667 0 269C17.3333 297 36 324 56 350ZM56 629L56 668C56 944 869 944 869 668L869 629L735 641L730 710C728.667 716.667 724 721 716 723L554 734C546 734 540.667 730.333 538 723L528 658L398 658L388 723C385.333 730.333 380 734 372 734L210 723C202 721 197.333 716.667 196 710L191 641Z" sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccc"/>
+   <path id="shape3" transform="translate(483, 488.5)" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M0 111.5C3 145.5 55 145.5 58 111.5L58 25.5C55 -8.5 3 -8.5 0 25.5Z" sodipodi:nodetypes="ccccc"/>
+   <circle id="shape4" transform="translate(635, 436)" r="90" cx="90" cy="90" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/>
+   <circle id="shape5" transform="translate(209, 436)" r="90" cx="90" cy="90" fill="#ffffff" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/>
+  </g>
+  <g id="group2" fill="none">
+   <circle id="shape6" transform="translate(247, 472)" r="60" cx="60" cy="60" fill="#414042" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/>
+   <circle id="shape7" transform="translate(656.999999999999, 472)" r="60" cx="60" cy="60" fill="#414042" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel"/>
+  </g>
+ </g><path id="shape8" transform="translate(46.0769155379553, 50.1480137799966)" fill="#000000" fill-rule="evenodd" stroke="none" stroke-width="28.8" stroke-linecap="square" stroke-linejoin="bevel" d="M23.2073 0C19.3884 11.6443 9.996 2.45325 5.90408 1.90919C2.64335 1.90919 3.99312e-16 4.55254 5.7131e-33 7.81327C-3.99312e-16 11.074 2.64335 13.7174 5.90408 13.7174C9.2921 12.9537 24.3528 11.6612 23.2073 0Z" sodipodi:nodetypes="ccccc"/><path id="shape0" transform="matrix(-0.999999972406774 0 0 0.999999972406774 46.0838021896342 50.1480123962511)" fill="#000000" fill-rule="evenodd" stroke-opacity="0" stroke="#000000" stroke-width="0" stroke-linecap="square" stroke-linejoin="bevel" d="M23.2073 0C19.3884 11.6443 9.996 2.45325 5.90408 1.90919C2.64335 1.90919 3.99312e-16 4.55254 5.7131e-33 7.81327C-3.99312e-16 11.074 2.64335 13.7174 5.90408 13.7174C9.2921 12.9537 24.3528 11.6612 23.2073 0Z" sodipodi:nodetypes="ccccc"/>
+</svg>

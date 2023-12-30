@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ButtonInputAction" load_steps=2 format=3 uid="uid://bts4hgwllyavp"]
+
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/ButtonInputAction.cs" id="1_o6hw0"]
+
+[resource]
+resource_name = "Jump"
+script = ExtResource("1_o6hw0")
+Events = ["Key Space", "JoyButton A", "Key Kp0"]
+Name = "Jump"
