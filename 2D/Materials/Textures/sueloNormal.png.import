@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dseeierekbw14"
-path.s3tc="res://.godot/imported/sueloNormal.png-c32aa9de5c5f2407ba70daaa586bb59a.s3tc.ctex"
+path.bptc="res://.godot/imported/sueloNormal.png-c32aa9de5c5f2407ba70daaa586bb59a.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,15 +12,15 @@ metadata={
 [deps]
 
 source_file="res://2D/Materials/Textures/sueloNormal.png"
-dest_files=["res://.godot/imported/sueloNormal.png-c32aa9de5c5f2407ba70daaa586bb59a.s3tc.ctex"]
+dest_files=["res://.godot/imported/sueloNormal.png-c32aa9de5c5f2407ba70daaa586bb59a.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
