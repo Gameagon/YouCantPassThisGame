@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://b7nrlg0hkicps"]
+
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_e2mwo"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/Vector2InputAction.cs" id="2_kayhh"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/ButtonInputAction.cs" id="3_kp6ex"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputActionGroup.cs" id="3_m870o"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputMap.cs" id="4_cnn4l"]
+[ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="5_5k7by"]
+[ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="6_uhagm"]
+[ext_resource type="Script" path="res://Scripts/Test Do Not Use/TestController.cs" id="8_uhd1y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eeowi"]
+sky_top_color = Color(0, 0.682353, 0.952941, 1)
+sky_horizon_color = Color(0.682353, 0.878431, 0.898039, 1)
+sky_curve = 0.2
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+
+[sub_resource type="Sky" id="Sky_s1y0o"]
+sky_material = SubResource("ProceduralSkyMaterial_eeowi")
+
+[sub_resource type="Environment" id="Environment_k6o6i"]
+background_mode = 2
+sky = SubResource("Sky_s1y0o")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="Resource" id="Resource_dnh1w"]
+resource_name = "Movment"
+script = ExtResource("2_kayhh")
+AxisXNegative = ["Key A"]
+AxisXPositive = ["Key D"]
+AxisYNegative = ["Key S"]
+AxisYPositive = ["Key W"]
+XNegativeName = "NuevoXNegative"
+XPositiveName = "NuevoXPositive"
+YNegativeName = "NuevoYNegative"
+YPositiveName = "NuevoYPositive"
+Name = "Movment"
+DeadZone = 0.05
+Sleeping = false
+
+[sub_resource type="Resource" id="Resource_65pyf"]
+resource_name = "Salto"
+script = ExtResource("3_kp6ex")
+Events = ["Key Space"]
+Name = "Salto"
+DeadZone = 0.05
+Sleeping = false
+
+[sub_resource type="Resource" id="Resource_b8o8w"]
+resource_name = "NuevoInputActionGroup"
+script = ExtResource("3_m870o")
+Name = "NuevoInputActionGroup"
+active = true
+Actions = [SubResource("Resource_dnh1w"), SubResource("Resource_65pyf")]
+Sleeping = false
+
+[sub_resource type="Resource" id="Resource_d5ecf"]
+resource_name = "NuevoInputMap"
+script = ExtResource("4_cnn4l")
+Name = "NuevoInputMap"
+Groups = [SubResource("Resource_b8o8w")]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5xoba"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w7857"]
+
+[node name="DiosMioPeroQueTeHemosHecho" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k6o6i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
+
+[node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
+script = ExtResource("1_e2mwo")
+inputMap = SubResource("Resource_d5ecf")
+
+[node name="NuevoInputActionGroup" type="Node" parent="WorldEnvironment/InputEventHandler"]
+
+[node name="Movment" type="Node" parent="WorldEnvironment/InputEventHandler/NuevoInputActionGroup"]
+script = ExtResource("6_uhagm")
+
+[node name="Salto" type="Node" parent="WorldEnvironment/InputEventHandler/NuevoInputActionGroup"]
+script = ExtResource("6_uhagm")
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+material_override = ExtResource("5_5k7by")
+use_collision = true
+size = Vector3(100, 100, 100)
+material = ExtResource("5_5k7by")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863712, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("8_uhd1y")
+JumpForce = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CapsuleShape3D_5xoba")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_w7857")
+skeleton = NodePath("../../..")
+
+[node name="Camera3D" type="Camera3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819547, 0)
+
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/NuevoInputActionGroup/Movment" to="RigidBody3D" method="Movement"]
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/NuevoInputActionGroup/Salto" to="RigidBody3D" method="Jump"]
