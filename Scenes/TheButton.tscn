@@ -1,13 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdqwa4xy6xn5f"]
+[gd_scene load_steps=25 format=3 uid="uid://bdqwa4xy6xn5f"]
 
 [ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
 [ext_resource type="Shader" uid="uid://csri80kloqg4c" path="res://2D/Materials/Shaders/Basic_Lighting.tres" id="2_bqnfh"]
-[ext_resource type="Texture2D" uid="uid://blvk2cm1b1xpr" path="res://2D/Materials/Textures/TheButtonDifuse.png" id="2_s2hdd"]
 [ext_resource type="PackedScene" uid="uid://dvj5nwico6q3u" path="res://3D/Maps/TheButton/standarte.glb" id="2_s17yv"]
 [ext_resource type="Texture2D" uid="uid://dseeierekbw14" path="res://2D/Materials/Textures/sueloNormal.png" id="3_idkat"]
 [ext_resource type="Texture2D" uid="uid://dr36dto31eoum" path="res://2D/Materials/Textures/texturetile.png" id="4_3s1kh"]
 [ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
 [ext_resource type="Material" uid="uid://cojjojrd3xm8m" path="res://2D/Materials/Paredes.tres" id="5_uslrj"]
+[ext_resource type="Texture2D" uid="uid://buae1pqhfl4mu" path="res://2D/Materials/Textures/techonormals.png" id="6_4nhu6"]
 [ext_resource type="PackedScene" uid="uid://rgcyxko04pj7" path="res://3D/Characters/Dummy/Dummy.tscn" id="7_2hcmq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phdr1"]
@@ -112,11 +112,170 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ejd6a")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wod52"]
-albedo_texture = ExtResource("2_s2hdd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eilet"]
+render_priority = 0
+shader = ExtResource("2_bqnfh")
+shader_parameter/Tint = Color(1, 1, 1, 1)
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(1, 1)
+shader_parameter/Metalic = null
+shader_parameter/Roughtness = null
+shader_parameter/Specular = null
+shader_parameter/albedo = ExtResource("4_3s1kh")
+shader_parameter/Normal = ExtResource("3_idkat")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22pij"]
-albedo_texture = ExtResource("2_s2hdd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic6dv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vret7"]
+render_priority = 0
+shader = ExtResource("2_bqnfh")
+shader_parameter/Tint = Color(1, 1, 1, 1)
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(1, 1)
+shader_parameter/Metalic = null
+shader_parameter/Roughtness = null
+shader_parameter/Specular = null
+shader_parameter/albedo = ExtResource("4_3s1kh")
+shader_parameter/Normal = ExtResource("6_4nhu6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4n8py"]
+resource_name = "TheButton_Cubo_001"
+_surfaces = [{
+"aabb": AABB(-100, 0, 0, 200, 750, 1e-05),
+"attribute_data": PackedByteArray(28, 39, 59, 62, 122, 120, 62, 63, 73, 102, 174, 61, 122, 120, 62, 63, 28, 39, 59, 62, 132, 135, 193, 62, 73, 102, 174, 61, 132, 135, 193, 62),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 2, 0),
+"material": SubResource("ShaderMaterial_eilet"),
+"name": "suelo ",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 250),
+"attribute_data": PackedByteArray(104, 120, 43, 63, 12, 15, 131, 62, 43, 60, 12, 63, 10, 15, 131, 62, 126, 150, 49, 63, 245, 240, 124, 63, 187, 210, 80, 63, 246, 240, 124, 63, 42, 60, 12, 63, 62, 60, 31, 63, 104, 120, 43, 63, 62, 60, 31, 63, 126, 150, 49, 63, 61, 60, 31, 63, 188, 210, 80, 63, 62, 60, 31, 63),
+"format": 34359742487,
+"index_count": 12,
+"index_data": PackedByteArray(2, 0, 7, 0, 6, 0, 2, 0, 3, 0, 7, 0, 0, 0, 4, 0, 5, 0, 0, 0, 1, 0, 4, 0),
+"material": SubResource("ShaderMaterial_ic6dv"),
+"name": "paredes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 1.52588e-05),
+"attribute_data": PackedByteArray(178, 198, 180, 62, 122, 120, 62, 63, 174, 192, 230, 62, 122, 120, 62, 63, 178, 198, 180, 62, 132, 135, 193, 62, 174, 192, 230, 62, 132, 135, 193, 62),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
+"material": SubResource("ShaderMaterial_vret7"),
+"name": "techo",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63)
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56i8w"]
+render_priority = 0
+shader = ExtResource("2_bqnfh")
+shader_parameter/Tint = Color(1, 1, 1, 1)
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(1, 1)
+shader_parameter/Metalic = null
+shader_parameter/Roughtness = null
+shader_parameter/Specular = null
+shader_parameter/albedo = ExtResource("4_3s1kh")
+shader_parameter/Normal = ExtResource("3_idkat")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uj26i"]
+render_priority = 0
+shader = ExtResource("2_bqnfh")
+shader_parameter/Tint = Color(1, 1, 1, 1)
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(1, 1)
+shader_parameter/Metalic = null
+shader_parameter/Roughtness = null
+shader_parameter/Specular = null
+shader_parameter/albedo = ExtResource("4_3s1kh")
+shader_parameter/Normal = ExtResource("6_4nhu6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_64o38"]
+_surfaces = [{
+"aabb": AABB(-100, 0, 0, 200, 750, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 1, 0, 0, 0, 3, 0, 2, 0, 1, 0),
+"name": "suelo ",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 250),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray(5, 0, 2, 0, 1, 0, 5, 0, 4, 0, 2, 0, 1, 0, 3, 0, 0, 0, 1, 0, 2, 0, 3, 0, 6, 0, 0, 0, 3, 0, 6, 0, 7, 0, 0, 0),
+"name": "paredes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 1.52588e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0),
+"name": "techo",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mr2qw"]
+resource_name = "TheButton_Cubo_002"
+_surfaces = [{
+"aabb": AABB(-100, 0, 0, 200, 750, 1e-05),
+"attribute_data": PackedByteArray(73, 102, 174, 61, 128, 194, 67, 60, 28, 39, 59, 62, 128, 194, 67, 60, 28, 39, 59, 62, 132, 135, 193, 62, 73, 102, 174, 61, 132, 135, 193, 62),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 1, 0, 0, 0, 3, 0, 2, 0, 1, 0),
+"material": SubResource("ShaderMaterial_56i8w"),
+"name": "suelo ",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63, 255, 255, 255, 255, 0, 0, 255, 63)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 250),
+"attribute_data": PackedByteArray(188, 210, 80, 63, 10, 15, 131, 62, 41, 57, 37, 63, 160, 105, 225, 61, 43, 60, 12, 63, 160, 105, 225, 61, 103, 120, 43, 63, 246, 240, 124, 63, 43, 60, 12, 63, 196, 165, 109, 62, 42, 60, 12, 63, 246, 240, 124, 63, 126, 150, 49, 63, 10, 15, 131, 62, 41, 57, 37, 63, 196, 165, 109, 62, 42, 60, 12, 63, 62, 60, 31, 63, 104, 120, 43, 63, 62, 60, 31, 63, 126, 150, 49, 63, 61, 60, 31, 63, 188, 210, 80, 63, 62, 60, 31, 63),
+"format": 34359742487,
+"index_count": 18,
+"index_data": PackedByteArray(9, 0, 5, 0, 3, 0, 9, 0, 8, 0, 5, 0, 2, 0, 7, 0, 1, 0, 2, 0, 4, 0, 7, 0, 10, 0, 0, 0, 6, 0, 10, 0, 11, 0, 0, 0),
+"name": "paredes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 0, 128, 0, 0, 255, 127, 255, 127, 255, 63, 255, 127, 255, 255, 255, 255, 255, 63, 255, 127, 255, 255, 255, 255, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 127, 255, 255, 255, 255, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63, 255, 127, 255, 255, 255, 255, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 255, 255, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63, 0, 0, 255, 127, 255, 127, 255, 63)
+}, {
+"aabb": AABB(-100, 0, -250, 200, 750, 1.52588e-05),
+"attribute_data": PackedByteArray(178, 198, 180, 62, 128, 194, 67, 60, 174, 192, 230, 62, 128, 194, 67, 60, 178, 198, 180, 62, 132, 135, 193, 62, 174, 192, 230, 62, 132, 135, 193, 62),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 1, 0, 0, 0, 2, 0, 3, 0, 1, 0),
+"material": SubResource("ShaderMaterial_uj26i"),
+"name": "techo",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 200, 194, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 66, 0, 0, 0, 0, 0, 0, 122, 195, 0, 0, 200, 194, 0, 128, 59, 68, 0, 0, 122, 195, 0, 0, 200, 66, 0, 128, 59, 68, 0, 0, 122, 195, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63, 255, 127, 255, 127, 255, 255, 255, 63)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_64o38")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oaema"]
 
@@ -135,32 +294,48 @@ visible = false
 mesh = SubResource("ArrayMesh_7fpf3")
 
 [node name="Pasillo_estirable" parent="TheButton" index="2"]
-material_override = SubResource("StandardMaterial3D_wod52")
+mesh = SubResource("ArrayMesh_4n8py")
 
 [node name="Entrada" parent="TheButton" index="3"]
 transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, -17.5)
-material_override = SubResource("StandardMaterial3D_22pij")
+mesh = SubResource("ArrayMesh_mr2qw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="TheButton"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TheButton/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oaema")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="TheButton"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.006, -15)
+[node name="SpotLight3D5" type="SpotLight3D" parent="TheButton"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.25279, -0.168302)
+light_color = Color(1, 0.231373, 0.172549, 1)
+light_energy = 9.0
+light_specular = 5.0
+spot_range = 6.31
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TheButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -15)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="TheButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -11)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="TheButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
 
 [node name="standarte" parent="." instance=ExtResource("2_s17yv")]
 
 [node name="Button" parent="." instance=ExtResource("4_80y5e")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718119, 2.83425)
-
 [node name="Dummy" parent="." instance=ExtResource("7_2hcmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0947736, -0.00835353, -15.4177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="Light" parent="Dummy" index="1"]
 visible = false
+
+[node name="Camera" parent="Dummy" index="2"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="Dummy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.69846, 0)
 
 [editable path="TheButton"]
 [editable path="Dummy"]
