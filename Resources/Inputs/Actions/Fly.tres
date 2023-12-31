@@ -18,5 +18,5 @@ YPositiveName = "Up"
 ZNegativeName = "Back"
 ZPositiveName = "Forward"
 Name = "Fly"
-DeadZone = 0.05
+DeadZone = 0.25
 Sleeping = false

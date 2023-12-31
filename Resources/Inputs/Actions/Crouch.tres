@@ -5,6 +5,8 @@
 [resource]
 resource_name = "Crouch"
 script = ExtResource("1_qqq5l")
+MouseInput = 0
 Events = ["Key Ctrl", "JoyButton LeftStick"]
 Name = "Crouch"
-DeadZone = 0.05
+DeadZone = 0.25
+Sleeping = false

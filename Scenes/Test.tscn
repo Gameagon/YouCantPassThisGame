@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=12 format=3 uid="uid://bf44tejcvwkx8"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_bg54p"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="1_s0cw8"]
 [ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="2_trta6"]
 [ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="3_hyyl2"]
-[ext_resource type="Script" path="res://Scripts/Test Do Not Use/ShoutingNode.cs" id="5_kypqc"]
+[ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_irl46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
 sky_top_color = Color(0, 0.682353, 0.952941, 1)
@@ -23,105 +23,13 @@ ambient_light_source = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kairr"]
-size = Vector3(0.5, 0.5, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfcl2"]
+radius = 0.35
+height = 1.8
 
-[sub_resource type="ImageTexture" id="ImageTexture_q5m2g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nc5n"]
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cv3w7"]
-texture = SubResource("ImageTexture_q5m2g")
-
-[sub_resource type="VisualShaderNodeIntParameter" id="VisualShaderNodeIntParameter_5biov"]
-parameter_name = "IntParameter"
-default_value_enabled = true
-default_value = 1
-
-[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_2alag"]
-size = Vector2(508, 401)
-expression = "colorOut = colorIn * multiplier;"
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_wlee3"]
-parameter_name = "FloatParameter"
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_t80pw"]
-input_name = "color"
-
-[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_14mul"]
-
-[sub_resource type="VisualShaderNodeIntConstant" id="VisualShaderNodeIntConstant_405g4"]
-constant = 1
-
-[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_ubb3c"]
-parameter_name = "Albedo"
-default_value_enabled = true
-default_value = Color(1, 0, 1, 1)
-
-[sub_resource type="VisualShader" id="VisualShader_0lg8w"]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-
-// Varyings
-varying float Papo;
-
-uniform vec4 Albedo : source_color = vec4(1.000000, 0.000000, 1.000000, 1.000000);
-
-
-
-void vertex() {
-// ColorParameter:2
-	vec4 n_out2p0 = Albedo;
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out2p0.xyz);
-
-
-	Papo = 0.0;
-}
-
-void fragment() {
-// Input:8
-	vec4 n_out8p0 = COLOR;
-
-
-// Output:0
-	ALBEDO = vec3(n_out8p0.xyz);
-
-
-}
-"
-varyings/Papo = "0,0"
-nodes/vertex/0/position = Vector2(400, 160)
-nodes/vertex/2/node = SubResource("VisualShaderNodeColorParameter_ubb3c")
-nodes/vertex/2/position = Vector2(60, 180)
-nodes/vertex/connections = PackedInt32Array(2, 0, 0, 6)
-nodes/fragment/0/position = Vector2(240, 300)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_cv3w7")
-nodes/fragment/2/position = Vector2(-620, 400)
-nodes/fragment/3/node = SubResource("VisualShaderNodeIntParameter_5biov")
-nodes/fragment/3/position = Vector2(-1420, 640)
-nodes/fragment/4/node = SubResource("VisualShaderNodeExpression_2alag")
-nodes/fragment/4/position = Vector2(-580, 1000)
-nodes/fragment/4/size = Vector2(508, 401)
-nodes/fragment/4/input_ports = "0,4,colorIn;1,0,multiplier;2,4,input2;"
-nodes/fragment/4/output_ports = "0,4,colorOut;"
-nodes/fragment/4/expression = "colorOut = colorIn * multiplier;"
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_wlee3")
-nodes/fragment/5/position = Vector2(-940, 840)
-nodes/fragment/8/node = SubResource("VisualShaderNodeInput_t80pw")
-nodes/fragment/8/position = Vector2(-980, 720)
-nodes/fragment/9/node = SubResource("VisualShaderNodeColorFunc_14mul")
-nodes/fragment/9/position = Vector2(-480, 720)
-nodes/fragment/connections = PackedInt32Array(5, 0, 4, 1, 8, 0, 4, 0, 8, 0, 9, 0, 8, 0, 0, 0)
-nodes/light/0/position = Vector2(400, 140)
-nodes/light/2/node = SubResource("VisualShaderNodeIntConstant_405g4")
-nodes/light/2/position = Vector2(200, 200)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehfrr"]
-render_priority = 0
-shader = SubResource("VisualShader_0lg8w")
-shader_parameter/Albedo = Color(1, 0, 1, 1)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ii7m"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -134,6 +42,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
 [node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
 script = ExtResource("1_bg54p")
 inputMap = ExtResource("2_trta6")
+MouseMode = 2
 
 [node name="Player" type="Node" parent="WorldEnvironment/InputEventHandler"]
 
@@ -152,6 +61,9 @@ script = ExtResource("3_hyyl2")
 [node name="Fly" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
 script = ExtResource("3_hyyl2")
 
+[node name="Look" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 material_override = ExtResource("1_s0cw8")
@@ -159,35 +71,22 @@ use_collision = true
 size = Vector3(100, 100, 100)
 material = ExtResource("1_s0cw8")
 
-[node name="WormHead" type="RigidBody3D" parent="."]
-transform = Transform3D(1, -1.74846e-07, 1.74846e-07, 1.74846e-07, 1, 1.52855e-14, -1.74846e-07, 1.52855e-14, 1, 0, 0.25, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-script = ExtResource("5_kypqc")
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("6_irl46")
+camera = NodePath("Camera3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WormHead"]
-shape = SubResource("BoxShape3D_kairr")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
+shape = SubResource("CapsuleShape3D_rfcl2")
 
-[node name="Head" type="CSGBox3D" parent="WormHead/CollisionShape3D"]
-size = Vector3(0.5, 0.5, 1)
-material = SubResource("ShaderMaterial_ehfrr")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CollisionShape3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.9, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_8nc5n")
+mesh = SubResource("CapsuleMesh_5ii7m")
 
-[node name="FangR" type="CSGBox3D" parent="WormHead/CollisionShape3D/Head"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.3, 0, -0.56)
-size = Vector3(0.1, 0.1, 0.3)
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="FangR2" type="CSGBox3D" parent="WormHead/CollisionShape3D/Head"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.3, 0, -0.56)
-size = Vector3(0.1, 0.1, 0.3)
-
-[node name="FangL" type="CSGBox3D" parent="WormHead/CollisionShape3D/Head"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.3, 0, -0.56)
-size = Vector3(0.1, 0.1, 0.3)
-
-[node name="Camera3D" type="Camera3D" parent="WormHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
-
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="WormHead" method="Shout"]
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="WormHead" method="Shout"]
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Fly" to="WormHead" method="Fly"]
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="Player" method="Jump"]
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="Player" method="Move"]
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Look" to="Player" method="Look"]

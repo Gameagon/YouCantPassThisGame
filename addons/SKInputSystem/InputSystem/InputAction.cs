@@ -12,7 +12,7 @@ namespace InputSystem
         public string Name { get { return ResourceName; } set { ResourceName = value; } }
 
         [Export]
-        public float DeadZone = 0.05f;
+        public float DeadZone = 0.25f;
 
         [Export]
         public bool Sleeping
@@ -34,6 +34,8 @@ namespace InputSystem
             }
         }
         public bool _Sleeping = false;
+
+        public MouseMotion MouseInput = MouseMotion.None;
 
         protected ulong TimeSinceLastPress;
 

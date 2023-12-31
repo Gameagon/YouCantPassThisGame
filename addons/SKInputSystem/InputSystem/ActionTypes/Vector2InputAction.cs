@@ -81,7 +81,7 @@ namespace InputSystem
         public List<Enum> enumAxisYNegative = new();
         public List<Enum> enumAxisYPositive = new();
 
-        InputActionState _state = new(PressState.None, 0, new Vector2(0, 0));
+        InputActionState _state = new(PressState.None, 0, new Vector2(0, 0), null);
         public float[] separatedStrengths { get; private set; } = new float[4] { 0, 0, 0, 0 };
 
         public Vector2InputAction()
@@ -113,23 +113,21 @@ namespace InputSystem
 
         public override InputActionState UpdateAndGetState(InputEvent @event, int subActionIndex)
         {
-            if(_Sleeping) return _state;
 
-            object stg = InputEventHandler.EventGetStrenth(@event);
-            if (stg is Vector2)
+            if (_Sleeping)
             {
-                _state.strength = stg;
+                return _state = new(PressState.None, 0, new Vector2(0, 0), null);
+            }
+
+            _state.inputEvent = @event;
+
+            if (@event is InputEventMouseMotion me)
+            {
+                _state.strength = (Vector2)InputEventHandler.MouseMotionMapping(me, MouseInput);
             }
             else
             {
-                if (@event.IsPressed())
-                {
-                    separatedStrengths[subActionIndex] = (float)stg;
-                }
-                else
-                {
-                    separatedStrengths[subActionIndex] = 0f;
-                }
+                separatedStrengths[subActionIndex] = (float)InputEventHandler.EventGetStrenth(@event);
 
                 _state.strength = new Vector2(-separatedStrengths[0] + separatedStrengths[1], -separatedStrengths[2] + separatedStrengths[3]);
             }
@@ -190,6 +188,23 @@ namespace InputSystem
         public override List<string> GetEventNames()
         {
             return new List<string>() { XNegativeName, XPositiveName, YNegativeName, YPositiveName };
+        }
+
+        public override Array<Dictionary> _GetPropertyList()
+        {
+            var properties = new Array<Dictionary>
+            {
+                new Dictionary()
+                {
+                    { "name", "MouseInput" },
+                    { "type", (int)Variant.Type.Int },
+                    { "usage", (int)PropertyUsageFlags.Default }, // See above assignment.
+                    { "hint", (int)PropertyHint.Enum },
+                    { "hint_string", "None, Velocity, Delta, Position, Tilt" }
+                }
+            };
+
+            return properties;
         }
     }
 }

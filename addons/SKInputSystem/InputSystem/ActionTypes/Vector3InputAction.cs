@@ -121,7 +121,7 @@ namespace InputSystem
         public List<Enum> enumAxisZNegative = new();
         public List<Enum> enumAxisZPositive = new();
 
-        InputActionState _state = new(PressState.None, 0, new Vector3(0, 0, 0));
+        InputActionState _state = new(PressState.None, 0, new Vector3(0, 0, 0), null);
         public float[] separatedStrengths { get; private set; } = new float[6] { 0, 0, 0, 0, 0, 0 };
 
         public Vector3InputAction()
@@ -159,6 +159,13 @@ namespace InputSystem
 
         public override InputActionState UpdateAndGetState(InputEvent @event, int subActionIndex)
         {
+            if (_Sleeping)
+            {
+                return _state = new(PressState.None, 0, new Vector3(0, 0, 0), null);
+            }
+
+            _state.inputEvent = @event;
+
             object stg = InputEventHandler.EventGetStrenth(@event);
             if (stg is Vector2 vector)
             {

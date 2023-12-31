@@ -5,5 +5,8 @@
 [resource]
 resource_name = "Interact"
 script = ExtResource("1_u1ga4")
+MouseInput = 0
 Events = ["Key E", "JoyButton X"]
 Name = "Interact"
+DeadZone = 0.25
+Sleeping = false
