@@ -7,23 +7,26 @@ namespace InputSystem
     {
         public InputActionState()
         {
-            state = PressState.Released;
+            state = PressState.None;
             timeHeld = 0;
             strength = 0f;
+            inputEvent = null;
         }
 
-        public InputActionState(PressState _state, ulong _timeHeld, object _strength)
+        public InputActionState(PressState _state, ulong _timeHeld, object _strength, InputEvent _inputEvent)
         {
             state = _state;
             timeHeld = _timeHeld;
             strength = _strength;
+            inputEvent = _inputEvent;
         }
 
-        public InputActionState SetValues(PressState _state, ulong _timeHeld, object _strength)
+        public InputActionState SetValues(PressState _state, ulong _timeHeld, object _strength, InputEvent _inputEvent)
         {
             state = _state;
             timeHeld = _timeHeld;
             strength = _strength;
+            inputEvent = _inputEvent;
             return this;
         }
 
@@ -32,6 +35,9 @@ namespace InputSystem
         public ulong timeHeld = 0;
 
         public object strength;
+
+        public InputEvent inputEvent;
+
         public enum PressState
         {
             None = -1, Released = 0, JustPressed = 1, Holding = 2

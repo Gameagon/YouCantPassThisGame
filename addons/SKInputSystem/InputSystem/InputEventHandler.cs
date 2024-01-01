@@ -16,9 +16,12 @@ namespace InputSystem
         [Export]
         public InputSystem.InputMap inputMap;
 
+        [Export]
+        Input.MouseModeEnum MouseMode;
+
         Dictionary<Enum, List<(InputAction, int)>> _inputs = new();
 
-        Dictionary<(InputAction, int), EventActuator> Events = new();
+        Dictionary<InputAction, EventActuator> Events = new();
 
         void Remap()
         {
@@ -41,23 +44,34 @@ namespace InputSystem
                 {
                     List<List<Enum>> listOfListOfEnum = ac.GetEvents();
 
+                    if (groupNode.FindChild(ac.Name) is EventActuator ea)
+                    {
+                        Events.Add(ac, ea);
+                    }
+                    else
+                    {
+                        ea = new() { Name = ac.Name };
+                        groupNode.AddChild(ea, true);
+                        ea.Owner = GetTree().EditedSceneRoot;
+
+                        GD.Print(ea.Name, " was added to ", Name);
+                        Events.Add(ac, ea);
+                    }
+
+                    if (ac.MouseInput != MouseMotion.None)
+                    {
+                        if (_inputs.TryGetValue(MouseMotion.None, out List<(InputAction, int)> actions))
+                        {
+                            actions.Add((ac, 0));
+                        }
+                        else
+                            _inputs.Add(MouseMotion.None, new List<(InputAction, int)>() { (ac, 0) });
+                    }
+
                     for (int i = 0; i < listOfListOfEnum.Count; i++)
                     {
                         List<Enum> items = listOfListOfEnum[i];
 
-                        if (groupNode.FindChild(ac.Name) is EventActuator ea)
-                        {
-                            Events.Add((ac, i), ea);
-                        }
-                        else
-                        {
-                            ea = new() { Name = ac.Name };
-                            groupNode.AddChild(ea, true);
-                            ea.Owner = GetTree().EditedSceneRoot;
-
-                            GD.Print(ea.Name, " was added to ", Name);
-                            Events.Add((ac, i), ea);
-                        }
 
                         foreach (Enum item in items)
                         {
@@ -65,7 +79,7 @@ namespace InputSystem
                             {
                                 int index = actions.FindIndex(0, actions.Count, o => o.Item1 == ac);
                                 if (index >= 0) actions.RemoveAt(index);
-                                
+
                                 actions.Add((ac, i));
                             }
                             else
@@ -104,6 +118,7 @@ namespace InputSystem
         public override void _UnhandledInput(InputEvent @event)
         {
             ulong testTimer = Time.GetTicksUsec();
+
             if (_inputs.TryGetValue(ParseInputEvent(@event), out List<(InputAction, int)> actions))
             {
                 foreach ((InputAction, int) action in actions)
@@ -111,7 +126,7 @@ namespace InputSystem
                     InputActionState state = action.Item1.UpdateAndGetState(@event, action.Item2);
                     if (state.state != PressState.None)
                     {
-                        Events[action].Invoke(state);
+                        Events[action.Item1].Invoke(state);
                         //GD.Print("IMy method ", Time.GetTicksUsec() - testTimer);
                     }
                 }
@@ -121,7 +136,10 @@ namespace InputSystem
 
         public override void _EnterTree()
         {
-            Engine.MaxFps = 0;
+            if(!Engine.IsEditorHint())
+                Input.MouseMode = MouseMode;
+
+            //Engine.MaxFps = 0;
             Remap();
         }
 
@@ -134,8 +152,6 @@ namespace InputSystem
 
         static public Enum ParseInputEvent(InputEvent ievent)
         {
-            EventGetStrenth(ievent);
-
             return ievent switch
             {
                 InputEventKey i => i.Keycode,
@@ -143,7 +159,7 @@ namespace InputSystem
                 InputEventJoypadButton i => i.ButtonIndex,
                 InputEventJoypadMotion i => i.Axis,
                 InputEventMidi i => i.Message,
-                InputEventMouseMotion i => JoyButton.Invalid, //por favor cambia esto
+                InputEventMouseMotion i => MouseMotion.None, //por favor cambia esto
                 _ => JoyButton.Invalid,
             };
         }
@@ -157,7 +173,7 @@ namespace InputSystem
                 "JoyButton" => typeof(JoyButton),
                 "JoyAxis" => typeof(JoyAxis),
                 "MidiMessage" => typeof(MidiMessage),
-                "MouseMotion" => null,
+                "MouseMotion" => typeof(MouseMotion),
                 _ => null,
             };
         }
@@ -168,7 +184,7 @@ namespace InputSystem
         /// <param name="ievent"></param>
         /// <param name="positive"></param>
         /// <returns>The strength of the InputAction with the specified sign if it isn't already signed like AxisValues</returns>
-        public static object EventGetStrenth(InputEvent ievent, bool positive = true, float joyStickDeadZone = 0)
+        public static object EventGetStrenth(InputEvent ievent, bool positive = true)
         {
             float sign = positive ? 1 : -1;
 
@@ -179,7 +195,19 @@ namespace InputSystem
                 InputEventJoypadButton i => (i.Pressure == 0 ? i.Pressed ? 1 : 0 : i.Pressure) * sign,
                 InputEventJoypadMotion i => JoyAxisMapping(i, sign),
                 InputEventMidi i => i.Pitch,
-                InputEventMouseMotion i => i.Velocity,
+                _ => null,
+            };
+        }
+
+        public static object MouseMotionMapping(InputEventMouseMotion e, MouseMotion motion)
+        {
+            return motion switch
+            {
+                MouseMotion.Velocity => e.Velocity,
+                MouseMotion.Delta => e.Relative,
+                MouseMotion.Position => e.Position,
+                MouseMotion.Tilt => e.Tilt,
+                MouseMotion.Pressure => e.Pressure,
                 _ => null,
             };
         }

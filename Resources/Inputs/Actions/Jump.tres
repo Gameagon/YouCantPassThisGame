@@ -5,5 +5,8 @@
 [resource]
 resource_name = "Jump"
 script = ExtResource("1_o6hw0")
+MouseInput = 0
 Events = ["Key Space", "JoyButton A", "Key Kp0"]
 Name = "Jump"
+DeadZone = 0.25
+Sleeping = false

@@ -5,6 +5,7 @@
 [resource]
 resource_name = "Movement"
 script = ExtResource("1_4w2kw")
+MouseInput = 0
 AxisXNegative = ["Key A", "JoyAxis LeftX"]
 AxisXPositive = ["Key D", "JoyAxis LeftX"]
 AxisYNegative = ["Key S", "JoyAxis LeftY"]
@@ -14,5 +15,5 @@ XPositiveName = "Right"
 YNegativeName = "Down"
 YPositiveName = "Up"
 Name = "Movement"
-DeadZone = 0.05
+DeadZone = 0.25
 Sleeping = false

@@ -47,7 +47,7 @@ namespace InputSystem
         public List<Enum> enumNegative = new();
         public List<Enum> enumPositive = new();
 
-        InputActionState _state = new(PressState.None, 0, 0f);
+        InputActionState _state = new(PressState.None, 0, 0f, null);
         public float[] separatedStrengths { get; private set; } = new float[2] { 0, 0 };
 
         public Vector1InputAction()
@@ -73,11 +73,17 @@ namespace InputSystem
 
         public override InputActionState UpdateAndGetState(InputEvent @event, int subActionIndex)
         {
-            if(_Sleeping) return _state;
+            if (_Sleeping)
+            {
+                return _state = new(PressState.None, 0, 0f, null);
+            }
+
+            _state.inputEvent = @event;
 
             if (@event.IsPressed())
             {
-                separatedStrengths[subActionIndex] = (float)InputEventHandler.EventGetStrenth(@event);
+                separatedStrengths[subActionIndex] = @event is InputEventMouseMotion me ?
+                (float)InputEventHandler.MouseMotionMapping(me, MouseInput) : (float)InputEventHandler.EventGetStrenth(@event);
             }
             else
             {
@@ -142,6 +148,23 @@ namespace InputSystem
         public override List<string> GetEventNames()
         {
             return new List<string>() { NegativeName, PositiveName};
+        }
+
+        public override Array<Dictionary> _GetPropertyList()
+        {
+            var properties = new Array<Dictionary>
+            {
+                new Dictionary()
+                {
+                    { "name", "MouseInput" },
+                    { "type", (int)Variant.Type.Int },
+                    { "usage", (int)PropertyUsageFlags.Default }, // See above assignment.
+                    { "hint", (int)PropertyHint.Enum },
+                    { "hint_string", "None, Pressure" }
+                }
+            };
+
+            return properties;
         }
     }
 }

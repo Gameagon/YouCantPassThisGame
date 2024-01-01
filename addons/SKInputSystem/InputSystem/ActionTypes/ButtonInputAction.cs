@@ -30,7 +30,7 @@ namespace InputSystem
 
         public List<Enum> enumEvents = new();
 
-        InputActionState _state = new(PressState.None, 0, 0);
+        InputActionState _state = new(PressState.None, 0, 0, null);
 
         public ButtonInputAction()
         {
@@ -52,9 +52,14 @@ namespace InputSystem
 
         public override InputActionState UpdateAndGetState(InputEvent @event, int subActionIndex)
         {
-            if(_Sleeping) return _state;
+            if (_Sleeping)
+            {
+                return _state = new(PressState.None, 0, 0, null);
+            }
 
-            float stg = (float)InputEventHandler.EventGetStrenth(@event);
+            _state.inputEvent = @event;
+
+            float stg = @event is InputEventMouseMotion me ? (float)InputEventHandler.MouseMotionMapping(me, MouseInput) : (float)InputEventHandler.EventGetStrenth(@event);
 
             if (@event.IsPressed() && stg > DeadZone)
             {
@@ -109,6 +114,23 @@ namespace InputSystem
         public override List<string> GetEventNames()
         {
             return new List<string>() { Name };
+        }
+
+        public override Array<Dictionary> _GetPropertyList()
+        {
+            var properties = new Array<Dictionary>
+            {
+                new Dictionary()
+                {
+                    { "name", "MouseInput" },
+                    { "type", (int)Variant.Type.Int },
+                    { "usage", (int)PropertyUsageFlags.Default }, // See above assignment.
+                    { "hint", (int)PropertyHint.Enum },
+                    { "hint_string", "None, Pressure" }
+                }
+            };
+
+            return properties;
         }
     }
 }

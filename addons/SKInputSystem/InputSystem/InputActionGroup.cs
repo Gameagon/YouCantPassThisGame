@@ -10,9 +10,6 @@ namespace InputSystem
         public string Name { get{ return ResourceName; } set {ResourceName = value; } }
 
 		[Export]
-		public bool active = true;
-
-		[Export]
 		public Array<InputAction> Actions { get; private set; } = new();
 
 		[Export]
