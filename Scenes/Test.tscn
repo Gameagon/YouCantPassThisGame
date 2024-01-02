@@ -74,6 +74,7 @@ material = ExtResource("1_s0cw8")
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("6_irl46")
 camera = NodePath("Camera3D")
+RotationSensitivity = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
