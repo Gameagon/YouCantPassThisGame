@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rgcyxko04pj7"]
+[gd_scene load_steps=5 format=3 uid="uid://rgcyxko04pj7"]
 
 [ext_resource type="Material" uid="uid://bt7mc1gml8xnv" path="res://3D/Characters/Dummy/M_Dummy.tres" id="2_mojsj"]
 
@@ -43,42 +43,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lgnx5")
 
-[sub_resource type="Animation" id="Animation_xdn6g"]
-resource_name = "hips_low|Take 001|BaseLayer"
-length = 0.0333333
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxsao"]
-_data = {
-"hips_low|Take 001|BaseLayer": SubResource("Animation_xdn6g")
-}
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgwqu"]
-radius = 0.252766
-height = 1.91754
-
-[node name="Dummy" type="CharacterBody3D"]
+[node name="Dummy" type="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="Node_1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-
-[node name="Light" type="Node3D" parent="."]
-transform = Transform3D(-0.290865, 0.566393, 0.771101, -0.0551891, 0.794672, -0.604525, -0.955171, -0.218391, -0.199883, 4.07625, 5.90386, -1.00545)
-
-[node name="Camera" type="Node3D" parent="."]
-transform = Transform3D(0.685921, 0.651558, 0.324014, 0, 0.445271, -0.895396, -0.727676, 0.61417, 0.305421, 7.35889, 4.95831, 6.92579)
 
 [node name="hips_low" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.0673724, -0.0621542)
 mesh = SubResource("ArrayMesh_es71a")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_mojsj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_lxsao")
-}
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00423944, 0.865402, 0.00347421)
-shape = SubResource("CapsuleShape3D_fgwqu")

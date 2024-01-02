@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdqwa4xy6xn5f"]
+[gd_scene load_steps=34 format=3 uid="uid://bdqwa4xy6xn5f"]
 
 [ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_dqi1d"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
 [ext_resource type="Material" uid="uid://cojjojrd3xm8m" path="res://2D/Materials/Paredes.tres" id="5_uslrj"]
 [ext_resource type="Texture2D" uid="uid://buae1pqhfl4mu" path="res://2D/Materials/Textures/techonormals.png" id="6_4nhu6"]
+[ext_resource type="PackedScene" uid="uid://rgcyxko04pj7" path="res://3D/Characters/Dummy/Dummy.tscn" id="7_2hcmq"]
 [ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="13_hppq6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phdr1"]
@@ -299,10 +300,6 @@ data = PackedVector3Array(0, -1, -1, 0.1951, 1, -0.9808, 0, 1, -1, 0, -1, -1, 0.
 radius = 0.35
 height = 1.8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ns7s"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hyuai"]
-
 [node name="TheButton" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -407,14 +404,13 @@ RotationSensitivity = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83217, 0)
 shape = SubResource("CapsuleShape3D_w5ysr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CollisionShape3D"]
-transform = Transform3D(0.7, 0, 0, 0, 0.9, 0, 0, 0, 0.7, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_5ns7s")
-mesh = SubResource("CapsuleMesh_hyuai")
+[node name="Dummy" parent="Player/CollisionShape3D" instance=ExtResource("7_2hcmq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.960236, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26329, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.07633, 0)
 
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="Player" method="Jump"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="Player" method="Move"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Look" to="Player" method="Look"]
 
