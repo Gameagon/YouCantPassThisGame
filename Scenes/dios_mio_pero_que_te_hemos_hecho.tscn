@@ -29,6 +29,7 @@ volumetric_fog_density = 0.0
 [sub_resource type="Resource" id="Resource_dnh1w"]
 resource_name = "Movment"
 script = ExtResource("2_kayhh")
+MouseInput = 0
 AxisXNegative = ["Key A"]
 AxisXPositive = ["Key D"]
 AxisYNegative = ["Key S"]
@@ -44,6 +45,7 @@ Sleeping = false
 [sub_resource type="Resource" id="Resource_65pyf"]
 resource_name = "Salto"
 script = ExtResource("3_kp6ex")
+MouseInput = 0
 Events = ["Key Space"]
 Name = "Salto"
 DeadZone = 0.05
@@ -53,7 +55,6 @@ Sleeping = false
 resource_name = "NuevoInputActionGroup"
 script = ExtResource("3_m870o")
 Name = "NuevoInputActionGroup"
-active = true
 Actions = [SubResource("Resource_dnh1w"), SubResource("Resource_65pyf")]
 Sleeping = false
 

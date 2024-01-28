@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cojjojrd3xm8m"]
+
+[ext_resource type="Shader" uid="uid://csri80kloqg4c" path="res://2D/Materials/Shaders/Basic_Lighting.tres" id="1_owllk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_owllk")
+shader_parameter/Tint = Color(1, 1, 1, 1)
+shader_parameter/Offset = Vector2(0, 0)
+shader_parameter/tilling = Vector2(1, 1)
+shader_parameter/Metalic = 0.0
+shader_parameter/Roughtness = null
+shader_parameter/Specular = null
