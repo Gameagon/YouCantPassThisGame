@@ -36,7 +36,7 @@ public partial class StrechTo : Node3D
 
 		actualDist = this.Position.DistanceTo(target.Position + offset);
 		Vector3 globalScale = this.GlobalTransform.Basis.Scale;
-		GD.Print(globalScale);
+		//GD.Print(globalScale);
 		this.Scale = OrigianlScale * (new Godot.Vector3(1, actualDist / originalDist, 1)); 
 
 		//this.LookAt(target.Position + offset);
@@ -54,7 +54,7 @@ public partial class StrechTo : Node3D
 
 
 		Godot.Vector3 Trans = global_to_local * globalDirection - global_to_local * Godot.Vector3.Zero;
-		GD.Print(Trans);
+		//GD.Print(Trans);
 
 		Trans = new Godot.Vector3(Trans.X, Trans.Y, Trans.Z);
 

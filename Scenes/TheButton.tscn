@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bdqwa4xy6xn5f"]
+[gd_scene load_steps=37 format=3 uid="uid://bdqwa4xy6xn5f"]
 
 [ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_dqi1d"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dseeierekbw14" path="res://2D/Materials/Textures/sueloNormal.png" id="3_idkat"]
 [ext_resource type="Texture2D" uid="uid://dr36dto31eoum" path="res://2D/Materials/Textures/texturetile.png" id="4_3s1kh"]
 [ext_resource type="PackedScene" uid="uid://c7rbeqq26e6x7" path="res://3D/Maps/TheButton/Button.glb" id="4_80y5e"]
+[ext_resource type="Script" path="res://Scripts/Room one/TransformLights.cs" id="5_mbcqt"]
 [ext_resource type="Material" uid="uid://cojjojrd3xm8m" path="res://2D/Materials/Paredes.tres" id="5_uslrj"]
 [ext_resource type="Texture2D" uid="uid://buae1pqhfl4mu" path="res://2D/Materials/Textures/techonormals.png" id="6_4nhu6"]
 [ext_resource type="PackedScene" uid="uid://rgcyxko04pj7" path="res://3D/Characters/Dummy/Dummy.tscn" id="7_2hcmq"]
@@ -335,8 +336,16 @@ script = ExtResource("3_ayabt")
 [node name="Look" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
 script = ExtResource("3_ayabt")
 
-[node name="TheButton" parent="." instance=ExtResource("1_016xd")]
+[node name="TheButton" parent="." node_paths=PackedStringArray("Lights", "Player") instance=ExtResource("1_016xd")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+script = ExtResource("5_mbcqt")
+Lights = [NodePath("OmniLight3D"), NodePath("OmniLight3D2"), NodePath("OmniLight3D3")]
+Player = NodePath("../Player")
+Radius = 5.0
+DistBetweenLights = 4.0
+Direction = Vector3(0, 0, 1)
+FirstOffset = Vector3(0, 2, 15)
+MinMax = Vector2(-30, 1)
 
 [node name="Sala" parent="TheButton" index="0" node_paths=PackedStringArray("Target")]
 mesh = SubResource("ArrayMesh_7fpf3")
@@ -421,8 +430,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.07633, 0)
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="Player"]
 
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="Player" method="Jump"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="Player" method="Move"]
