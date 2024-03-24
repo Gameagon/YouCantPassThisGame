@@ -9,15 +9,13 @@ namespace InputSystem
     [GlobalClass, Tool]
     public partial class InputEventHandler : Node
     {
-        //Loco mirate bien eso de StringName para lo de los enum que es lo que buscabas! -de Aitor medio dormido para Aitor medio despierto
-
         public static InputEventHandler Current { get; private set; }
 
         [Export]
         public InputSystem.InputMap inputMap;
 
         [Export]
-        Input.MouseModeEnum MouseMode;
+        public Input.MouseModeEnum MouseMode { get; private set; }
 
         Dictionary<Enum, List<(InputAction, int)>> _inputs = new();
 
@@ -125,21 +123,26 @@ namespace InputSystem
                 {
                     InputActionState state = action.Item1.UpdateAndGetState(@event, action.Item2);
                     if (state.state != PressState.None)
-                    {
                         Events[action.Item1].Invoke(state);
-                        //GD.Print("IMy method ", Time.GetTicksUsec() - testTimer);
-                    }
                 }
             }
             @event.Dispose();
         }
 
+        public override void _Ready()
+        {
+            _EnterTree();
+        }
+
         public override void _EnterTree()
         {
-            if(!Engine.IsEditorHint())
+            Current = this;
+
+            ProcessMode = Node.ProcessModeEnum.Always;
+
+            if (!Engine.IsEditorHint())
                 Input.MouseMode = MouseMode;
 
-            //Engine.MaxFps = 0;
             Remap();
         }
 

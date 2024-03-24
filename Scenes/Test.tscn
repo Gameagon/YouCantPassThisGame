@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=13 format=3 uid="uid://bf44tejcvwkx8"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_bg54p"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="1_s0cw8"]
+[ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_uafe7"]
 [ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="2_trta6"]
 [ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="3_hyyl2"]
 [ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_irl46"]
@@ -33,6 +34,9 @@ height = 1.8
 
 [node name="Node3D" type="Node3D"]
 
+[node name="PauseMenu" parent="." instance=ExtResource("1_uafe7")]
+visible = false
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_be8nn")
 
@@ -40,6 +44,7 @@ environment = SubResource("Environment_be8nn")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
 
 [node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
+process_mode = 3
 script = ExtResource("1_bg54p")
 inputMap = ExtResource("2_trta6")
 MouseMode = 2
@@ -64,7 +69,12 @@ script = ExtResource("3_hyyl2")
 [node name="Look" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
 script = ExtResource("3_hyyl2")
 
-[node name="Ground" type="CSGBox3D" parent="."]
+[node name="UI" type="Node" parent="WorldEnvironment/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="WorldEnvironment/InputEventHandler/UI"]
+script = ExtResource("3_hyyl2")
+
+[node name="World" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 material_override = ExtResource("1_s0cw8")
 use_collision = true
@@ -91,3 +101,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="Player" method="Jump"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="Player" method="Move"]
 [connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Look" to="Player" method="Look"]
+[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
