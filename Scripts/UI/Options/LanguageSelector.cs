@@ -1,0 +1,44 @@
+using Godot;
+using System;
+using System.Net.Security;
+
+[GlobalClass, Tool]
+public partial class LanguageSelector : OptionButton
+{
+    public override void _EnterTree()
+    {
+        ItemSelected += OnItemSelected;
+ 
+        CreateOptions();
+    }
+
+	public void CreateOptions()
+	{
+        string[] locales = TranslationServer.GetLoadedLocales();
+
+        string currentLocale;
+        // ToDo get option save, if null ->
+        	currentLocale = OS.GetLocale();
+        //
+
+        TranslationServer.SetLocale(currentLocale);
+
+        Clear();
+
+        for (int i = 0; i < locales.Length; i++)
+        {
+            string l = locales[i];
+
+            AddItem(TranslationServer.GetTranslationObject(l).GetMessage("LANGUAGE_NAME"), i);
+            SetItemMetadata(i, l);
+
+			if(currentLocale == l)
+                Select(i);
+        }
+    }
+
+	public void OnItemSelected(long index)
+	{
+        TranslationServer.SetLocale((string)GetSelectedMetadata());
+    }
+}

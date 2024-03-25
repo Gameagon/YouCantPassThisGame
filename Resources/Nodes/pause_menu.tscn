@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqwynxbg3ejn6"]
+[gd_scene load_steps=3 format=3 uid="uid://dqwynxbg3ejn6"]
 
 [ext_resource type="Script" path="res://Scripts/UI/PauseMenu.cs" id="1_5xtyu"]
+[ext_resource type="PackedScene" uid="uid://ckmicpesj5sm5" path="res://Resources/Nodes/options_menu.tscn" id="2_uwje5"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -31,15 +32,23 @@ layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Resume"
+text = "MENU_RESUME"
 
 [node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = "MENU_OPTIONS"
 
 [node name="QuitToDesktop" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit To Desktop"
+text = "MENU_QUIT_TO_DESKTOP"
 
+[node name="OptionsMenu" parent="." instance=ExtResource("2_uwje5")]
+visible = false
+layout_mode = 1
+
+[connection signal="hidden" from="." to="OptionsMenu" method="hide"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Resume" to="." method="Unpause"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Options" to="MarginContainer" method="hide"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/Options" to="OptionsMenu" method="show"]
 [connection signal="button_up" from="MarginContainer/VBoxContainer/QuitToDesktop" to="." method="Quit"]
+[connection signal="hidden" from="OptionsMenu" to="MarginContainer" method="show"]
