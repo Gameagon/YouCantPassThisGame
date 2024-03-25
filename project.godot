@@ -52,6 +52,10 @@ toggle_console={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translations/Translations.en.translation", "res://Translations/Translations.es.translation", "res://Translations/Translations.fr.translation")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

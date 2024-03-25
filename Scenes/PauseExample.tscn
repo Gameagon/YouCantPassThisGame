@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://defq5u1pq1pl2"]
+
+[ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_3t2xg"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="2_d2227"]
+[ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="3_vntw8"]
+[ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="4_sbhk7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_3t2xg")]
+
+[node name="InputEventHandler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_d2227")
+inputMap = ExtResource("3_vntw8")
+
+[node name="Player" type="Node" parent="InputEventHandler"]
+
+[node name="Jump" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="Interact" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="Crouch" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="Movement" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="Fly" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="Look" type="Node" parent="InputEventHandler/Player"]
+script = ExtResource("4_sbhk7")
+
+[node name="UI" type="Node" parent="InputEventHandler"]
+
+[node name="Pause" type="Node" parent="InputEventHandler/UI"]
+script = ExtResource("4_sbhk7")
+
+[connection signal="onInvoke" from="InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
