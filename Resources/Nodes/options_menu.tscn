@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckmicpesj5sm5"]
+[gd_scene load_steps=4 format=3 uid="uid://ckmicpesj5sm5"]
 
+[ext_resource type="Script" path="res://Scripts/UI/Options/OptionsSavesHandler.cs" id="1_ic75l"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/LanguageSelector.cs" id="1_jiw6j"]
 [ext_resource type="Texture2D" uid="uid://ccadnihteadrs" path="res://2D/Sprites/Back Arrow.png" id="2_2nxtg"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ic75l")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

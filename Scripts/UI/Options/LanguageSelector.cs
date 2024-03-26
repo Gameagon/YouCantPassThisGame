@@ -5,6 +5,8 @@ using System.Net.Security;
 [GlobalClass, Tool]
 public partial class LanguageSelector : OptionButton
 {
+    string key = "LANGUAGE";
+
     public override void _EnterTree()
     {
         ItemSelected += OnItemSelected;
@@ -17,9 +19,8 @@ public partial class LanguageSelector : OptionButton
         string[] locales = TranslationServer.GetLoadedLocales();
 
         string currentLocale;
-        // ToDo get option save, if null ->
-        	currentLocale = OS.GetLocale();
-        //
+
+        currentLocale = OptionsSavesHandler.Current.GetValue(key)?.ToString() ?? OS.GetLocale();
 
         TranslationServer.SetLocale(currentLocale);
 
@@ -39,6 +40,8 @@ public partial class LanguageSelector : OptionButton
 
 	public void OnItemSelected(long index)
 	{
-        TranslationServer.SetLocale((string)GetSelectedMetadata());
+        var l = (string)GetSelectedMetadata();
+        TranslationServer.SetLocale(l);
+        OptionsSavesHandler.Current.SetValue(key, l);
     }
 }
