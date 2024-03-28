@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=28 format=3 uid="uid://bf44tejcvwkx8"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_bg54p"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="1_s0cw8"]
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_uafe7"]
 [ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="2_trta6"]
 [ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="3_hyyl2"]
+[ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="5_rqlgy"]
 [ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_irl46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
@@ -25,6 +26,59 @@ sky = SubResource("Sky_ii4t5")
 ambient_light_source = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hvvax"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8c2c"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dgje"]
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("5_rqlgy")
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_pykac"]
+material = SubResource("StandardMaterial3D_5dgje")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gswut"]
+friction = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8u87"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("5_rqlgy")
+metallic_specular = 0.0
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1jyl"]
+material = SubResource("StandardMaterial3D_g8u87")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ecvd"]
+size = Vector3(200, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8jl"]
+size = Vector3(200, 1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m2nfa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ls2ij"]
+size = Vector3(100, 10, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2p277"]
+material = ExtResource("1_s0cw8")
+size = Vector3(100, 10, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hulc"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0fuq"]
+material = ExtResource("1_s0cw8")
+size = Vector3(10, 10, 10)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfcl2"]
 radius = 0.35
@@ -76,16 +130,77 @@ script = ExtResource("3_hyyl2")
 [node name="Pause" type="Node" parent="WorldEnvironment/InputEventHandler/UI"]
 script = ExtResource("3_hyyl2")
 
-[node name="World" type="CSGBox3D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Ice" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5583, -0.3965, 0)
+physics_material_override = SubResource("PhysicsMaterial_hvvax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Ice"]
+shape = SubResource("BoxShape3D_f8c2c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ice/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-08, 0)
+mesh = SubResource("BoxMesh_pykac")
+
+[node name="Accelerator" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44172, -0.3965, 19)
+physics_material_override = SubResource("PhysicsMaterial_gswut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Accelerator"]
+shape = SubResource("BoxShape3D_f8c2c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Accelerator/CollisionShape3D"]
+mesh = SubResource("BoxMesh_d1jyl")
+
+[node name="IceRamp" type="StaticBody3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.0199, 0.6035, 0)
+physics_material_override = SubResource("PhysicsMaterial_hvvax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/IceRamp"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -66.8524, -74.0676, 0)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/IceRamp"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -230.159, -168.251, -7.62939e-06)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/IceRamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.355, -193.333, -7.62939e-06)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="Ground" type="StaticBody3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
-material_override = ExtResource("1_s0cw8")
-use_collision = true
-size = Vector3(100, 100, 100)
-material = ExtResource("1_s0cw8")
+physics_material_override = SubResource("PhysicsMaterial_m2nfa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+shape = SubResource("BoxShape3D_ls2ij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ground/CollisionShape3D"]
+mesh = SubResource("BoxMesh_2p277")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Ground"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 24.6145, 47.2067, 0)
+shape = SubResource("BoxShape3D_6hulc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ground/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_j0fuq")
 
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
+floor_stop_on_slope = false
 script = ExtResource("6_irl46")
 camera = NodePath("Camera3D")
+Acceleration = 1.0
 RotationSensitivity = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
