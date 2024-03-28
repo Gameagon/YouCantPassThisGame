@@ -77,6 +77,7 @@ environment = SubResource("Environment_k6o6i")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
 
 [node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
+process_mode = 3
 script = ExtResource("1_e2mwo")
 inputMap = SubResource("Resource_d5ecf")
 
