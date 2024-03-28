@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckmicpesj5sm5"]
+[gd_scene load_steps=5 format=3 uid="uid://ckmicpesj5sm5"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Options/OptionsSavesHandler.cs" id="1_ic75l"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/LanguageSelector.cs" id="1_jiw6j"]
 [ext_resource type="Texture2D" uid="uid://ccadnihteadrs" path="res://2D/Sprites/Back Arrow.png" id="2_2nxtg"]
+
+[sub_resource type="SystemFont" id="SystemFont_4ihvp"]
+font_names = PackedStringArray("Impact")
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -13,36 +16,98 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ic75l")
 
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = SubResource("SystemFont_4ihvp")
+theme_override_font_sizes/font_size = 32
+text = "Options
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
-offset_right = 72.0
-offset_bottom = 72.0
+offset_left = 1044.0
+offset_top = 683.0
+offset_right = 1116.0
+offset_bottom = 755.0
 scale = Vector2(0.5, 0.5)
 icon = ExtResource("2_2nxtg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.04, 1.08)
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="Controls" type="TabBar" parent="TabContainer"]
 layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Controls"]
+layout_mode = 0
+offset_left = 86.5384
+offset_top = 88.4449
+offset_right = 285.538
+offset_bottom = 104.445
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Controls/HSlider"]
+layout_mode = 0
+offset_left = 207.692
+offset_top = -5.55558
+offset_right = 274.755
+offset_bottom = 25.4444
+scale = Vector2(0.423079, 0.851851)
+
+[node name="Label" type="Label" parent="TabContainer/Controls"]
+layout_mode = 0
+offset_left = 92.3076
+offset_top = 60.667
+offset_right = 170.308
+offset_bottom = 83.667
+text = "Sensivility"
+
+[node name="Sound" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Sound"]
+layout_mode = 2
+offset_left = 21.1538
+offset_top = 53.7039
+offset_right = 1077.15
+offset_bottom = 749.704
 columns = 2
 
-[node name="Language" type="Label" parent="MarginContainer/GridContainer"]
+[node name="Language" type="Label" parent="TabContainer/Sound/GridContainer"]
 layout_mode = 2
 text = "MENU_LANGUAGE"
 
-[node name="LanguageSelector" type="OptionButton" parent="MarginContainer/GridContainer"]
+[node name="LanguageSelector" type="OptionButton" parent="TabContainer/Sound/GridContainer"]
 layout_mode = 2
 item_count = 3
 selected = 1
@@ -53,5 +118,9 @@ popup/item_1/id = 1
 popup/item_2/text = "Français"
 popup/item_2/id = 2
 script = ExtResource("1_jiw6j")
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
 
 [connection signal="button_up" from="Button" to="." method="hide"]

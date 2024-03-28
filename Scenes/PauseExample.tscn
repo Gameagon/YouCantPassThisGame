@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://defq5u1pq1pl2"]
+[gd_scene load_steps=5 format=3 uid="uid://btafrs5opvola"]
 
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_3t2xg"]
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="2_d2227"]

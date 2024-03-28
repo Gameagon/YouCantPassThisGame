@@ -313,6 +313,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 20, 0)
 visible = false
 
 [node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
+process_mode = 3
 script = ExtResource("1_dqi1d")
 inputMap = ExtResource("2_l4e5c")
 
@@ -334,6 +335,11 @@ script = ExtResource("3_ayabt")
 script = ExtResource("3_ayabt")
 
 [node name="Look" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
+script = ExtResource("3_ayabt")
+
+[node name="UI" type="Node" parent="WorldEnvironment/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="WorldEnvironment/InputEventHandler/UI"]
 script = ExtResource("3_ayabt")
 
 [node name="TheButton" parent="." node_paths=PackedStringArray("Lights", "Player") instance=ExtResource("1_016xd")]
