@@ -1,11 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=36 format=3 uid="uid://bf44tejcvwkx8"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_bg54p"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="1_s0cw8"]
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_uafe7"]
 [ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="2_trta6"]
 [ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="3_hyyl2"]
+[ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactables/Interactable3D.cs" id="4_4frck"]
+[ext_resource type="PackedScene" uid="uid://dmf44ro0qc0ji" path="res://Scenes/2DTest.tscn" id="4_yk67s"]
 [ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="5_rqlgy"]
+[ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactors/RayInteractor3D.cs" id="5_xlhib"]
 [ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_irl46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
@@ -37,6 +40,7 @@ size = Vector3(10, 1, 10)
 albedo_color = Color(0, 1, 1, 1)
 albedo_texture = ExtResource("5_rqlgy")
 metallic_specular = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 texture_filter = 2
 
@@ -45,12 +49,13 @@ material = SubResource("StandardMaterial3D_5dgje")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gswut"]
-friction = 10.0
+friction = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8u87"]
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("5_rqlgy")
 metallic_specular = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 texture_filter = 2
 
@@ -80,6 +85,24 @@ size = Vector3(10, 10, 10)
 material = ExtResource("1_s0cw8")
 size = Vector3(10, 10, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rltb2"]
+size = Vector3(1, 0.7, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7cdj"]
+size = Vector3(1, 0.7, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_63nls"]
+viewport_path = NodePath("World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wy2b"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_63nls")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xiqlj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6wy2b")
+size = Vector2(1, 0.7)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfcl2"]
 radius = 0.35
 height = 1.8
@@ -99,105 +122,95 @@ environment = SubResource("Environment_be8nn")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.352103, 0.935961, 0, -0.935961, 0.352103, 0, 20, 0)
 
-[node name="InputEventHandler" type="Node" parent="WorldEnvironment"]
-process_mode = 3
-script = ExtResource("1_bg54p")
-inputMap = ExtResource("2_trta6")
-MouseMode = 2
+[node name="World" type="Node3D" parent="."]
 
-[node name="Player" type="Node" parent="WorldEnvironment/InputEventHandler"]
-
-[node name="Jump" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="Interact" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="Movement" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="Crouch" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="Fly" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="Look" type="Node" parent="WorldEnvironment/InputEventHandler/Player"]
-script = ExtResource("3_hyyl2")
-
-[node name="UI" type="Node" parent="WorldEnvironment/InputEventHandler"]
-
-[node name="Pause" type="Node" parent="WorldEnvironment/InputEventHandler/UI"]
-script = ExtResource("3_hyyl2")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Ice" type="StaticBody3D" parent="Node3D"]
+[node name="Ice" type="StaticBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5583, -0.3965, 0)
 physics_material_override = SubResource("PhysicsMaterial_hvvax")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Ice"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ice"]
 shape = SubResource("BoxShape3D_f8c2c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ice/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ice/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-08, 0)
 mesh = SubResource("BoxMesh_pykac")
 
-[node name="Accelerator" type="StaticBody3D" parent="Node3D"]
+[node name="Accelerator" type="StaticBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44172, -0.3965, 19)
 physics_material_override = SubResource("PhysicsMaterial_gswut")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Accelerator"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Accelerator"]
 shape = SubResource("BoxShape3D_f8c2c")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Accelerator/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Accelerator/CollisionShape3D"]
 mesh = SubResource("BoxMesh_d1jyl")
 
-[node name="IceRamp" type="StaticBody3D" parent="Node3D"]
+[node name="IceRamp" type="StaticBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.0199, 0.6035, 0)
 physics_material_override = SubResource("PhysicsMaterial_hvvax")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/IceRamp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/IceRamp"]
 transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -66.8524, -74.0676, 0)
 shape = SubResource("BoxShape3D_3ecvd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D"]
 mesh = SubResource("BoxMesh_0q8jl")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/IceRamp"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/IceRamp"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -230.159, -168.251, -7.62939e-06)
 shape = SubResource("BoxShape3D_3ecvd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D2"]
 mesh = SubResource("BoxMesh_0q8jl")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/IceRamp"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/IceRamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.355, -193.333, -7.62939e-06)
 shape = SubResource("BoxShape3D_3ecvd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/IceRamp/CollisionShape3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D3"]
 mesh = SubResource("BoxMesh_0q8jl")
 
-[node name="Ground" type="StaticBody3D" parent="Node3D"]
+[node name="Ground" type="StaticBody3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 physics_material_override = SubResource("PhysicsMaterial_m2nfa")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
 shape = SubResource("BoxShape3D_ls2ij")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ground/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/CollisionShape3D"]
 mesh = SubResource("BoxMesh_2p277")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Ground"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Ground"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 24.6145, 47.2067, 0)
 shape = SubResource("BoxShape3D_6hulc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Ground/CollisionShape3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/CollisionShape3D2"]
 mesh = SubResource("BoxMesh_j0fuq")
 
+[node name="InteractableTV" type="Area3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_4frck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/InteractableTV"]
+shape = SubResource("BoxShape3D_rltb2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/InteractableTV/CollisionShape3D"]
+mesh = SubResource("BoxMesh_c7cdj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/InteractableTV/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06)
+mesh = SubResource("QuadMesh_xiqlj")
+
+[node name="SubViewport" type="SubViewport" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2"]
+disable_3d = true
+size = Vector2i(1080, 720)
+
+[node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("4_yk67s")]
+
 [node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
-floor_stop_on_slope = false
 script = ExtResource("6_irl46")
 camera = NodePath("Camera3D")
 Acceleration = 1.0
@@ -215,7 +228,77 @@ mesh = SubResource("CapsuleMesh_5ii7m")
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Jump" to="Player" method="Jump"]
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Movement" to="Player" method="Move"]
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/Player/Look" to="Player" method="Look"]
-[connection signal="onInvoke" from="WorldEnvironment/InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+script = ExtResource("5_xlhib")
+
+[node name="InputEventHandler" type="Node" parent="Player"]
+process_mode = 3
+script = ExtResource("1_bg54p")
+inputMap = ExtResource("2_trta6")
+MouseMode = 2
+
+[node name="Player" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("3_hyyl2")
+
+[node name="UI" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI"]
+script = ExtResource("3_hyyl2")
+
+[node name="Player2" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("3_hyyl2")
+
+[node name="UI2" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI2"]
+script = ExtResource("3_hyyl2")
+
+[connection signal="Activated" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="show" unbinds=1]
+[connection signal="Released" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="hide" unbinds=1]
+[connection signal="Selected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="show" unbinds=1]
+[connection signal="UnSelected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="hide" unbinds=1]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Jump" to="Player" method="Jump"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Interact" to="Player/Camera3D/RayCast3D" method="Interact"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Movement" to="Player" method="Move"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Look" to="Player" method="Look"]
+[connection signal="onInvoke" from="Player/InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
+
+[editable path="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D"]
