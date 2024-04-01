@@ -35,15 +35,10 @@ public partial class WalkingController : CharacterBody3D
 
     Rect2 rect;
 
-    public static WalkingController currentPlayer;
 
     PhysicsBody3D lastFloor;
     PhysicsMaterial floorMaterial = null;
 
-    public override void _Ready()
-    {
-        currentPlayer = this;
-    }
     public override void _EnterTree()
     {
         base._EnterTree();
