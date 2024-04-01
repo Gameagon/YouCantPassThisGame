@@ -58,6 +58,11 @@ toggle_console={
 
 locale/translations=PackedStringArray("res://Translations/Translations.en.translation", "res://Translations/Translations.es.translation", "res://Translations/Translations.fr.translation")
 
+[layer_names]
+
+3d_physics/layer_1="Default"
+3d_physics/layer_2="Buttons"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)
