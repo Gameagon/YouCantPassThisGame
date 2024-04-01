@@ -200,8 +200,7 @@ mesh = SubResource("BoxMesh_j0fuq")
 floor_stop_on_slope = false
 script = ExtResource("6_irl46")
 camera = NodePath("Camera3D")
-Acceleration = 1.0
-RotationSensitivity = 0.5
+sensivilityKey = "SENSIVILITY"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)

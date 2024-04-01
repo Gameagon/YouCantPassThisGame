@@ -17,13 +17,14 @@ public partial class WalkingController : CharacterBody3D
     [Export]
     public float JumpVelocity = 4.5f;
 
-    [Export]
-    public float RotationSensitivity = 1;
+    public float RotationSensitivity = 1; 
 
     [Export(PropertyHint.Range, "0,1")]
     public float AirFrictioin = 0.1f;
 
-    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    [Export]
+    private string sensivilityKey;
+
     public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
     Vector2 MovementDir;
@@ -34,16 +35,29 @@ public partial class WalkingController : CharacterBody3D
 
     Rect2 rect;
 
+    public static WalkingController currentPlayer;
+
     PhysicsBody3D lastFloor;
     PhysicsMaterial floorMaterial = null;
 
+    public override void _Ready()
+    {
+        currentPlayer = this;
+    }
     public override void _EnterTree()
     {
         base._EnterTree();
 
+        RotationSensitivity = OptionsSavesHandler.Current.GetValue(sensivilityKey)?.As<float>() ?? 1;
+        OptionsSavesHandler.Current.onOptionsChanged += SetSensivility;
         rect = GetViewport().GetVisibleRect();
     }
 
+    public void SetSensivility(string key, Variant value)
+    {
+        if(key == sensivilityKey)
+            RotationSensitivity = value.As<float>();
+    }
     public void Move(InputActionState state)
     {
         MovementDir = ((Vector2)state.strength).Normalized();

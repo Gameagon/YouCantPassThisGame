@@ -4,6 +4,9 @@ public partial class OptionsSavesHandler : Control
 {
     public static OptionsSavesHandler Current;
 
+    [Signal]
+    public delegate void onOptionsChangedEventHandler(string key, Variant value);
+    
     public OptionsSave options;
     public string path = "user://options_data.res";
 
@@ -36,11 +39,13 @@ public partial class OptionsSavesHandler : Control
 	public void SetValue(string key, Variant value)
 	{
         options.SetValue(key, value);
+        EmitSignal(SignalName.onOptionsChanged, key, value);
         Save();
     }
 
-	public object GetValue(string key)
+	public Variant? GetValue(string key)
 	{
+        GD.Print("hola");
         return options.GetValue(key);
     }
 }

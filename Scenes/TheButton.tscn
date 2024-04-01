@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b1dlpa5xc2r43"]
+[gd_scene load_steps=37 format=3 uid="uid://bdqwa4xy6xn5f"]
 
 [ext_resource type="PackedScene" uid="uid://d328gkmtwq8dd" path="res://3D/Maps/TheButton/TheButton.glb" id="1_016xd"]
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_dqi1d"]
@@ -425,7 +425,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.78322, 15.6401)
 script = ExtResource("13_hppq6")
 camera = NodePath("Camera3D")
-RotationSensitivity = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83217, 0)

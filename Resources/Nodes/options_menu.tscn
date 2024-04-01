@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckmicpesj5sm5"]
+[gd_scene load_steps=6 format=3 uid="uid://ckmicpesj5sm5"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Options/OptionsSavesHandler.cs" id="1_ic75l"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/LanguageSelector.cs" id="1_jiw6j"]
 [ext_resource type="Texture2D" uid="uid://ccadnihteadrs" path="res://2D/Sprites/Back Arrow.png" id="2_2nxtg"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/Components/SliderController.cs" id="4_wes0x"]
 
 [sub_resource type="SystemFont" id="SystemFont_4ihvp"]
 font_names = PackedStringArray("Impact")
@@ -16,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ic75l")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="OptionUI" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,11 +29,11 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionUI"]
 layout_mode = 2
 theme_override_constants/separation = -48
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="OptionUI/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
@@ -68,28 +69,53 @@ scale = Vector2(1.04, 1.08)
 [node name="Controls" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Controls"]
-layout_mode = 0
-offset_left = 86.5384
-offset_top = 88.4449
-offset_right = 285.538
-offset_bottom = 104.445
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
 
-[node name="LineEdit" type="LineEdit" parent="TabContainer/Controls/HSlider"]
-layout_mode = 0
-offset_left = 207.692
-offset_top = -5.55558
-offset_right = 274.755
-offset_bottom = 25.4444
-scale = Vector2(0.423079, 0.851851)
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
 
-[node name="Label" type="Label" parent="TabContainer/Controls"]
-layout_mode = 0
-offset_left = 92.3076
-offset_top = 60.667
-offset_right = 170.308
-offset_bottom = 83.667
+[node name="Label" type="Label" parent="TabContainer/Controls/GridContainer/MarginContainer"]
+layout_mode = 2
 text = "Sensivility"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/GridContainer" node_paths=PackedStringArray("spinBox", "slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_wes0x")
+key = "SENSIVILITY"
+defaultValue = 1.0
+spinBox = NodePath("SpinBox")
+slider = NodePath("HSlider")
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/Controls/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 0.0
+allow_greater = true
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Controls/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2.0
+step = 0.01
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false

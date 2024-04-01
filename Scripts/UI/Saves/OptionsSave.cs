@@ -15,7 +15,7 @@ public partial class OptionsSave : Resource
             Options.Add(key, value);
     }
 
-    public object GetValue(string key)
+    public Variant? GetValue(string key)
     {
         if(Options.ContainsKey(key))
             return Options[key];
