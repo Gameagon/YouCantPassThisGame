@@ -27,17 +27,13 @@ namespace Options
 
             double value = OptionsSavesHandler.Current.GetValue(key)?.As<double>() ?? defaultValue;
 
-            GD.Print(OptionsSavesHandler.Current.GetValue(key));
-
-            if (OptionsSavesHandler.Current.GetValue(key) != null)
+            slider.SetValueNoSignal(value);
+            if (spinBox != null)
             {
-                slider.SetValueNoSignal(value);
-                if (spinBox != null)
-                {
-                    spinBox.ValueChanged += SetValue;
-                    spinBox.Value = value * multyplier;
-                }
+                spinBox.ValueChanged += SetValue;
+                spinBox.Value = value * multyplier;
             }
+
             slider.ValueChanged += HandleValueChanged;
 
             slider.DragEnded += HandleDragEnded;
@@ -52,6 +48,7 @@ namespace Options
         private void HandleValueChanged(double value)
         {
             spinBox?.SetValueNoSignal(value * multyplier);
+            GD.Print("Valor:" + value);
         }
 
         private void SetValue(double value)

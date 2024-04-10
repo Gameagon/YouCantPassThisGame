@@ -1,0 +1,313 @@
+[gd_scene load_steps=38 format=3 uid="uid://p4vo000sonpq"]
+
+[ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_j4yx3"]
+[ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="2_8hhec"]
+[ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="3_oanlx"]
+[ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactables/Interactable3D.cs" id="4_845f1"]
+[ext_resource type="PackedScene" uid="uid://dmf44ro0qc0ji" path="res://Scenes/2DTest.tscn" id="5_3bn5p"]
+[ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_3wn05"]
+[ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactors/RayInteractor3D.cs" id="7_e20vy"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="8_bj7c1"]
+[ext_resource type="Resource" uid="uid://bovdny6kjjej2" path="res://Resources/Inputs/InputMap.tres" id="9_tv32n"]
+[ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="10_gvm4v"]
+[ext_resource type="AudioStream" uid="uid://c7vf1jklhesg7" path="res://Audio/Music/super random playlist to dance to).mp3" id="11_r44na"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/Components/AudioController.cs" id="12_apr4l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
+sky_top_color = Color(0, 0.682353, 0.952941, 1)
+sky_horizon_color = Color(0.682353, 0.878431, 0.898039, 1)
+sky_curve = 0.2
+ground_bottom_color = Color(0, 0, 0.196078, 1)
+ground_horizon_color = Color(0.682353, 0.878431, 0.898039, 1)
+ground_curve = 0.025
+sun_curve = 0.184673
+
+[sub_resource type="Sky" id="Sky_ii4t5"]
+sky_material = SubResource("ProceduralSkyMaterial_sw65n")
+
+[sub_resource type="Environment" id="Environment_be8nn"]
+background_mode = 2
+sky = SubResource("Sky_ii4t5")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hvvax"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8c2c"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dgje"]
+albedo_color = Color(0, 1, 1, 1)
+albedo_texture = ExtResource("2_8hhec")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_pykac"]
+material = SubResource("StandardMaterial3D_5dgje")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gswut"]
+friction = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8u87"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("2_8hhec")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1jyl"]
+material = SubResource("StandardMaterial3D_g8u87")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ecvd"]
+size = Vector3(200, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0q8jl"]
+size = Vector3(200, 1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m2nfa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ls2ij"]
+size = Vector3(100, 10, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2p277"]
+material = ExtResource("3_oanlx")
+size = Vector3(100, 10, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hulc"]
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0fuq"]
+material = ExtResource("3_oanlx")
+size = Vector3(10, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rltb2"]
+size = Vector3(1, 0.7, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c7cdj"]
+size = Vector3(1, 0.7, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_63nls"]
+viewport_path = NodePath("World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wy2b"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_63nls")
+
+[sub_resource type="QuadMesh" id="QuadMesh_xiqlj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6wy2b")
+size = Vector2(1, 0.7)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rfcl2"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nc5n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ii7m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_j4yx3")]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_be8nn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.352103, 0.935961, 0, -0.935961, 0.352103, 0, 20, 0)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ice" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5583, -0.3965, 0)
+physics_material_override = SubResource("PhysicsMaterial_hvvax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ice"]
+shape = SubResource("BoxShape3D_f8c2c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ice/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98023e-08, 0)
+mesh = SubResource("BoxMesh_pykac")
+
+[node name="Accelerator" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44172, -0.3965, 19)
+physics_material_override = SubResource("PhysicsMaterial_gswut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Accelerator"]
+shape = SubResource("BoxShape3D_f8c2c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Accelerator/CollisionShape3D"]
+mesh = SubResource("BoxMesh_d1jyl")
+
+[node name="IceRamp" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.0199, 0.6035, 0)
+physics_material_override = SubResource("PhysicsMaterial_hvvax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/IceRamp"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -66.8524, -74.0676, 0)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/IceRamp"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -230.159, -168.251, -7.62939e-06)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/IceRamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -250.355, -193.333, -7.62939e-06)
+shape = SubResource("BoxShape3D_3ecvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/IceRamp/CollisionShape3D3"]
+mesh = SubResource("BoxMesh_0q8jl")
+
+[node name="Ground" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+physics_material_override = SubResource("PhysicsMaterial_m2nfa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 0)
+shape = SubResource("BoxShape3D_ls2ij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/CollisionShape3D"]
+mesh = SubResource("BoxMesh_2p277")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Ground"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 24.6145, 47.2067, 0)
+shape = SubResource("BoxShape3D_6hulc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Ground/CollisionShape3D2"]
+mesh = SubResource("BoxMesh_j0fuq")
+
+[node name="InteractableTV" type="Area3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_845f1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/InteractableTV"]
+shape = SubResource("BoxShape3D_rltb2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/InteractableTV/CollisionShape3D"]
+mesh = SubResource("BoxMesh_c7cdj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/InteractableTV/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06)
+mesh = SubResource("QuadMesh_xiqlj")
+
+[node name="SubViewport" type="SubViewport" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2"]
+disable_3d = true
+size = Vector2i(1080, 720)
+
+[node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("5_3bn5p")]
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("6_3wn05")
+camera = NodePath("Camera3D")
+sensivilityKey = "SENSIVILITY"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
+shape = SubResource("CapsuleShape3D_rfcl2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CollisionShape3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.9, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_8nc5n")
+mesh = SubResource("CapsuleMesh_5ii7m")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+script = ExtResource("7_e20vy")
+
+[node name="InputEventHandler" type="Node" parent="Player"]
+process_mode = 3
+script = ExtResource("8_bj7c1")
+inputMap = ExtResource("9_tv32n")
+MouseMode = 2
+
+[node name="Player" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player"]
+script = ExtResource("10_gvm4v")
+
+[node name="UI" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI"]
+script = ExtResource("10_gvm4v")
+
+[node name="Player2" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player2"]
+script = ExtResource("10_gvm4v")
+
+[node name="UI2" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI2"]
+script = ExtResource("10_gvm4v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_r44na")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("12_apr4l")
+VolumeKey = "VOLUME"
+BusName = "Master"
+
+[connection signal="Activated" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="show" unbinds=1]
+[connection signal="Released" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="hide" unbinds=1]
+[connection signal="Selected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="show" unbinds=1]
+[connection signal="UnSelected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="hide" unbinds=1]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Jump" to="Player" method="Jump"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Interact" to="Player/Camera3D/RayCast3D" method="Interact"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Movement" to="Player" method="Move"]
+[connection signal="onInvoke" from="Player/InputEventHandler/Player/Look" to="Player" method="Look"]
+[connection signal="onInvoke" from="Player/InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
+
+[editable path="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D"]

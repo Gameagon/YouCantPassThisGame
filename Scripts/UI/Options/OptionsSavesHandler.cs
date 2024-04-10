@@ -45,7 +45,6 @@ public partial class OptionsSavesHandler : Control
 
 	public Variant? GetValue(string key)
 	{
-        GD.Print("hola");
         return options.GetValue(key);
     }
 }
