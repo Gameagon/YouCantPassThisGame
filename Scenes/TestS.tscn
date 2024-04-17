@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://p4vo000sonpq"]
+[gd_scene load_steps=39 format=3 uid="uid://p4vo000sonpq"]
 
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_j4yx3"]
 [ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="2_8hhec"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="10_gvm4v"]
 [ext_resource type="AudioStream" uid="uid://c7vf1jklhesg7" path="res://Audio/Music/super random playlist to dance to).mp3" id="11_r44na"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/Components/AudioController.cs" id="12_apr4l"]
+[ext_resource type="AudioStream" uid="uid://clrdh4vqlwfbp" path="res://Audio/Sounds/mixkit-small-group-cheer-and-applause-518 (1).wav" id="13_um2r1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
 sky_top_color = Color(0, 0.682353, 0.952941, 1)
@@ -292,13 +293,22 @@ script = ExtResource("10_gvm4v")
 [node name="Pause" type="Node" parent="Player/InputEventHandler/UI2"]
 script = ExtResource("10_gvm4v")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_r44na")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"
 script = ExtResource("12_apr4l")
+BusName = "Music"
 VolumeKey = "VOLUME"
-BusName = "Master"
+
+[node name="Voices" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_um2r1")
+autoplay = true
+bus = &"VOCES"
+script = ExtResource("12_apr4l")
+BusName = "VOCES"
+VolumeKey = "VOICES"
 
 [connection signal="Activated" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="show" unbinds=1]
 [connection signal="Released" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="hide" unbinds=1]

@@ -1,31 +1,34 @@
 using Godot;
+using Godot.Collections;
+using InputSystem;
 using System;
 
 public partial class AudioController : AudioStreamPlayer
 {
     [Export]
-    private string VolumeKey;
+    public string BusName;
 
     [Export]
-    public string BusName;
+    public string VolumeKey;
 
     [Export]
     public int DefaultVolume;
 
-
     int AudioIndex;
+
     public override void _EnterTree()
     {
         base._EnterTree();
-
         AudioIndex = AudioServer.GetBusIndex(BusName);
         AudioServer.SetBusVolumeDb(AudioIndex, Mathf.LinearToDb(OptionsSavesHandler.Current.GetValue(VolumeKey)?.As<float>() ?? Mathf.DbToLinear(DefaultVolume)));
         OptionsSavesHandler.Current.onOptionsChanged += SetVolume;
     }
-    public void SetVolume(string key, Variant value) 
+    public void SetVolume(string key, Variant value)
     {
         if (key == VolumeKey)
+        {
+            GD.Print(AudioIndex);
             AudioServer.SetBusVolumeDb(AudioIndex, Mathf.LinearToDb(value.As<float>()));
-        GD.Print(Mathf.LinearToDb(value.As<float>()));
+        }
     }
 }

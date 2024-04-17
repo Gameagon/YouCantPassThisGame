@@ -48,7 +48,6 @@ namespace Options
         private void HandleValueChanged(double value)
         {
             spinBox?.SetValueNoSignal(value * multyplier);
-            GD.Print("Valor:" + value);
         }
 
         private void SetValue(double value)
