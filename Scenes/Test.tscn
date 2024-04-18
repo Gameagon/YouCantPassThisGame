@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bf44tejcvwkx8"]
+[gd_scene load_steps=38 format=3 uid="uid://bf44tejcvwkx8"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_bg54p"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="1_s0cw8"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="5_rqlgy"]
 [ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactors/RayInteractor3D.cs" id="5_xlhib"]
 [ext_resource type="Script" path="res://Scripts/Controllers/WalkingController.cs" id="6_irl46"]
+[ext_resource type="PackedScene" uid="uid://dtkd70mfd0u3" path="res://3D/Props/Museum/Beacon&Helmet/AstronautBeacon_v4.glb" id="11_vangk"]
+[ext_resource type="PackedScene" uid="uid://dj0tdyca74e5p" path="res://3D/Props/Museum/Beacon&Helmet/AstronautHelmet_v5.glb" id="12_rm30e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sw65n"]
 sky_top_color = Color(0, 0.682353, 0.952941, 1)
@@ -210,11 +212,12 @@ size = Vector2i(1080, 720)
 
 [node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("4_yk67s")]
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("camera")]
+[node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("6_irl46")
-camera = NodePath("Camera3D")
 Acceleration = 1.0
 RotationSensitivity = 0.5
+camera = Object(Camera3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"keep_aspect":1,"cull_mask":1048575,"environment":null,"attributes":null,"h_offset":0.0,"v_offset":0.0,"doppler_tracking":0,"projection":0,"current":false,"fov":75.0,"size":1.0,"frustum_offset":Vector2(0, 0),"near":0.05,"far":4000.0,"script":null)
+
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
@@ -291,14 +294,10 @@ script = ExtResource("3_hyyl2")
 [node name="Pause" type="Node" parent="Player/InputEventHandler/UI2"]
 script = ExtResource("3_hyyl2")
 
-[connection signal="Activated" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="show" unbinds=1]
-[connection signal="Released" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="hide" unbinds=1]
-[connection signal="Selected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="show" unbinds=1]
-[connection signal="UnSelected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="hide" unbinds=1]
-[connection signal="onInvoke" from="Player/InputEventHandler/Player/Jump" to="Player" method="Jump"]
-[connection signal="onInvoke" from="Player/InputEventHandler/Player/Interact" to="Player/Camera3D/RayCast3D" method="Interact"]
-[connection signal="onInvoke" from="Player/InputEventHandler/Player/Movement" to="Player" method="Move"]
-[connection signal="onInvoke" from="Player/InputEventHandler/Player/Look" to="Player" method="Look"]
-[connection signal="onInvoke" from="Player/InputEventHandler/UI/Pause" to="PauseMenu" method="Toggle"]
+[node name="AstronautBeacon_v4" parent="." instance=ExtResource("11_vangk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.828239, 0, -0.207677)
+
+[node name="AstronautHelmet_v5" parent="." instance=ExtResource("12_rm30e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.836637, 1.43071, 0.0156638)
 
 [editable path="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D"]
