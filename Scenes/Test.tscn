@@ -206,6 +206,7 @@ mesh = SubResource("QuadMesh_xiqlj")
 
 [node name="SubViewport" type="SubViewport" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2"]
 disable_3d = true
+scaling_3d_scale = 0.25
 size = Vector2i(1080, 720)
 
 [node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("4_yk67s")]

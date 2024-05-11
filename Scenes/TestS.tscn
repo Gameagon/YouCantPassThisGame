@@ -209,6 +209,7 @@ mesh = SubResource("QuadMesh_xiqlj")
 
 [node name="SubViewport" type="SubViewport" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2"]
 disable_3d = true
+scaling_3d_scale = 0.3
 size = Vector2i(1080, 720)
 
 [node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("5_3bn5p")]
@@ -291,6 +292,56 @@ script = ExtResource("10_gvm4v")
 [node name="UI2" type="Node" parent="Player/InputEventHandler"]
 
 [node name="Pause" type="Node" parent="Player/InputEventHandler/UI2"]
+script = ExtResource("10_gvm4v")
+
+[node name="Player4" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player4"]
+script = ExtResource("10_gvm4v")
+
+[node name="UI4" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI4"]
+script = ExtResource("10_gvm4v")
+
+[node name="Player7" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Jump" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="Interact" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="Crouch" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="Movement" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="Fly" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="Look" type="Node" parent="Player/InputEventHandler/Player7"]
+script = ExtResource("10_gvm4v")
+
+[node name="UI7" type="Node" parent="Player/InputEventHandler"]
+
+[node name="Pause" type="Node" parent="Player/InputEventHandler/UI7"]
 script = ExtResource("10_gvm4v")
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="."]

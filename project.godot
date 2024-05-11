@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [dotnet]
@@ -65,4 +67,5 @@ locale/translations=PackedStringArray("res://Translations/Translations.en.transl
 
 [rendering]
 
+scaling_3d/fsr_sharpness=0.2
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckmicpesj5sm5"]
+[gd_scene load_steps=8 format=3 uid="uid://ckmicpesj5sm5"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Options/OptionsSavesHandler.cs" id="1_ic75l"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/LanguageSelector.cs" id="1_jiw6j"]
 [ext_resource type="Texture2D" uid="uid://ccadnihteadrs" path="res://2D/Sprites/Back Arrow.png" id="2_2nxtg"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/Components/SliderController.cs" id="4_wes0x"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/ResolutionSelector.cs" id="5_8j1jd"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/WindowMode.cs" id="6_nxvgd"]
 
 [sub_resource type="SystemFont" id="SystemFont_4ihvp"]
 font_names = PackedStringArray("Impact")
@@ -70,14 +72,15 @@ scale = Vector2(1.04, 1.08)
 layout_mode = 2
 
 [node name="Sensivility" type="GridContainer" parent="TabContainer/Controls"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 32.0
-offset_right = -297.0
-offset_bottom = -450.0
+offset_left = 3.84615
+offset_top = 10.6667
+offset_right = -239.154
+offset_bottom = -237.333
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -236,4 +239,51 @@ step = 0.05
 visible = false
 layout_mode = 2
 
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Video"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.9615
+offset_top = 73.1481
+offset_right = 281.962
+offset_bottom = 104.148
+columns = 2
+
+[node name="Resolution" type="Label" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+item_count = 7
+selected = 1
+popup/item_0/text = "640x480"
+popup/item_0/id = 0
+popup/item_1/text = "960x540 "
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+popup/item_4/text = "3840x2160"
+popup/item_4/id = 4
+popup/item_5/text = "2560x1440"
+popup/item_5/id = 5
+popup/item_6/text = "7680x4320"
+popup/item_6/id = 6
+script = ExtResource("5_8j1jd")
+
+[node name="Label" type="Label" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+text = "FullScreen"
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+button_pressed = true
+script = ExtResource("6_nxvgd")
+VolumeKey = "Screen"
+SetScreen = 4
+
 [connection signal="button_up" from="Button" to="." method="hide"]
+[connection signal="pressed" from="TabContainer/Video/GridContainer/CheckBox" to="TabContainer/Video/GridContainer/CheckBox" method="Onclick"]
