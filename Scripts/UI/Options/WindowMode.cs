@@ -34,6 +34,7 @@ public partial class WindowMode : CheckBox
 		{
 			DisplayServer.WindowSetMode((DisplayServer.WindowMode)SetScreenOff,0);
 
+
 		}
 		OptionsSavesHandler.Current.SetValue(VolumeKey, this.ButtonPressed);
 		

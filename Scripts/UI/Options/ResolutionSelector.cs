@@ -27,8 +27,8 @@ public partial class ResolutionSelector : OptionButton
                 Select(i);
         }
         GD.Print(DisplayServer.WindowGetSize());
-        DisplayServer.WindowSetSize(res, 0);
-       // GetViewport().Scaling3DScale = 2.0f;
+        GetWindow().ContentScaleSize = res;
+        DisplayServer.WindowSetSize(res,0);
     }
     public string TransformtoStringRes(Vector2 resolution)
     {
