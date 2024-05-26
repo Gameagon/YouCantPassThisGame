@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class WindowMode : CheckBox
+public partial class CheckboxController : CheckBox
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]
@@ -11,12 +11,17 @@ public partial class WindowMode : CheckBox
 	public int SetScreen;
 	[Export]
 	public int SetScreenOff;
+
+    [Signal]
+    public delegate void OnOnEventHandler();
+
+	[Signal]
+    public delegate void OnOffEventHandler();
 	public override void _EnterTree()
 	{
 		base._EnterTree();
 		bool isOn = OptionsSavesHandler.Current.GetValue(VolumeKey)?.As<bool>() ?? true;
 		SetWindow(isOn);
-
 	}
 	
 	public void Onclick()
@@ -28,16 +33,13 @@ public partial class WindowMode : CheckBox
 		this.ButtonPressed = isOn;
 		if(isOn == true)
 		{
-			DisplayServer.WindowSetMode((DisplayServer.WindowMode)SetScreen,0);
+			EmitSignal(SignalName.OnOn);
 		}
 		else
 		{
-			DisplayServer.WindowSetMode((DisplayServer.WindowMode)SetScreenOff,0);
-
-
+			EmitSignal(SignalName.OnOff);
 		}
 		OptionsSavesHandler.Current.SetValue(VolumeKey, this.ButtonPressed);
-		
 	}
 }
 

@@ -26,7 +26,6 @@ public partial class ResolutionSelector : OptionButton
             if (currentLocale == GetItemText(i))
                 Select(i);
         }
-        GD.Print(DisplayServer.WindowGetSize());
         GetWindow().ContentScaleSize = res;
         DisplayServer.WindowSetSize(res,0);
     }
