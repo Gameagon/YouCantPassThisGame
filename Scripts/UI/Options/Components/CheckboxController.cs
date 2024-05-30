@@ -7,11 +7,6 @@ public partial class CheckboxController : CheckBox
 	[Export]
 	public string VolumeKey;
 
-	[Export]
-	public int SetScreen;
-	[Export]
-	public int SetScreenOff;
-
     [Signal]
     public delegate void OnOnEventHandler();
 
@@ -21,14 +16,14 @@ public partial class CheckboxController : CheckBox
 	{
 		base._EnterTree();
 		bool isOn = OptionsSavesHandler.Current.GetValue(VolumeKey)?.As<bool>() ?? true;
-		SetWindow(isOn);
+		SetFunction(isOn);
 	}
 	
 	public void Onclick()
 	{
-		SetWindow(this.ButtonPressed);
+		SetFunction(this.ButtonPressed);
 	}
-	private void SetWindow(bool isOn)
+	private void SetFunction(bool isOn)
 	{
 		this.ButtonPressed = isOn;
 		if(isOn == true)
