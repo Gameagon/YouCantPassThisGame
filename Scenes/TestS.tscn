@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://p4vo000sonpq"]
+[gd_scene load_steps=40 format=3 uid="uid://p4vo000sonpq"]
 
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_j4yx3"]
 [ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="2_8hhec"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/Brightness.cs" id="2_thfw2"]
 [ext_resource type="Material" uid="uid://c2rlcwx53fo57" path="res://Materials/PlaceHolders/Grass.material" id="3_oanlx"]
 [ext_resource type="Script" path="res://Scripts/InteractionSystem/Interactables/Interactable3D.cs" id="4_845f1"]
 [ext_resource type="PackedScene" uid="uid://dmf44ro0qc0ji" path="res://Scenes/2DTest.tscn" id="5_3bn5p"]
@@ -30,8 +31,10 @@ sky_material = SubResource("ProceduralSkyMaterial_sw65n")
 background_mode = 2
 sky = SubResource("Sky_ii4t5")
 ambient_light_source = 3
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+adjustment_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hvvax"]
 friction = 0.0
@@ -121,6 +124,8 @@ visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_be8nn")
+script = ExtResource("2_thfw2")
+sensivilityKey = "Brightness"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.352103, 0.935961, 0, -0.935961, 0.352103, 0, 20, 0)

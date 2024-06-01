@@ -104,6 +104,7 @@ key = "SENSIVILITY"
 defaultValue = 1.0
 spinBox = NodePath("SpinBox")
 slider = NodePath("HSlider")
+multyplier = 100.0
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/Controls/Sensivility/VBoxContainer"]
 layout_mode = 2
@@ -180,6 +181,7 @@ key = "VOLUME"
 defaultValue = 1.0
 spinBox = NodePath("SpinBox")
 slider = NodePath("HSlider")
+multyplier = 100.0
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/Sound/Volume/VBoxContainer"]
 layout_mode = 2
@@ -224,6 +226,7 @@ key = "VOICES"
 defaultValue = 1.0
 spinBox = NodePath("SpinBox")
 slider = NodePath("HSlider")
+multyplier = 100.0
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/Sound/Volume2/VBoxContainer"]
 layout_mode = 2
@@ -247,8 +250,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 25.9615
 offset_top = 73.1481
-offset_right = 281.962
-offset_bottom = 104.148
+offset_right = 331.961
+offset_bottom = 171.148
 columns = 2
 
 [node name="Resolution" type="Label" parent="TabContainer/Video/GridContainer"]
@@ -304,6 +307,51 @@ VolumeKey = "OclussionCulling"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/GridContainer"]
 layout_mode = 2
+
+[node name="Volume2" type="GridContainer" parent="TabContainer/Video"]
+layout_mode = 2
+offset_left = 11.5382
+offset_top = 169.444
+offset_right = 1711.54
+offset_bottom = 220.444
+grow_horizontal = 2
+theme_override_constants/h_separation = 10
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video/Volume2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 40
+
+[node name="Label" type="Label" parent="TabContainer/Video/Volume2/MarginContainer"]
+layout_mode = 2
+text = "Brightness
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/Volume2" node_paths=PackedStringArray("spinBox", "slider")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 15.85
+script = ExtResource("4_wes0x")
+key = "Brightness"
+defaultValue = 1.0
+spinBox = NodePath("SpinBox")
+slider = NodePath("HSlider")
+multyplier = 100.0
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/Video/Volume2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 0.0
+allow_greater = true
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Video/Volume2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 1.4
+step = 0.01
+value = 1.0
 
 [connection signal="button_up" from="Button" to="." method="hide"]
 [connection signal="OnOff" from="TabContainer/Video/GridContainer/OcclussionCullingCheck" to="TabContainer/Video/GridContainer/OclussionCulling" method="OclussionCullingOff"]

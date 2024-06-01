@@ -19,7 +19,7 @@ namespace Options
         public Slider slider;
 
         [Export]
-        public float multyplier = 100;
+        public float multyplier;
 
         public override void _EnterTree()
         {
@@ -43,6 +43,7 @@ namespace Options
         {
             if (valueChanged)
                 OptionsSavesHandler.Current.SetValue(key, slider.Value);
+
         }
 
         private void HandleValueChanged(double value)
@@ -54,6 +55,7 @@ namespace Options
         {
 
             slider.Value = value / multyplier;
+            GD.Print(value);
             OptionsSavesHandler.Current.SetValue(key, slider.Value);
 
 
