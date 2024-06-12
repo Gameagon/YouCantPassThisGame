@@ -99,6 +99,7 @@ viewport_path = NodePath("World/InteractableTV/CollisionShape3D/MeshInstance3D2/
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wy2b"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_63nls")
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_xiqlj"]
 resource_local_to_scene = true
@@ -191,7 +192,7 @@ shape = SubResource("BoxShape3D_6hulc")
 mesh = SubResource("BoxMesh_j0fuq")
 
 [node name="InteractableTV" type="Area3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_4frck")
@@ -208,7 +209,7 @@ mesh = SubResource("QuadMesh_xiqlj")
 
 [node name="SubViewport" type="SubViewport" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2"]
 disable_3d = true
-size = Vector2i(1080, 720)
+size = Vector2i(576, 432)
 
 [node name="Node2D" parent="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport" instance=ExtResource("4_yk67s")]
 
@@ -216,8 +217,6 @@ size = Vector2i(1080, 720)
 script = ExtResource("6_irl46")
 Acceleration = 1.0
 RotationSensitivity = 0.5
-camera = Object(Camera3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"keep_aspect":1,"cull_mask":1048575,"environment":null,"attributes":null,"h_offset":0.0,"v_offset":0.0,"doppler_tracking":0,"projection":0,"current":false,"fov":75.0,"size":1.0,"frustum_offset":Vector2(0, 0),"near":0.05,"far":4000.0,"script":null)
-
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
@@ -299,5 +298,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.828239, 0, -0.207677)
 
 [node name="AstronautHelmet_v5" parent="." instance=ExtResource("12_rm30e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.836637, 1.43071, 0.0156638)
+
+[node name="Machine_v2_ArcadeMachine_001_MeshInstance3D2#SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(576, 432)
+
+[node name="Machine_v2_ArcadeMachine_001_MeshInstance3D2_SubViewport#Node2D" parent="." instance=ExtResource("4_yk67s")]
 
 [editable path="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D"]

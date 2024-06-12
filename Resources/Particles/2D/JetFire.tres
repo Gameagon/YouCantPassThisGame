@@ -1,0 +1,27 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://73x5tyb7hpoj"]
+
+[sub_resource type="Gradient" id="Gradient_5g47r"]
+offsets = PackedFloat32Array(0.00208768, 0.417537, 1)
+colors = PackedColorArray(0.490196, 1, 1, 0.568627, 0, 0.392157, 1, 0.392157, 1, 0, 0, 0.392157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v515b"]
+gradient = SubResource("Gradient_5g47r")
+
+[sub_resource type="Curve" id="Curve_svqam"]
+_data = [Vector2(0, 0), 0.0, 7.66021, 0, 0, Vector2(0.295858, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.54833, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i66v2"]
+curve = SubResource("Curve_svqam")
+
+[resource]
+resource_name = "FireySmoke"
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+spread = 3.0
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+scale_min = 0.7
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_i66v2")
+color_ramp = SubResource("GradientTexture1D_v515b")
