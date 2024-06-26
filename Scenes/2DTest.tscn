@@ -511,21 +511,6 @@ texture = ExtResource("7_fa8y8")
 position = Vector2(190, -143)
 texture = ExtResource("8_mcb8j")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -303.0
-offset_top = 33.0
-offset_right = -110.0
-offset_bottom = 56.0
-text = "Hola usuario, bienvenido"
-
-[node name="Activated" type="Label" parent="."]
-offset_left = -303.0
-offset_top = 58.0
-offset_right = -112.0
-offset_bottom = 81.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "AAAAAAAAAAAAAAAAAA"
-
 [node name="Corn" type="CharacterBody2D" parent="."]
 position = Vector2(333, 92)
 
@@ -605,7 +590,6 @@ position = Vector2(-1, -2)
 texture = ExtResource("6_qbw01")
 
 [node name="PopCorn" type="CharacterBody2D" parent="."]
-visible = false
 position = Vector2(329, 167)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PopCorn"]
@@ -624,7 +608,6 @@ position = Vector2(5, 4)
 texture = ExtResource("6_qbw01")
 
 [node name="Monstergurt" type="CharacterBody2D" parent="."]
-visible = false
 position = Vector2(439, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monstergurt"]
@@ -662,7 +645,6 @@ position = Vector2(19, 24)
 texture = ExtResource("10_g4q0r")
 
 [node name="Pea" type="RigidBody2D" parent="."]
-visible = false
 position = Vector2(39, 371)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pea"]
@@ -672,7 +654,6 @@ shape = SubResource("CircleShape2D_vktoj")
 texture = ExtResource("14_psqa4")
 
 [node name="Ballon" type="CharacterBody2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(249, 51)
 
@@ -685,7 +666,6 @@ debug_color = Color(1, 0, 0, 0.419608)
 texture = ExtResource("15_y208a")
 
 [node name="Granade" type="CharacterBody2D" parent="."]
-visible = false
 position = Vector2(249, 95)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Granade"]

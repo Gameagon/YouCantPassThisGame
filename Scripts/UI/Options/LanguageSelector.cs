@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Net.Security;
 
 [GlobalClass, Tool]
 public partial class LanguageSelector : OptionButton
@@ -14,13 +12,18 @@ public partial class LanguageSelector : OptionButton
         CreateOptions();
     }
 
+    public override void _ExitTree()
+    {
+        ItemSelected -= OnItemSelected;
+    }
+
 	public void CreateOptions()
 	{
         string[] locales = TranslationServer.GetLoadedLocales();
 
         string currentLocale;
 
-        currentLocale = OptionsSavesHandler.Current.GetValue(key)?.ToString() ?? OS.GetLocale();
+        currentLocale = OptionsSavesHandler.Current?.GetValue(key)?.ToString() ?? OS.GetLocale();
 
         TranslationServer.SetLocale(currentLocale);
 
