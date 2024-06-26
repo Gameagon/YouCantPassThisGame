@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
+Panku="*res://addons/panku_console/console.tscn"
 
 [display]
 
@@ -31,7 +32,7 @@ project/assembly_name="YouCantFinishThisGame"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SKInputSystem/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/SKInputSystem/plugin.cfg", "res://addons/cyclops_level_builder/plugin.cfg", "res://addons/editor_icon_previewer/plugin.cfg", "res://addons/panku_console/plugin.cfg")
 
 [file_customization]
 
