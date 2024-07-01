@@ -1,22 +1,725 @@
-[gd_scene format=3 uid="uid://dmf44ro0qc0ji"]
+[gd_scene load_steps=52 format=3 uid="uid://dmf44ro0qc0ji"]
+
+[ext_resource type="Texture2D" uid="uid://cjhxm8feua7uo" path="res://2D/Atlas/TheLastOfFoods/FridgeBack.png" id="1_al0uw"]
+[ext_resource type="Texture2D" uid="uid://b3ld8b6l6onnd" path="res://2D/Atlas/TheLastOfFoods/FridgeGrill.png" id="1_hqlda"]
+[ext_resource type="Texture2D" uid="uid://bkt224gl01hun" path="res://2D/Atlas/TheLastOfFoods/IcePike.png" id="2_2s0h6"]
+[ext_resource type="Texture2D" uid="uid://cx0e7k17vpooc" path="res://2D/Atlas/TheLastOfFoods/RightLeaf.png" id="2_pl3l3"]
+[ext_resource type="Texture2D" uid="uid://bamqw60t1uoll" path="res://2D/Atlas/TheLastOfFoods/LeftLeaf.png" id="3_nifb4"]
+[ext_resource type="Texture2D" uid="uid://blamw5mwc0n3p" path="res://2D/Atlas/TheLastOfFoods/Corn.png" id="4_xsdh0"]
+[ext_resource type="Texture2D" uid="uid://cef1founf6blv" path="res://2D/Atlas/TheLastOfFoods/IceBlockCorn.png" id="5_e041e"]
+[ext_resource type="Texture2D" uid="uid://b32f8h7d11top" path="res://2D/Atlas/TheLastOfFoods/RightEye.png" id="5_gbojx"]
+[ext_resource type="Texture2D" uid="uid://bede8aoewrlju" path="res://2D/Atlas/TheLastOfFoods/Granade.png" id="5_k2c1q"]
+[ext_resource type="Texture2D" uid="uid://3vd5am3gwvgj" path="res://2D/Atlas/TheLastOfFoods/AviatorGoogles.png" id="6_f4xao"]
+[ext_resource type="Texture2D" uid="uid://deiu881jpv6kh" path="res://2D/Atlas/TheLastOfFoods/LeftEye.png" id="6_qbw01"]
+[ext_resource type="Texture2D" uid="uid://dslriqe2jmwjt" path="res://2D/Atlas/TheLastOfFoods/IceBlockGranade.png" id="7_fa8y8"]
+[ext_resource type="Texture2D" uid="uid://w5ohekoa0jo3" path="res://2D/Atlas/TheLastOfFoods/Carrot.png" id="7_gvff2"]
+[ext_resource type="Texture2D" uid="uid://bfkr7fr042iev" path="res://2D/Atlas/TheLastOfFoods/IceBlockEye.png" id="8_mcb8j"]
+[ext_resource type="Texture2D" uid="uid://bkeob61orhoum" path="res://2D/Atlas/TheLastOfFoods/IceBlock.png" id="9_64qrj"]
+[ext_resource type="Texture2D" uid="uid://dudt7vadei5u" path="res://2D/Atlas/TheLastOfFoods/IceBlockRot.png" id="10_4m3wp"]
+[ext_resource type="Texture2D" uid="uid://bjrqra6dlab26" path="res://2D/Atlas/TheLastOfFoods/Pops.png" id="10_b83aj"]
+[ext_resource type="Texture2D" uid="uid://bxmu13xnqydxe" path="res://2D/Atlas/TheLastOfFoods/MonsterFoot.png" id="10_g4q0r"]
+[ext_resource type="Texture2D" uid="uid://cn0458fixuf3u" path="res://2D/Atlas/TheLastOfFoods/Monstergurt.png" id="11_j1or8"]
+[ext_resource type="Texture2D" uid="uid://bii4xx43hp51w" path="res://2D/Atlas/TheLastOfFoods/LeftMonsterEye.png" id="12_o47g5"]
+[ext_resource type="Texture2D" uid="uid://bdyswh7xifq6u" path="res://2D/Atlas/TheLastOfFoods/RightMonsterEye.png" id="13_bnhld"]
+[ext_resource type="Texture2D" uid="uid://rdg5eyxf7psu" path="res://2D/Atlas/TheLastOfFoods/Pea.png" id="14_psqa4"]
+[ext_resource type="Texture2D" uid="uid://drse1ghh670hk" path="res://2D/Atlas/TheLastOfFoods/Balloon.png" id="15_y208a"]
+[ext_resource type="Texture2D" uid="uid://b65kuvy2y7gu7" path="res://2D/Atlas/TheLastOfFoods/Spoon.png" id="16_ro4fc"]
+[ext_resource type="Texture2D" uid="uid://cffbuhidxjn3l" path="res://2D/Atlas/TheLastOfFoods/SpoonCupShadow.png" id="17_2hwrp"]
+[ext_resource type="Texture2D" uid="uid://1hqsg0680mn5" path="res://2D/Atlas/TheLastOfFoods/CatapultBase.png" id="18_copi6"]
+[ext_resource type="Texture2D" uid="uid://dyod80eqh11p6" path="res://2D/Atlas/TheLastOfFoods/CatapultTrigger.png" id="19_0p561"]
+[ext_resource type="Material" uid="uid://c8vk1qkdyddii" path="res://Resources/Particles/2D/FireySmoke.tres" id="20_dwvqd"]
+[ext_resource type="Texture2D" uid="uid://yfnj2auxotp2" path="res://2D/Atlas/TheLastOfFoods/Particle.png" id="20_wj5t0"]
+[ext_resource type="Material" uid="uid://73x5tyb7hpoj" path="res://Resources/Particles/2D/JetFire.tres" id="22_e6hrg"]
+[ext_resource type="Texture2D" uid="uid://du6dbu4ryawjh" path="res://2D/Atlas/TheLastOfFoods/IceSlide.png" id="23_cdh8a"]
+[ext_resource type="Texture2D" uid="uid://udviobv3dgbd" path="res://2D/Atlas/TheLastOfFoods/IceSlideBack.png" id="23_xgukg"]
+[ext_resource type="Texture2D" uid="uid://6fec0burnpig" path="res://2D/Atlas/TheLastOfFoods/IceBlockMushroom.png" id="27_v7wau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fa8vl"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_i7yi0"]
+resource_name = "FlyingCorn"
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftLeaf:rotation")
+tracks/0/interp = 3
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523598, 0.0, 0.523598]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLeaf2:rotation")
+tracks/1/interp = 3
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.57079, 0.785397, 1.57079, 0.785397]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightLeaf:rotation")
+tracks/2/interp = 3
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523598, 0.0, -0.523598]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightLeaf2:rotation")
+tracks/3/interp = 3
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.57079, -0.785397, -1.57079, -0.785397]
+}
+
+[sub_resource type="Animation" id="Animation_w8wt2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftLeaf:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftLeaf2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785397]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightLeaf:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightLeaf2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.785397]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1llm6"]
+_data = {
+"FlyingCorn": SubResource("Animation_i7yi0"),
+"RESET": SubResource("Animation_w8wt2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0shaa"]
+size = Vector2(32, 14)
+
+[sub_resource type="Animation" id="Animation_kqchq"]
+resource_name = "FlyingCarrot"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -2), Vector2(-1, 0), Vector2(-1, -2), Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftEye2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -4), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_oukpa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftEye2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_diukd"]
+_data = {
+"FlyingCarrot": SubResource("Animation_kqchq"),
+"RESET": SubResource("Animation_oukpa")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0aacl"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qunah"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w54b"]
+size = Vector2(54, 59)
+
+[sub_resource type="Animation" id="Animation_tydst"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterFoot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonsterFoot2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MonsterFoot3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_86la3"]
+resource_name = "WalkingMonstergurt"
+length = 4.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterFoot:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-15, 24), Vector2(-7, 24), Vector2(-11, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonsterFoot2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(23, 24), Vector2(19, 20), Vector2(15, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MonsterFoot3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, 20), Vector2(-20, 16), Vector2(-24, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bydw8"]
+_data = {
+"RESET": SubResource("Animation_tydst"),
+"WalkingMonstergurt": SubResource("Animation_86la3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vktoj"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nd58"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8koh5"]
+size = Vector2(32, 25)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o4as5"]
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
+texture_repeat = 1
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_left = 156.0
-offset_top = 70.0
-offset_right = 349.0
-offset_bottom = 93.0
-scale = Vector2(4, 4)
-text = "Hola usuario, bienvenido"
+[node name="Map" type="Node2D" parent="."]
+z_index = -100
+position = Vector2(288, 216)
 
-[node name="Activated" type="Label" parent="."]
-visible = false
-offset_left = 160.0
-offset_top = 340.0
-offset_right = 353.0
-offset_bottom = 363.0
-scale = Vector2(4, 4)
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "AAAAAAAAAAAAAAAAAA"
+[node name="ColorRect" type="ColorRect" parent="Map"]
+z_index = -100
+custom_minimum_size = Vector2(576, 432)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -216.0
+offset_right = 288.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.396078, 0.45098, 0.572549, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Map/ColorRect"]
+custom_minimum_size = Vector2(420, 268)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -176.0
+offset_right = 210.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_al0uw")
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="IcePike4" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(110, 117)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike3" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(401, 64)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike5" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(422, 37)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike6" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(382, 1)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike7" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(232, 9)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike8" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(306, 54)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(94, 72.75)
+scale = Vector2(1.875, 1.14453)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike9" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(582, 85)
+scale = Vector2(2.30469, 1.39941)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike10" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(-1, 68)
+scale = Vector2(2.30469, 1.39941)
+texture = ExtResource("2_2s0h6")
+
+[node name="IcePike2" type="Sprite2D" parent="Map/ColorRect"]
+position = Vector2(136, 52)
+texture = ExtResource("2_2s0h6")
+
+[node name="IceSlide" type="Sprite2D" parent="Map"]
+z_index = 50
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, 201)
+texture = ExtResource("23_cdh8a")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 32)
+
+[node name="IceSlideBG" type="Sprite2D" parent="Map/IceSlide"]
+z_index = -50
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, -14)
+texture = ExtResource("23_xgukg")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 32)
+
+[node name="FridgeGrill" type="Sprite2D" parent="Map/IceSlide"]
+z_index = -10
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, -45)
+texture = ExtResource("1_hqlda")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 80)
+
+[node name="Node2D" type="Node2D" parent="Map/IceSlide/FridgeGrill"]
+
+[node name="IceBlockCorn4" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D"]
+position = Vector2(5, -45)
+texture = ExtResource("5_e041e")
+
+[node name="IceBlockCorn" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D"]
+position = Vector2(26, -39)
+texture = ExtResource("5_e041e")
+
+[node name="IceBlockMushroom" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D"]
+position = Vector2(-44, -38)
+texture = ExtResource("27_v7wau")
+
+[node name="IceBlockGranade" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D"]
+position = Vector2(-2, -35)
+texture = ExtResource("7_fa8y8")
+
+[node name="IceBlockEye" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D"]
+position = Vector2(-6, -89)
+texture = ExtResource("8_mcb8j")
+
+[node name="IceBlockMushroom2" type="Sprite2D" parent="Map/IceSlide/FridgeGrill"]
+position = Vector2(-197, -42)
+texture = ExtResource("27_v7wau")
+
+[node name="Node2D2" type="Node2D" parent="Map/IceSlide/FridgeGrill"]
+position = Vector2(0, 3)
+
+[node name="IceBlock3" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(172, -40)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlock10" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(138, -46)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlockRot" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(101, -46)
+texture = ExtResource("10_4m3wp")
+
+[node name="IceBlock6" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(231, -40)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlock4" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(202, -35)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlock5" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(235, -30)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlock" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(143, -36)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlock9" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(165, -94)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlockCorn2" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(175, -30)
+texture = ExtResource("5_e041e")
+
+[node name="IceBlock8" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(208, -91)
+texture = ExtResource("9_64qrj")
+
+[node name="IceBlockGranade2" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(181, -86)
+texture = ExtResource("7_fa8y8")
+
+[node name="IceBlockEye2" type="Sprite2D" parent="Map/IceSlide/FridgeGrill/Node2D2"]
+position = Vector2(190, -143)
+texture = ExtResource("8_mcb8j")
+
+[node name="Corn" type="CharacterBody2D" parent="."]
+position = Vector2(333, 92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corn"]
+shape = SubResource("RectangleShape2D_fa8vl")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Corn"]
+libraries = {
+"": SubResource("AnimationLibrary_1llm6")
+}
+autoplay = "FlyingCorn"
+movie_quit_on_finish = true
+
+[node name="RightLeaf2" type="Sprite2D" parent="Corn"]
+position = Vector2(-5, -9)
+rotation = -0.785397
+texture = ExtResource("2_pl3l3")
+offset = Vector2(-6, -6)
+
+[node name="RightLeaf" type="Sprite2D" parent="Corn"]
+position = Vector2(-5, -10)
+texture = ExtResource("2_pl3l3")
+offset = Vector2(-6, -6)
+
+[node name="LeftLeaf2" type="Sprite2D" parent="Corn"]
+position = Vector2(5, -9)
+rotation = 0.785397
+texture = ExtResource("3_nifb4")
+offset = Vector2(6, -6)
+
+[node name="LeftLeaf" type="Sprite2D" parent="Corn"]
+position = Vector2(5, -10)
+texture = ExtResource("3_nifb4")
+offset = Vector2(6, -6)
+
+[node name="Corn" type="Sprite2D" parent="Corn"]
+texture = ExtResource("4_xsdh0")
+
+[node name="RightEye" type="Sprite2D" parent="Corn/Corn"]
+position = Vector2(-4, 0)
+texture = ExtResource("5_gbojx")
+
+[node name="LeftEye" type="Sprite2D" parent="Corn/Corn"]
+position = Vector2(4, 0)
+texture = ExtResource("6_qbw01")
+
+[node name="Carrot" type="CharacterBody2D" parent="."]
+position = Vector2(212, 143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot"]
+shape = SubResource("RectangleShape2D_0shaa")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Carrot"]
+libraries = {
+"": SubResource("AnimationLibrary_diukd")
+}
+autoplay = "FlyingCarrot"
+
+[node name="JetFire" type="GPUParticles2D" parent="Carrot"]
+material = SubResource("CanvasItemMaterial_0aacl")
+position = Vector2(11, 0)
+amount = 30
+process_material = ExtResource("22_e6hrg")
+texture = ExtResource("20_wj5t0")
+
+[node name="LeftEye2" type="Sprite2D" parent="Carrot"]
+position = Vector2(0, -2)
+texture = ExtResource("6_qbw01")
+
+[node name="Carrot" type="Sprite2D" parent="Carrot"]
+texture = ExtResource("7_gvff2")
+
+[node name="LeftEye" type="Sprite2D" parent="Carrot"]
+position = Vector2(-1, -2)
+texture = ExtResource("6_qbw01")
+
+[node name="PopCorn" type="CharacterBody2D" parent="."]
+position = Vector2(329, 167)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PopCorn"]
+shape = SubResource("RectangleShape2D_qunah")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Pops" type="Sprite2D" parent="PopCorn"]
+texture = ExtResource("10_b83aj")
+
+[node name="RightEye" type="Sprite2D" parent="PopCorn/Pops"]
+position = Vector2(-4, -6)
+texture = ExtResource("5_gbojx")
+
+[node name="LeftEye" type="Sprite2D" parent="PopCorn/Pops"]
+position = Vector2(5, 4)
+texture = ExtResource("6_qbw01")
+
+[node name="Monstergurt" type="CharacterBody2D" parent="."]
+position = Vector2(439, 355)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monstergurt"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_2w54b")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Monstergurt"]
+libraries = {
+"": SubResource("AnimationLibrary_bydw8")
+}
+autoplay = "WalkingMonstergurt"
+
+[node name="MonsterFoot3" type="Sprite2D" parent="Monstergurt"]
+position = Vector2(-20, 24)
+texture = ExtResource("10_g4q0r")
+
+[node name="Monstergurt" type="Sprite2D" parent="Monstergurt"]
+texture = ExtResource("11_j1or8")
+
+[node name="LeftMonsterEye" type="Sprite2D" parent="Monstergurt/Monstergurt"]
+position = Vector2(-17, -30)
+texture = ExtResource("12_o47g5")
+
+[node name="RightMonsterEye" type="Sprite2D" parent="Monstergurt/Monstergurt"]
+position = Vector2(-26, -34)
+texture = ExtResource("13_bnhld")
+
+[node name="MonsterFoot" type="Sprite2D" parent="Monstergurt"]
+position = Vector2(-11, 24)
+texture = ExtResource("10_g4q0r")
+
+[node name="MonsterFoot2" type="Sprite2D" parent="Monstergurt"]
+position = Vector2(19, 24)
+texture = ExtResource("10_g4q0r")
+
+[node name="Pea" type="RigidBody2D" parent="."]
+position = Vector2(39, 371)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pea"]
+shape = SubResource("CircleShape2D_vktoj")
+
+[node name="Pea" type="Sprite2D" parent="Pea"]
+texture = ExtResource("14_psqa4")
+
+[node name="Ballon" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(249, 51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ballon"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_6nd58")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Balloon" type="Sprite2D" parent="Ballon"]
+texture = ExtResource("15_y208a")
+
+[node name="Granade" type="CharacterBody2D" parent="."]
+position = Vector2(249, 95)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Granade"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_8koh5")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Fire" type="GPUParticles2D" parent="Granade"]
+material = SubResource("CanvasItemMaterial_o4as5")
+position = Vector2(0, -13)
+amount = 30
+process_material = ExtResource("20_dwvqd")
+texture = ExtResource("20_wj5t0")
+
+[node name="Granade" type="Sprite2D" parent="Granade"]
+texture = ExtResource("5_k2c1q")
+
+[node name="RightEye" type="Sprite2D" parent="Granade/Granade"]
+position = Vector2(-6, 2)
+texture = ExtResource("5_gbojx")
+
+[node name="LeftEye" type="Sprite2D" parent="Granade/Granade"]
+position = Vector2(6, 2)
+texture = ExtResource("6_qbw01")
+
+[node name="AviatorGoogles" type="Sprite2D" parent="Granade/Granade"]
+texture = ExtResource("6_f4xao")
+
+[node name="Spoontapult" type="Node2D" parent="."]
+position = Vector2(75, 362)
+
+[node name="CatapultBase2" type="Sprite2D" parent="Spoontapult"]
+z_index = -10
+position = Vector2(20, 5)
+texture = ExtResource("18_copi6")
+
+[node name="Spoon" type="Sprite2D" parent="Spoontapult"]
+z_index = -1
+position = Vector2(30, 15)
+texture = ExtResource("16_ro4fc")
+offset = Vector2(-34, -14)
+
+[node name="SpoonCupShadow" type="Sprite2D" parent="Spoontapult/Spoon"]
+z_index = 1
+position = Vector2(-66, -14)
+texture = ExtResource("17_2hwrp")
+
+[node name="CatapultBase" type="Sprite2D" parent="Spoontapult"]
+z_index = 1
+position = Vector2(26, 8)
+texture = ExtResource("18_copi6")
+
+[node name="CatapultTrigger" type="Sprite2D" parent="Spoontapult/CatapultBase"]
+z_index = -3
+position = Vector2(4, 7)
+texture = ExtResource("19_0p561")
+offset = Vector2(11, -11)

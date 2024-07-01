@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://k6m7a22pajvr"]
+
+[ext_resource type="PackedScene" uid="uid://cp1v4kr4ycr2j" path="res://3D/Props/Museum/ArcadeMachine/ArcadeMachine/Machine.v2.glb" id="1_c6ao7"]
+[ext_resource type="PackedScene" uid="uid://dmf44ro0qc0ji" path="res://Scenes/2DTest.tscn" id="6_hwkcd"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jntgl"]
+viewport_path = NodePath("ArcadeMachine_001/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ton2"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jntgl")
+texture_filter = 0
+
+[node name="Machine_v2" instance=ExtResource("1_c6ao7")]
+
+[node name="ArcadeMachine_001" parent="." index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_2ton2")
+
+[node name="SubViewport" type="SubViewport" parent="ArcadeMachine_001" index="0"]
+disable_3d = true
+size = Vector2i(576, 432)
+
+[node name="Node2D" parent="ArcadeMachine_001/SubViewport" index="0" instance=ExtResource("6_hwkcd")]
+
+[editable path="ArcadeMachine_001/SubViewport/Node2D"]
