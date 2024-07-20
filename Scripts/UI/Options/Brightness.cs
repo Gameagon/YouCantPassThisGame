@@ -8,12 +8,12 @@ public partial class Brightness : WorldEnvironment
 	[Export]
 	private string sensivilityKey; 
 	public override void _EnterTree()
-    {
-        base._EnterTree();
+	{
+		base._EnterTree();
 
-        Environment.AdjustmentBrightness = OptionsSavesHandler.Current.GetValue(sensivilityKey)?.As<float>() ?? 1;
-        OptionsSavesHandler.Current.onOptionsChanged += OnChangeBreightness;
-    }
+		Environment.AdjustmentBrightness = OptionsSavesHandler.Current.GetValue(sensivilityKey)?.As<float>() ?? 1;
+		OptionsSavesHandler.Current.onOptionsChanged += OnChangeBreightness;
+	}
 	public void OnChangeBreightness(string key, Variant value)
 	{
 		GD.Print(value);

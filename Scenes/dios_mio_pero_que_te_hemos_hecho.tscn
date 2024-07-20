@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7nrlg0hkicps"]
+[gd_scene load_steps=18 format=3 uid="uid://dnv8c28rd53x5"]
 
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_e2mwo"]
 [ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/Vector2InputAction.cs" id="2_kayhh"]

@@ -4,22 +4,22 @@ using System;
 
 public partial class OptionsSave : Resource
 {
-    [Export]
-    public Dictionary<string, Variant> Options = new Dictionary<string, Variant>();
+	[Export]
+	public Dictionary<string, Variant> Options = new Dictionary<string, Variant>();
 
-    public void SetValue(string key, Variant value)
-    {
-        if(Options.ContainsKey(key))
-            Options[key] = value;
-        else
-            Options.Add(key, value);
-    }
+	public void SetValue(string key, Variant value)
+	{
+		if(Options.ContainsKey(key))
+			Options[key] = value;
+		else
+			Options.Add(key, value);
+	}
 
-    public Variant? GetValue(string key)
-    {
-        if(Options.ContainsKey(key))
-            return Options[key];
-        else
-            return null;
-    }
+	public Variant? GetValue(string key)
+	{
+		if(Options.ContainsKey(key))
+			return Options[key];
+		else
+			return null;
+	}
 }

@@ -35,19 +35,13 @@ namespace Options
             }
 
             slider.ValueChanged += HandleValueChanged;
-
-            slider.DragEnded += HandleDragEnded;
         }
 
-        private void HandleDragEnded(bool valueChanged)
-        {
-            if (valueChanged)
-                OptionsSavesHandler.Current.SetValue(key, slider.Value);
 
-        }
 
         private void HandleValueChanged(double value)
         {
+            OptionsSavesHandler.Current.SetValue(key, slider.Value);
             spinBox?.SetValueNoSignal(value * multyplier);
         }
 

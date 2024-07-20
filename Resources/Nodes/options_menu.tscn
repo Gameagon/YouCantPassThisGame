@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckmicpesj5sm5"]
+[gd_scene load_steps=11 format=3 uid="uid://ckmicpesj5sm5"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Options/OptionsSavesHandler.cs" id="1_ic75l"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/LanguageSelector.cs" id="1_jiw6j"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Options/SetWindows.cs" id="6_w8koo"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/OclussionCulling.cs" id="7_24uu5"]
 [ext_resource type="Script" path="res://Scripts/UI/Options/Components/CheckboxController.cs" id="8_xgwao"]
+[ext_resource type="Script" path="res://Scripts/UI/Options/SoftShadows.cs" id="9_s4u8j"]
 
 [sub_resource type="SystemFont" id="SystemFont_4ihvp"]
 font_names = PackedStringArray("Impact")
@@ -278,11 +279,11 @@ popup/item_6/text = "7680x4320"
 popup/item_6/id = 6
 script = ExtResource("5_8j1jd")
 
-[node name="Resolution2" type="Label" parent="TabContainer/Video/GridContainer"]
+[node name="WindowsMode" type="Label" parent="TabContainer/Video/GridContainer"]
 layout_mode = 2
 text = "Windows mode"
 
-[node name="ResolutionSelection2" type="OptionButton" parent="TabContainer/Video/GridContainer"]
+[node name="Windowsmodeselector" type="OptionButton" parent="TabContainer/Video/GridContainer"]
 layout_mode = 2
 item_count = 3
 selected = 1
@@ -305,30 +306,69 @@ layout_mode = 2
 script = ExtResource("8_xgwao")
 VolumeKey = "OclussionCulling"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/GridContainer"]
+[node name="Shadowsquality" type="Label" parent="TabContainer/Video/GridContainer"]
 layout_mode = 2
+text = "Soft Shadows
+"
 
-[node name="Volume2" type="GridContainer" parent="TabContainer/Video"]
+[node name="Shadowqualityselector" type="OptionButton" parent="TabContainer/Video/GridContainer"]
 layout_mode = 2
-offset_left = 11.5382
-offset_top = 169.444
-offset_right = 1711.54
-offset_bottom = 220.444
+item_count = 4
+selected = 1
+popup/item_0/text = "Low"
+popup/item_0/id = 3
+popup/item_1/text = "Middle"
+popup/item_1/id = 4
+popup/item_2/text = "Hight"
+popup/item_2/id = 2
+popup/item_3/text = "Ultra"
+popup/item_3/id = 5
+script = ExtResource("9_s4u8j")
+
+[node name="ResolutionsShadows" type="Label" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+text = "Shadow Resolution "
+
+[node name="ResolutionShadowsSelection2" type="OptionButton" parent="TabContainer/Video/GridContainer"]
+layout_mode = 2
+item_count = 7
+selected = 1
+popup/item_0/text = "640x480"
+popup/item_0/id = 0
+popup/item_1/text = "960x540 "
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "1920x1080"
+popup/item_3/id = 3
+popup/item_4/text = "3840x2160"
+popup/item_4/id = 4
+popup/item_5/text = "2560x1440"
+popup/item_5/id = 5
+popup/item_6/text = "7680x4320"
+popup/item_6/id = 6
+
+[node name="Brightness" type="GridContainer" parent="TabContainer/Video"]
+layout_mode = 2
+offset_left = 11.5385
+offset_top = 245.37
+offset_right = 1696.54
+offset_bottom = 296.37
 grow_horizontal = 2
 theme_override_constants/h_separation = 10
 columns = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video/Volume2"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video/Brightness"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 40
 
-[node name="Label" type="Label" parent="TabContainer/Video/Volume2/MarginContainer"]
+[node name="BrightnessLabel" type="Label" parent="TabContainer/Video/Brightness/MarginContainer"]
 layout_mode = 2
 text = "Brightness
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/Volume2" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/Brightness" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 15.85
@@ -339,13 +379,13 @@ spinBox = NodePath("SpinBox")
 slider = NodePath("HSlider")
 multyplier = 100.0
 
-[node name="SpinBox" type="SpinBox" parent="TabContainer/Video/Volume2/VBoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="TabContainer/Video/Brightness/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="HSlider" type="HSlider" parent="TabContainer/Video/Volume2/VBoxContainer"]
+[node name="HSlider" type="HSlider" parent="TabContainer/Video/Brightness/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.5
@@ -354,5 +394,3 @@ step = 0.01
 value = 1.0
 
 [connection signal="button_up" from="Button" to="." method="hide"]
-[connection signal="OnOff" from="TabContainer/Video/GridContainer/OcclussionCullingCheck" to="TabContainer/Video/GridContainer/OclussionCulling" method="OclussionCullingOff"]
-[connection signal="OnOn" from="TabContainer/Video/GridContainer/OcclussionCullingCheck" to="TabContainer/Video/GridContainer/OclussionCulling" method="OclussionCullingOn"]

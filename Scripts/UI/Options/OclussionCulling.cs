@@ -4,7 +4,7 @@ using System;
 public partial class OclussionCulling : Node
 {
 	// Called when the node enters the scene tree for the first time.
-    public void OclussionCullingOn()
+	public void OclussionCullingOn()
 	{
 		GetWindow().UseOcclusionCulling = true;
 	}

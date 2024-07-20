@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://p4vo000sonpq"]
+[gd_scene load_steps=40 format=3 uid="uid://ctkjjob4p1c83"]
 
 [ext_resource type="PackedScene" uid="uid://dqwynxbg3ejn6" path="res://Resources/Nodes/pause_menu.tscn" id="1_j4yx3"]
 [ext_resource type="Texture2D" uid="uid://b6sp4vcirpc6e" path="res://2D/Textures/LightCheckerTexture.png" id="2_8hhec"]
@@ -129,6 +129,7 @@ sensivilityKey = "Brightness"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.352103, 0.935961, 0, -0.935961, 0.352103, 0, 20, 0)
+shadow_enabled = true
 
 [node name="World" type="Node3D" parent="."]
 
@@ -366,10 +367,6 @@ script = ExtResource("12_apr4l")
 BusName = "VOCES"
 VolumeKey = "VOICES"
 
-[connection signal="Activated" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="show" unbinds=1]
-[connection signal="Released" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Activated" method="hide" unbinds=1]
-[connection signal="Selected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="show" unbinds=1]
-[connection signal="UnSelected" from="World/InteractableTV" to="World/InteractableTV/CollisionShape3D/MeshInstance3D2/SubViewport/Node2D/Label" method="hide" unbinds=1]
 [connection signal="onInvoke" from="Player/InputEventHandler/Player/Jump" to="Player" method="Jump"]
 [connection signal="onInvoke" from="Player/InputEventHandler/Player/Interact" to="Player/Camera3D/RayCast3D" method="Interact"]
 [connection signal="onInvoke" from="Player/InputEventHandler/Player/Movement" to="Player" method="Move"]
