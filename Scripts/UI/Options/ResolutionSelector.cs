@@ -8,6 +8,9 @@ public partial class ResolutionSelector : OptionButton
 
     [Export]
     public string resolutionDefault;
+
+    [Signal]
+     public delegate void ResolutionEventHandler(Vector2I resolution);
     public override void _EnterTree()
     {
         ItemSelected += OnItemSelected;
@@ -26,8 +29,8 @@ public partial class ResolutionSelector : OptionButton
             if (currentLocale == GetItemText(i))
                 Select(i);
         }
-        GetWindow().ContentScaleSize = res;
-        DisplayServer.WindowSetSize(res,0);
+        EmitSignal(SignalName.Resolution, res);
+
     }
     public string TransformtoStringRes(Vector2 resolution)
     {
