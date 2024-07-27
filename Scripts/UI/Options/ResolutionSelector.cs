@@ -4,7 +4,8 @@ using System;
 public partial class ResolutionSelector : OptionButton
 {
     // Called when the node enters the scene tree for the first time.
-    string key = "RESOLUTION";
+    [Export] 
+    public string key = "";
 
     [Export]
     public string resolutionDefault;
@@ -18,9 +19,13 @@ public partial class ResolutionSelector : OptionButton
     }
     public void SetResolution()
     {
+
         string currentLocale;
-        currentLocale = OptionsSavesHandler.Current.GetValue(key)?.ToString() ?? TransformtoStringRes(DisplayServer.ScreenGetSize());
+        GD.Print(OptionsSavesHandler.Current.GetValue(key)?.ToString());
+        currentLocale = OptionsSavesHandler.Current.GetValue(key)?.ToString() ?? resolutionDefault;
+        //TransformtoStringRes(DisplayServer.ScreenGetSize());
         Vector2I res = TransformtoVectorRes(currentLocale);
+        GD.Print("patata");
         for (int i = 0; i < ItemCount; i++)
         {
             // AddItem(GetItemText(i), i);
@@ -29,6 +34,7 @@ public partial class ResolutionSelector : OptionButton
             if (currentLocale == GetItemText(i))
                 Select(i);
         }
+
         EmitSignal(SignalName.Resolution, res);
 
     }

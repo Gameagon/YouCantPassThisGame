@@ -6,7 +6,11 @@ public partial class ShadowsResolution : Node
 	// Called when the node enters the scene tree for the first time.
 	public void ResolutionChange(Vector2I res)
 	{
-		RenderingServer.CanvasSetShadowTextureSize(res[0]);
+		GD.Print("hola");
+		GD.Print(res[0]);
+		RenderingServer.DirectionalShadowAtlasSetSize(res[0], true);
+		
+		
 
 	}
 }

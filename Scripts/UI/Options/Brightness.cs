@@ -16,7 +16,6 @@ public partial class Brightness : WorldEnvironment
 	}
 	public void OnChangeBreightness(string key, Variant value)
 	{
-		GD.Print(value);
 		if(key == sensivilityKey)
 			Environment.AdjustmentBrightness = value.As<float>();
 	}

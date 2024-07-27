@@ -27,7 +27,6 @@ public partial class AudioController : AudioStreamPlayer
     {
         if (key == VolumeKey)
         {
-            GD.Print(AudioIndex);
             AudioServer.SetBusVolumeDb(AudioIndex, Mathf.LinearToDb(value.As<float>()));
         }
     }

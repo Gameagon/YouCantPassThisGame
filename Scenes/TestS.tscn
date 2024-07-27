@@ -152,6 +152,7 @@ physics_material_override = SubResource("PhysicsMaterial_gswut")
 shape = SubResource("BoxShape3D_f8c2c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Accelerator/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0845218, 0.0778494, 0.418858)
 mesh = SubResource("BoxMesh_d1jyl")
 
 [node name="IceRamp" type="StaticBody3D" parent="World"]
