@@ -75,10 +75,10 @@ grow_vertical = 2
 scale = Vector2(1.04, 1.08)
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Sensivility" type="GridContainer" parent="TabContainer/Controls"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
