@@ -227,7 +227,7 @@ camera = NodePath("Camera3D")
 sensivilityKey = "SENSIVILITY"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218184, 0.944673, 0.448997)
 shape = SubResource("CapsuleShape3D_rfcl2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CollisionShape3D"]
@@ -236,7 +236,7 @@ material_override = SubResource("StandardMaterial3D_8nc5n")
 mesh = SubResource("CapsuleMesh_5ii7m")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218184, 1.51967, 0.448997)
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
 target_position = Vector3(0, 0, -2)
