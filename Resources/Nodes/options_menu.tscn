@@ -105,7 +105,7 @@ theme_override_constants/margin_right = 16
 
 [node name="Label" type="Label" parent="TabContainer/Controls/Sensivility/MarginContainer"]
 layout_mode = 2
-text = "Sensivility"
+text = "SENSIVILITY"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/Sensivility" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
