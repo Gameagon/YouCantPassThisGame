@@ -7,7 +7,6 @@ uid="uid://dm6hi24gh2afa"
 [deps]
 
 files=["res://Translations/Translations.es.translation", "res://Translations/Translations.en.translation", "res://Translations/Translations.fr.translation"]
-
 source_file="res://Translations/Translations.csv"
 dest_files=["res://Translations/Translations.es.translation", "res://Translations/Translations.en.translation", "res://Translations/Translations.fr.translation"]
 
