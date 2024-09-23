@@ -25,7 +25,7 @@ public partial class ResolutionSelector : OptionButton
         currentLocale = OptionsSavesHandler.Current.GetValue(key)?.ToString() ?? resolutionDefault;
         //TransformtoStringRes(DisplayServer.ScreenGetSize());
         Vector2I res = TransformtoVectorRes(currentLocale);
-        GD.Print("patata");
+
         for (int i = 0; i < ItemCount; i++)
         {
             // AddItem(GetItemText(i), i);
@@ -34,7 +34,7 @@ public partial class ResolutionSelector : OptionButton
             if (currentLocale == GetItemText(i))
                 Select(i);
         }
-
+        GD.Print("AAAAAAAAAAAH");
         EmitSignal(SignalName.Resolution, res);
 
     }
