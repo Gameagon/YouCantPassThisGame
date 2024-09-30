@@ -131,6 +131,7 @@ max_value = 2.0
 step = 0.01
 
 [node name="SOUND" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="LenguagaContainer" type="GridContainer" parent="TabContainer/SOUND"]
@@ -149,7 +150,7 @@ text = "MENU_LANGUAGE"
 
 [node name="LanguageSelector" type="OptionButton" parent="TabContainer/SOUND/LenguagaContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 script = ExtResource("1_jiw6j")
 
 [node name="MusicContainer" type="MarginContainer" parent="TabContainer/SOUND/LenguagaContainer"]
@@ -228,18 +229,15 @@ theme_override_constants/h_separation = 10
 columns = 3
 
 [node name="VIDEO" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/VIDEO"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.9615
-offset_top = 73.1481
-offset_right = 331.961
-offset_bottom = 171.148
+offset_left = 30.7692
+offset_top = 23.1481
+offset_right = 411.769
+offset_bottom = 297.148
 columns = 2
 
 [node name="Resolution" type="Label" parent="TabContainer/VIDEO/GridContainer"]
@@ -337,35 +335,21 @@ script = ExtResource("5_8j1jd")
 key = "RESOLUTIONSHADOWS"
 resolutionDefault = "4096x4096"
 
-[node name="ImageScale" type="GridContainer" parent="TabContainer/VIDEO"]
-layout_mode = 2
-offset_left = 13.0
-offset_top = 256.0
-offset_right = 1654.0
-offset_bottom = 307.0
-grow_horizontal = 2
-theme_override_constants/h_separation = 2
-columns = 3
-
-[node name="GridContainer" type="GridContainer" parent="TabContainer/VIDEO/ImageScale"]
-layout_mode = 2
-columns = 2
-
-[node name="ImageScaleContainer" type="MarginContainer" parent="TabContainer/VIDEO/ImageScale/GridContainer"]
+[node name="ImageScaleContainer" type="MarginContainer" parent="TabContainer/VIDEO/GridContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 75
 
-[node name="ImageScaleLabel" type="Label" parent="TabContainer/VIDEO/ImageScale/GridContainer/ImageScaleContainer"]
+[node name="ImageScaleLabel" type="Label" parent="TabContainer/VIDEO/GridContainer/ImageScaleContainer"]
 clip_contents = true
 layout_mode = 2
 text = "IMAGE_SCALE"
 script = ExtResource("12_jj2dr")
 sensivilityKey = "ImageScale"
 
-[node name="VBoxImageScale" type="VBoxContainer" parent="TabContainer/VIDEO/ImageScale" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxImageScale" type="VBoxContainer" parent="TabContainer/VIDEO/GridContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 15.85
@@ -376,14 +360,14 @@ spinBox = NodePath("ImageScaleSpinBox")
 slider = NodePath("ImageScaleHSlider")
 multyplier = 100.0
 
-[node name="ImageScaleSpinBox" type="SpinBox" parent="TabContainer/VIDEO/ImageScale/VBoxImageScale"]
+[node name="ImageScaleSpinBox" type="SpinBox" parent="TabContainer/VIDEO/GridContainer/VBoxImageScale"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 step = 0.1
 allow_greater = true
 
-[node name="ImageScaleHSlider" type="HSlider" parent="TabContainer/VIDEO/ImageScale/VBoxImageScale"]
+[node name="ImageScaleHSlider" type="HSlider" parent="TabContainer/VIDEO/GridContainer/VBoxImageScale"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.25
@@ -391,26 +375,16 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="Brightness" type="GridContainer" parent="TabContainer/VIDEO"]
+[node name="BrightnessContainer" type="MarginContainer" parent="TabContainer/VIDEO/GridContainer"]
 layout_mode = 2
-offset_left = 11.5385
-offset_top = 310.185
-offset_right = 1696.54
-offset_bottom = 361.185
-grow_horizontal = 2
-theme_override_constants/h_separation = 10
-columns = 3
-
-[node name="BrightnessContainer" type="MarginContainer" parent="TabContainer/VIDEO/Brightness"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 40
 
-[node name="BrightnessLabel" type="Label" parent="TabContainer/VIDEO/Brightness/BrightnessContainer"]
+[node name="BrightnessLabel" type="Label" parent="TabContainer/VIDEO/GridContainer/BrightnessContainer"]
 layout_mode = 2
 text = "BRIGHTNESS"
 
-[node name="VBoxBrightness" type="VBoxContainer" parent="TabContainer/VIDEO/Brightness" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxBrightness" type="VBoxContainer" parent="TabContainer/VIDEO/GridContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 15.85
@@ -421,13 +395,13 @@ spinBox = NodePath("BrightnessSpinBox")
 slider = NodePath("BrightnessHSlider")
 multyplier = 100.0
 
-[node name="BrightnessSpinBox" type="SpinBox" parent="TabContainer/VIDEO/Brightness/VBoxBrightness"]
+[node name="BrightnessSpinBox" type="SpinBox" parent="TabContainer/VIDEO/GridContainer/VBoxBrightness"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="BrightnessHSlider" type="HSlider" parent="TabContainer/VIDEO/Brightness/VBoxBrightness"]
+[node name="BrightnessHSlider" type="HSlider" parent="TabContainer/VIDEO/GridContainer/VBoxBrightness"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.5
