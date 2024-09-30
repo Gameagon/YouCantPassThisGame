@@ -177,7 +177,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00676, 0, -8.46303)
 script = ExtResource("6_irl46")
 camera = NodePath("Camera3D")
 Acceleration = 1.0
-RotationSensitivity = 0.5
 
 [node name="InputEventHandler" type="Node" parent="Player"]
 process_mode = 3
