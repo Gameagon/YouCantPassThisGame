@@ -83,10 +83,9 @@ grow_vertical = 2
 scale = Vector2(1.04, 1.08)
 
 [node name="CONTROLS" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
-[node name="Sensibility" type="GridContainer" parent="TabContainer/CONTROLS"]
+[node name="ControlsContainer" type="GridContainer" parent="TabContainer/CONTROLS"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -99,16 +98,16 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="SensibilityContainer" type="MarginContainer" parent="TabContainer/CONTROLS/Sensibility"]
+[node name="SensibilityContainer" type="MarginContainer" parent="TabContainer/CONTROLS/ControlsContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="SensibilityLabel" type="Label" parent="TabContainer/CONTROLS/Sensibility/SensibilityContainer"]
+[node name="SensibilityLabel" type="Label" parent="TabContainer/CONTROLS/ControlsContainer/SensibilityContainer"]
 layout_mode = 2
 text = "SENSIVILITY"
 
-[node name="VBoxSensibility" type="VBoxContainer" parent="TabContainer/CONTROLS/Sensibility" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxSensibility" type="VBoxContainer" parent="TabContainer/CONTROLS/ControlsContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_wes0x")
@@ -118,22 +117,23 @@ spinBox = NodePath("SensibilitySpinBox")
 slider = NodePath("SensibilityHSlider")
 multyplier = 100.0
 
-[node name="SensibilitySpinBox" type="SpinBox" parent="TabContainer/CONTROLS/Sensibility/VBoxSensibility"]
+[node name="SensibilitySpinBox" type="SpinBox" parent="TabContainer/CONTROLS/ControlsContainer/VBoxSensibility"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="SensibilityHSlider" type="HSlider" parent="TabContainer/CONTROLS/Sensibility/VBoxSensibility"]
+[node name="SensibilityHSlider" type="HSlider" parent="TabContainer/CONTROLS/ControlsContainer/VBoxSensibility"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
 step = 0.01
 
 [node name="SOUND" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
-[node name="LenguagaContainer" type="GridContainer" parent="TabContainer/SOUND"]
+[node name="SoundContainer" type="GridContainer" parent="TabContainer/SOUND"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 22.1154
@@ -142,11 +142,11 @@ offset_right = 874.605
 offset_bottom = 230.142
 columns = 2
 
-[node name="Language" type="Label" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="Language" type="Label" parent="TabContainer/SOUND/SoundContainer"]
 layout_mode = 2
 text = "MENU_LANGUAGE"
 
-[node name="LanguageSelector" type="OptionButton" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="LanguageSelector" type="OptionButton" parent="TabContainer/SOUND/SoundContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 3
@@ -159,16 +159,16 @@ popup/item_2/text = "Français"
 popup/item_2/id = 2
 script = ExtResource("1_jiw6j")
 
-[node name="MusicContainer" type="MarginContainer" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="MusicContainer" type="MarginContainer" parent="TabContainer/SOUND/SoundContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 16
 
-[node name="MusicLabel" type="Label" parent="TabContainer/SOUND/LenguagaContainer/MusicContainer"]
+[node name="MusicLabel" type="Label" parent="TabContainer/SOUND/SoundContainer/MusicContainer"]
 layout_mode = 2
 text = "MUSIC"
 
-[node name="VBoxMusic" type="VBoxContainer" parent="TabContainer/SOUND/LenguagaContainer" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxMusic" type="VBoxContainer" parent="TabContainer/SOUND/SoundContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_wes0x")
@@ -178,28 +178,28 @@ spinBox = NodePath("MusicSpinBox")
 slider = NodePath("MusicHSlider")
 multyplier = 100.0
 
-[node name="MusicSpinBox" type="SpinBox" parent="TabContainer/SOUND/LenguagaContainer/VBoxMusic"]
+[node name="MusicSpinBox" type="SpinBox" parent="TabContainer/SOUND/SoundContainer/VBoxMusic"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="MusicHSlider" type="HSlider" parent="TabContainer/SOUND/LenguagaContainer/VBoxMusic"]
+[node name="MusicHSlider" type="HSlider" parent="TabContainer/SOUND/SoundContainer/VBoxMusic"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
 step = 0.05
 
-[node name="VoicesContainer" type="MarginContainer" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="VoicesContainer" type="MarginContainer" parent="TabContainer/SOUND/SoundContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 16
 
-[node name="VoicesLabel" type="Label" parent="TabContainer/SOUND/LenguagaContainer/VoicesContainer"]
+[node name="VoicesLabel" type="Label" parent="TabContainer/SOUND/SoundContainer/VoicesContainer"]
 layout_mode = 2
 text = "VOICES"
 
-[node name="VBoxVoices" type="VBoxContainer" parent="TabContainer/SOUND/LenguagaContainer" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxVoices" type="VBoxContainer" parent="TabContainer/SOUND/SoundContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("4_wes0x")
@@ -209,23 +209,23 @@ spinBox = NodePath("VoicesSpinBox")
 slider = NodePath("VoicesHSlider")
 multyplier = 100.0
 
-[node name="VoicesSpinBox" type="SpinBox" parent="TabContainer/SOUND/LenguagaContainer/VBoxVoices"]
+[node name="VoicesSpinBox" type="SpinBox" parent="TabContainer/SOUND/SoundContainer/VBoxVoices"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="VoicesHSlider" type="HSlider" parent="TabContainer/SOUND/LenguagaContainer/VBoxVoices"]
+[node name="VoicesHSlider" type="HSlider" parent="TabContainer/SOUND/SoundContainer/VBoxVoices"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 2.0
 step = 0.05
 
-[node name="Label" type="Label" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="Label" type="Label" parent="TabContainer/SOUND/SoundContainer"]
 layout_mode = 2
 text = "SUBTITLES"
 
-[node name="CheckButton" type="CheckButton" parent="TabContainer/SOUND/LenguagaContainer"]
+[node name="CheckButton" type="CheckButton" parent="TabContainer/SOUND/SoundContainer"]
 show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -234,7 +234,7 @@ size_flags_horizontal = 0
 visible = false
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/VIDEO"]
+[node name="VideoContainer" type="GridContainer" parent="TabContainer/VIDEO"]
 layout_mode = 0
 offset_left = 19.2308
 offset_top = 62.963
@@ -242,12 +242,12 @@ offset_right = 869.726
 offset_bottom = 336.963
 columns = 2
 
-[node name="Resolution" type="Label" parent="TabContainer/VIDEO/GridContainer"]
+[node name="Resolution" type="Label" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 text = "RESOLUTION"
 script = ExtResource("5_bae45")
 
-[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/VIDEO/GridContainer"]
+[node name="ResolutionSelection" type="OptionButton" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 7
@@ -270,14 +270,14 @@ script = ExtResource("5_8j1jd")
 key = "RESOLUTION"
 resolutionDefault = "1280x720"
 
-[node name="WindowsMode" type="Label" parent="TabContainer/VIDEO/GridContainer"]
+[node name="WindowsMode" type="Label" parent="TabContainer/VIDEO/VideoContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(178, 23)
 layout_mode = 2
 size_flags_stretch_ratio = 20.0
 text = "WINDOWS_MODE"
 
-[node name="Windowsmodeselector" type="OptionButton" parent="TabContainer/VIDEO/GridContainer"]
+[node name="Windowsmodeselector" type="OptionButton" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 3
@@ -290,21 +290,21 @@ popup/item_2/text = "WITHOUT BORDERS"
 popup/item_2/id = 4
 script = ExtResource("6_w8koo")
 
-[node name="OclussionCulling" type="Label" parent="TabContainer/VIDEO/GridContainer"]
+[node name="OclussionCulling" type="Label" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 text = "OCLUSSION_CULLING"
 script = ExtResource("7_24uu5")
 
-[node name="OcclussionCullingCheck" type="CheckBox" parent="TabContainer/VIDEO/GridContainer"]
+[node name="OcclussionCullingCheck" type="CheckBox" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 script = ExtResource("8_xgwao")
 VolumeKey = "OclussionCulling"
 
-[node name="Shadowsquality" type="Label" parent="TabContainer/VIDEO/GridContainer"]
+[node name="Shadowsquality" type="Label" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 text = "SOFT_SHADOWS"
 
-[node name="Shadowqualityselector" type="OptionButton" parent="TabContainer/VIDEO/GridContainer"]
+[node name="Shadowqualityselector" type="OptionButton" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 4
@@ -319,12 +319,12 @@ popup/item_3/text = "ULTRA"
 popup/item_3/id = 5
 script = ExtResource("9_s4u8j")
 
-[node name="ResolutionsShadows" type="Label" parent="TabContainer/VIDEO/GridContainer"]
+[node name="ResolutionsShadows" type="Label" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 text = "SHADOW_RESOLUTION"
 script = ExtResource("11_akee7")
 
-[node name="ResolutionShadowsSelection2" type="OptionButton" parent="TabContainer/VIDEO/GridContainer"]
+[node name="ResolutionShadowsSelection2" type="OptionButton" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 item_count = 4
@@ -341,21 +341,21 @@ script = ExtResource("5_8j1jd")
 key = "RESOLUTIONSHADOWS"
 resolutionDefault = "4096x4096"
 
-[node name="ImageScaleContainer" type="MarginContainer" parent="TabContainer/VIDEO/GridContainer"]
+[node name="ImageScaleContainer" type="MarginContainer" parent="TabContainer/VIDEO/VideoContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 75
 
-[node name="ImageScaleLabel" type="Label" parent="TabContainer/VIDEO/GridContainer/ImageScaleContainer"]
+[node name="ImageScaleLabel" type="Label" parent="TabContainer/VIDEO/VideoContainer/ImageScaleContainer"]
 clip_contents = true
 layout_mode = 2
 text = "IMAGE_SCALE"
 script = ExtResource("12_jj2dr")
 sensivilityKey = "ImageScale"
 
-[node name="VBoxImageScale" type="VBoxContainer" parent="TabContainer/VIDEO/GridContainer" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxImageScale" type="VBoxContainer" parent="TabContainer/VIDEO/VideoContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 15.85
@@ -366,14 +366,14 @@ spinBox = NodePath("ImageScaleSpinBox")
 slider = NodePath("ImageScaleHSlider")
 multyplier = 100.0
 
-[node name="ImageScaleSpinBox" type="SpinBox" parent="TabContainer/VIDEO/GridContainer/VBoxImageScale"]
+[node name="ImageScaleSpinBox" type="SpinBox" parent="TabContainer/VIDEO/VideoContainer/VBoxImageScale"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 step = 0.1
 allow_greater = true
 
-[node name="ImageScaleHSlider" type="HSlider" parent="TabContainer/VIDEO/GridContainer/VBoxImageScale"]
+[node name="ImageScaleHSlider" type="HSlider" parent="TabContainer/VIDEO/VideoContainer/VBoxImageScale"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.25
@@ -381,16 +381,16 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
-[node name="BrightnessContainer" type="MarginContainer" parent="TabContainer/VIDEO/GridContainer"]
+[node name="BrightnessContainer" type="MarginContainer" parent="TabContainer/VIDEO/VideoContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_right = 40
 
-[node name="BrightnessLabel" type="Label" parent="TabContainer/VIDEO/GridContainer/BrightnessContainer"]
+[node name="BrightnessLabel" type="Label" parent="TabContainer/VIDEO/VideoContainer/BrightnessContainer"]
 layout_mode = 2
 text = "BRIGHTNESS"
 
-[node name="VBoxBrightness" type="VBoxContainer" parent="TabContainer/VIDEO/GridContainer" node_paths=PackedStringArray("spinBox", "slider")]
+[node name="VBoxBrightness" type="VBoxContainer" parent="TabContainer/VIDEO/VideoContainer" node_paths=PackedStringArray("spinBox", "slider")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 15.85
@@ -401,13 +401,13 @@ spinBox = NodePath("BrightnessSpinBox")
 slider = NodePath("BrightnessHSlider")
 multyplier = 100.0
 
-[node name="BrightnessSpinBox" type="SpinBox" parent="TabContainer/VIDEO/GridContainer/VBoxBrightness"]
+[node name="BrightnessSpinBox" type="SpinBox" parent="TabContainer/VIDEO/VideoContainer/VBoxBrightness"]
 layout_mode = 2
 size_flags_horizontal = 0
 max_value = 0.0
 allow_greater = true
 
-[node name="BrightnessHSlider" type="HSlider" parent="TabContainer/VIDEO/GridContainer/VBoxBrightness"]
+[node name="BrightnessHSlider" type="HSlider" parent="TabContainer/VIDEO/VideoContainer/VBoxBrightness"]
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 0.5
@@ -416,5 +416,5 @@ step = 0.01
 value = 1.0
 
 [connection signal="button_up" from="Button" to="." method="hide"]
-[connection signal="Resolution" from="TabContainer/VIDEO/GridContainer/ResolutionSelection" to="TabContainer/VIDEO/GridContainer/Resolution" method="ResolutionChange"]
-[connection signal="Resolution" from="TabContainer/VIDEO/GridContainer/ResolutionShadowsSelection2" to="TabContainer/VIDEO/GridContainer/ResolutionsShadows" method="ResolutionChange"]
+[connection signal="Resolution" from="TabContainer/VIDEO/VideoContainer/ResolutionSelection" to="TabContainer/VIDEO/VideoContainer/Resolution" method="ResolutionChange"]
+[connection signal="Resolution" from="TabContainer/VIDEO/VideoContainer/ResolutionShadowsSelection2" to="TabContainer/VIDEO/VideoContainer/ResolutionsShadows" method="ResolutionChange"]
