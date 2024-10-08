@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://cl0u60qn21slw"]
+
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputEventHandler.cs" id="1_gqs2s"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/ActionTypes/Vector1InputAction.cs" id="2_x3idu"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputActionGroup.cs" id="3_nwx1a"]
+[ext_resource type="Script" path="res://addons/SKInputSystem/InputSystem/InputMap.cs" id="4_ykrfl"]
+[ext_resource type="Script" path="res://Scripts/Utils/EventActuator.cs" id="5_0h3tu"]
+[ext_resource type="Script" path="res://Scripts/BrickBreaker/Pala.cs" id="6_1uf5h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jesrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jiohf"]
+size = Vector2(4, 1)
+
+[sub_resource type="Resource" id="Resource_ie6o7"]
+resource_name = "Movment"
+script = ExtResource("2_x3idu")
+MouseInput = 0
+Negative = ["Key A", "JoyAxis LeftX"]
+Positive = ["Key D", "JoyAxis RightX"]
+NegativeName = "Left"
+PositiveName = "Right"
+Name = "Movment"
+DeadZone = 0.25
+Sleeping = false
+
+[sub_resource type="Resource" id="Resource_qi3i8"]
+resource_name = "Paddle"
+script = ExtResource("3_nwx1a")
+Name = "Paddle"
+Actions = [SubResource("Resource_ie6o7")]
+Sleeping = false
+
+[sub_resource type="Resource" id="Resource_wyh2x"]
+resource_name = "InputMap"
+script = ExtResource("4_ykrfl")
+Name = "InputMap"
+Groups = [SubResource("Resource_qi3i8")]
+
+[node name="BrickBreaker" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 35.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(15.48, 33)
+physics_material_override = SubResource("PhysicsMaterial_jesrn")
+constant_linear_velocity = Vector2(50, 0)
+constant_angular_velocity = 0.0467748
+script = ExtResource("6_1uf5h")
+speed = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="AnimatableBody2D"]
+offset_right = 4.0
+offset_bottom = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_jiohf")
+
+[node name="InputEventHandler" type="Node" parent="AnimatableBody2D"]
+process_mode = 3
+script = ExtResource("1_gqs2s")
+inputMap = SubResource("Resource_wyh2x")
+MouseMode = 1
+
+[node name="Paddle" type="Node" parent="AnimatableBody2D/InputEventHandler"]
+
+[node name="Movment" type="Node" parent="AnimatableBody2D/InputEventHandler/Paddle"]
+script = ExtResource("5_0h3tu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(15, 19)
+zoom = Vector2(26.62, 26.62)
+
+[connection signal="onInvoke" from="AnimatableBody2D/InputEventHandler/Paddle/Movment" to="AnimatableBody2D" method="Move"]
