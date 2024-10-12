@@ -1,0 +1,77 @@
+[gd_scene load_steps=17 format=3 uid="uid://dojjg3p3ag1y5"]
+
+[ext_resource type="PackedScene" uid="uid://b4kecnfm4pjki" path="res://3D/Maps/Museum/arcosypilares.glb" id="1_7sxed"]
+[ext_resource type="PackedScene" uid="uid://dck60h50lvfin" path="res://3D/Maps/Museum/baño.glb" id="2_1p8wj"]
+[ext_resource type="PackedScene" uid="uid://cvdmimlpkl8rl" path="res://3D/Maps/Museum/cajas.glb" id="3_jb6nf"]
+[ext_resource type="PackedScene" uid="uid://cduxnqq8dok3k" path="res://3D/Maps/Museum/cine.glb" id="4_2tifb"]
+[ext_resource type="PackedScene" uid="uid://b5xawflgapajq" path="res://3D/Maps/Museum/cortinas.glb" id="5_ye5oj"]
+[ext_resource type="PackedScene" uid="uid://cdoiblwmyjuwm" path="res://3D/Maps/Museum/cuadro.glb" id="6_skoap"]
+[ext_resource type="PackedScene" uid="uid://dsuqoc3g8ql80" path="res://3D/Maps/Museum/decoracionventanas.glb" id="7_4rr7v"]
+[ext_resource type="PackedScene" uid="uid://dwd1ww1q18mk7" path="res://3D/Maps/Museum/estanteria.glb" id="8_nft5l"]
+[ext_resource type="PackedScene" uid="uid://dqc0dqpflfawr" path="res://3D/Maps/Museum/expo.glb" id="9_gd4im"]
+[ext_resource type="PackedScene" uid="uid://decbe636ub0ob" path="res://3D/Maps/Museum/interior.glb" id="10_777i0"]
+[ext_resource type="PackedScene" uid="uid://cpvrdoafj2nnv" path="res://3D/Maps/Museum/luces.glb" id="11_fiwua"]
+[ext_resource type="PackedScene" uid="uid://bbteqh526ned" path="res://3D/Maps/Museum/papelvater.glb" id="12_ybh68"]
+[ext_resource type="PackedScene" uid="uid://dmaccxchytkrc" path="res://3D/Maps/Museum/plataforma.glb" id="13_lnshq"]
+[ext_resource type="PackedScene" uid="uid://dy7vnkhjl6sne" path="res://3D/Maps/Museum/recibidorarcade.glb" id="14_aybad"]
+[ext_resource type="PackedScene" uid="uid://diaxanr7kw5de" path="res://3D/Maps/Museum/sillasgamer.glb" id="15_sjss0"]
+[ext_resource type="PackedScene" uid="uid://chcboghkwe5sy" path="res://3D/Maps/Museum/vasija.glb" id="16_64qd5"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="arcosypilares" parent="." instance=ExtResource("1_7sxed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.77364, -1.19209e-07, -0.0458641)
+
+[node name="baño" parent="." instance=ExtResource("2_1p8wj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="cajas" parent="." instance=ExtResource("3_jb6nf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="cine" parent="." instance=ExtResource("4_2tifb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="cortinas" parent="." instance=ExtResource("5_ye5oj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 74.772, -1.19209e-07, 51.41)
+
+[node name="cuadro" parent="." instance=ExtResource("6_skoap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="decoracionventanas" parent="." instance=ExtResource("7_4rr7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="estanteria" parent="." instance=ExtResource("8_nft5l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="expo" parent="." instance=ExtResource("9_gd4im")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="interior" parent="." instance=ExtResource("10_777i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="luces" parent="." instance=ExtResource("11_fiwua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="papelvater" parent="." instance=ExtResource("12_ybh68")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="plataforma" parent="." instance=ExtResource("13_lnshq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="recibidorarcade" parent="." instance=ExtResource("14_aybad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="sillasgamer" parent="." instance=ExtResource("15_sjss0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
+
+[node name="sillasgamer2" parent="." instance=ExtResource("15_sjss0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23534, -1.19209e-07, -0.0458641)
+
+[node name="sillasgamer3" parent="." instance=ExtResource("15_sjss0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55628, -1.19209e-07, -0.0458641)
+
+[node name="sillasgamer4" parent="." instance=ExtResource("15_sjss0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97884, -1.19209e-07, -0.0458641)
+
+[node name="vasija" parent="." instance=ExtResource("16_64qd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461871, -1.19209e-07, -0.0458641)
