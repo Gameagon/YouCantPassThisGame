@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://drl0eydg83msp"
+path.s3tc="res://.godot/imported/interior_Substance_graph_normal.png-135bc33aac6bf7c1ac05d4b88fe24da4.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6b9eec25de28666be491221ecb88c3a0"
+}
+
+[deps]
+
+source_file="res://3D/Maps/Museum/interior_Substance_graph_normal.png"
+dest_files=["res://.godot/imported/interior_Substance_graph_normal.png-135bc33aac6bf7c1ac05d4b88fe24da4.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://3D/Maps/Museum/interior_Substance_graph_normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

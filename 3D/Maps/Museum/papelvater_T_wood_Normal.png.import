@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cmk6vwjynaikw"
+path.s3tc="res://.godot/imported/papelvater_T_wood_Normal.png-9431ee1bc4f2d5a9a215e431b066e6ee.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c967a87aaee99339f763e1ec5322640c"
+}
+
+[deps]
+
+source_file="res://3D/Maps/Museum/papelvater_T_wood_Normal.png"
+dest_files=["res://.godot/imported/papelvater_T_wood_Normal.png-9431ee1bc4f2d5a9a215e431b066e6ee.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://3D/Maps/Museum/papelvater_T_wood_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

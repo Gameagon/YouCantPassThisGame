@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d0bvy2xem0hyq"
+path.s3tc="res://.godot/imported/plataforma_Material__1770basecolortexture.png-7bf30af0eaf227455211d55511ba4cc7.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "686a457e770220663c49f4ee0000d281"
+}
+
+[deps]
+
+source_file="res://3D/Maps/Museum/plataforma_Material__1770basecolortexture.png"
+dest_files=["res://.godot/imported/plataforma_Material__1770basecolortexture.png-7bf30af0eaf227455211d55511ba4cc7.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
